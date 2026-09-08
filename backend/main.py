@@ -13,8 +13,19 @@ Swagger:
 from __future__ import annotations
 
 import sys, os
+<<<<<<< HEAD
 sys.path.insert(0, os.path.dirname(__file__))
 
+=======
+_backend_dir = os.path.dirname(os.path.abspath(__file__))
+_root_dir = os.path.dirname(_backend_dir)
+if _backend_dir not in sys.path:
+    sys.path.insert(0, _backend_dir)
+if _root_dir not in sys.path:
+    sys.path.insert(0, _root_dir)
+
+from contextlib import asynccontextmanager
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
@@ -34,6 +45,20 @@ from seed_data import DEMO_RESOURCES
 
 
 # ---------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+# Lifespan
+# ---------------------------------------------------------------------------
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    persistence.init_db()
+    re.seed_amphan()
+    yield
+
+
+# ---------------------------------------------------------------------------
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 # App
 # ---------------------------------------------------------------------------
 
@@ -46,6 +71,10 @@ app = FastAPI(
         "Not official IMD or government data."
     ),
     contact={"name": "Member 2 — Backend / Event / State Architect"},
+<<<<<<< HEAD
+=======
+    lifespan=lifespan,
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 )
 
 app.add_middleware(
@@ -68,6 +97,7 @@ app.include_router(map_router, prefix="/api/v1/map", tags=["MapLibre Services"])
 
 
 # ---------------------------------------------------------------------------
+<<<<<<< HEAD
 # Startup
 # ---------------------------------------------------------------------------
 
@@ -78,6 +108,8 @@ async def startup():
 
 
 # ---------------------------------------------------------------------------
+=======
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 # System routes  (health, demo seed)
 # ---------------------------------------------------------------------------
 

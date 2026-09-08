@@ -1,0 +1,37 @@
+[
+  {
+    "storm_name": "Cyclone Phailin",
+    "year": 2013,
+    "basin": "North Indian Ocean",
+    "similarity": 0.82,
+    "matched_features": [
+      "RI_over_BoB",
+      "Odisha_landfall",
+      "similar_SST"
+    ],
+    "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+  },
+  {
+    "storm_name": "Cyclone Fani",
+    "year": 2019,
+    "basin": "North Indian Ocean",
+    "similarity": 0.78,
+    "matched_features": [
+      "May_season",
+      "RI_episode",
+      "WB_coast_threat"
+    ],
+    "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+  },
+  {
+    "storm_name": "Cyclone Hudhud",
+    "year": 2014,
+    "basin": "North Indian Ocean",
+    "similarity": 0.71,
+    "matched_features": [
+      "RI_24h_window",
+      "eye_replacement_cycle"
+    ],
+    "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+  }
+]

@@ -62,6 +62,7 @@ export default function CycloneOverlay({ lat, lon, intensity, regime }) {
           />
         ))}
 
+<<<<<<< HEAD
         {/* Rotating spiral arms */}
         <div
           style={{
@@ -91,6 +92,9 @@ export default function CycloneOverlay({ lat, lon, intensity, regime }) {
             `,
           }}
         />
+=======
+        {/* Rotating spiral arms disabled */}
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 
         {/* Eye wall */}
         <div

@@ -55,6 +55,7 @@ class IntelligenceProvider(ABC):
 
 class MockIntelligenceProvider(IntelligenceProvider):
     """
+<<<<<<< HEAD
     Default provider used until Member 3 connects their ML model.
     Returns values already present in seed data — passthrough.
     """
@@ -78,6 +79,40 @@ class MockIntelligenceProvider(IntelligenceProvider):
 
     def get_ri_probability(self, state: CycloneState, tick: int) -> float:
         return 0.75 if state.regime.value == "RAPID_INTENSIFICATION" else 0.1
+=======
+    Default provider backed by Member 3's IntelligenceService.
+    """
+
+    def __init__(self):
+        try:
+            from backend.ml.intelligence_service import IntelligenceService
+        except ModuleNotFoundError:
+            from ml.intelligence_service import IntelligenceService
+        self._svc = IntelligenceService()
+
+    def analyze(self, state: CycloneState, tick: int) -> Dict[str, Any]:
+        snap = self._svc.get_snapshot(state.event_id, tick)
+        return {
+            "intensity_kt": snap.intensity.value_kt,
+            "pressure_hpa": snap.intensity.min_pressure_hpa,
+            "regime": snap.regime.dominant_regime.value if hasattr(snap.regime.dominant_regime, "value") else str(snap.regime.dominant_regime),
+            "regime_probabilities": snap.regime.probabilities,
+            "confidence": round(1.0 - snap.uncertainty.overall_uncertainty, 3),
+            "change_point_detected": snap.change_point.detected if snap.change_point else False,
+            "ri_probability": 0.75 if (snap.change_point and snap.change_point.detected) else 0.1,
+            "environment": snap.environment.model_dump() if snap.environment else {},
+            "model_version": "MOCK_v2.0",
+            "source": "MOCK_INTELLIGENCE_SERVICE",
+        }
+
+    def get_regime_probabilities(self, state: CycloneState) -> Dict[str, float]:
+        snap = self._svc.get_snapshot(state.event_id, state.tick)
+        return snap.regime.probabilities
+
+    def get_ri_probability(self, state: CycloneState, tick: int) -> float:
+        snap = self._svc.get_snapshot(state.event_id, tick)
+        return 0.75 if (snap.change_point and snap.change_point.detected) else 0.1
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 
 
 # ===========================================================================

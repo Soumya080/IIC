@@ -1,8 +1,16 @@
 import { motion, AnimatePresence } from 'framer-motion';
+<<<<<<< HEAD
 import { useState, useEffect } from 'react';
 import useAppStore from './store/appStore.js';
 import TopBar from './components/layout/TopBar.jsx';
 import Sidebar from './components/layout/Sidebar.jsx';
+=======
+import { useEffect } from 'react';
+import useAppStore from './store/appStore.js';
+import TopBar from './components/layout/TopBar.jsx';
+import Sidebar from './components/layout/Sidebar.jsx';
+import RedAlertModal from './components/layout/RedAlertModal.jsx';
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 import CommandCenter from './pages/CommandCenter.jsx';
 import EventsPage from './pages/EventsPage.jsx';
 import SatellitePage from './pages/SatellitePage.jsx';
@@ -24,7 +32,12 @@ const PAGES = {
 };
 
 export default function App() {
+<<<<<<< HEAD
   const [activeTab, setActiveTab] = useState('COMMAND_CENTER');
+=======
+  const activeTab        = useAppStore(s => s.activeTab);
+  const setActiveTab     = useAppStore(s => s.setActiveTab);
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
   const setSelectedEvent = useAppStore(s => s.setSelectedEvent);
   const fetchResources   = useAppStore(s => s.fetchResources);
   const fetchSOS         = useAppStore(s => s.fetchSOS);
@@ -39,6 +52,10 @@ export default function App() {
 
   return (
     <div className="app-shell">
+<<<<<<< HEAD
+=======
+      <RedAlertModal />
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
       <TopBar />
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="app-main">

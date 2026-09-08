@@ -41,6 +41,7 @@ function buildSpiral(turns, pointsPerTurn, innerR, outerR, angleOffset = 0) {
  * CycloneSpiral — rotating logarithmic spiral arms.
  * 3 arms, 120° apart. Rotation speed tied to regime.
  */
+<<<<<<< HEAD
 export default function CycloneSpiral({ intensity = 0, regime = 'FORMATION' }) {
   const groupRef = useRef();
   const speed = REGIME_SPEED[regime] || 0.3;
@@ -79,4 +80,8 @@ export default function CycloneSpiral({ intensity = 0, regime = 'FORMATION' }) {
       ))}
     </group>
   );
+=======
+export default function CycloneSpiral() {
+  return null;
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 }

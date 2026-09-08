@@ -30,13 +30,18 @@ const VortexMap = forwardRef(function VortexMap(_props, ref) {
   const popupRef = useRef(null);
   const pulseStopRef = useRef(null);
 
+<<<<<<< HEAD
 const [status, setStatus] = useState(MAP_STATUS.LOADING);
+=======
+  const [status, setStatus] = useState(MAP_STATUS.LOADING);
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
   const [mapReady, setMapReady] = useState(false);
   const [layerOpen, setLayerOpen] = useState(false);
   const [webglFailed, setWebglFailed] = useState(false);
   const [showDetection, setShowDetection] = useState(false);
   const prevRegime = useRef(null);
 
+<<<<<<< HEAD
   const intelligence   = useAppStore(s => s.intelligence);
   const activeLayers   = useAppStore(s => s.activeLayers);
   const currentTick    = useAppStore(s => s.currentTick);
@@ -49,6 +54,20 @@ const [status, setStatus] = useState(MAP_STATUS.LOADING);
   const scenarios = intelligence?.scenarios || [];
   const intensity = state?.intensity_kt || 0;
   const regime    = state?.regime || 'FORMATION';
+=======
+  const intelligence = useAppStore(s => s.intelligence);
+  const activeLayers = useAppStore(s => s.activeLayers);
+  const currentTick = useAppStore(s => s.currentTick);
+  const resources = useAppStore(s => s.resources);
+  const sosReports = useAppStore(s => s.sosReports);
+  const trackHistory = useAppStore(s => s.trackHistory);
+
+  const state = intelligence?.state;
+  const hazard = intelligence?.hazard;
+  const scenarios = intelligence?.scenarios || [];
+  const intensity = state?.intensity_kt || 0;
+  const regime = state?.regime || 'FORMATION';
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 
   /* ---------------------------------------------------------------- */
   /* Map init �?" exactly once                                            */
@@ -109,7 +128,11 @@ const [status, setStatus] = useState(MAP_STATUS.LOADING);
       const el = document.createElement('div');
       el.style.cssText = 'font-size:11px;line-height:1.5;';
       const title = document.createElement('div');
+<<<<<<< HEAD
       title.style.cssText = `color:${VORTEX_COLORS.primary};font-weight:600;letter-spacing:0.06em;`; 
+=======
+      title.style.cssText = `color:${VORTEX_COLORS.primary};font-weight:600;letter-spacing:0.06em;`;
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
       title.textContent = 'CYCLONE CENTER';
       const body = document.createElement('div');
       const s = useAppStore.getState().intelligence?.state;
@@ -148,7 +171,11 @@ const [status, setStatus] = useState(MAP_STATUS.LOADING);
     };
   }, []);
 
+<<<<<<< HEAD
 /* ---------------------------------------------------------------- */
+=======
+  /* ---------------------------------------------------------------- */
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
   /* Data �+" sources (never recreate map/layers)                        */
   /* ---------------------------------------------------------------- */
   useEffect(() => {
@@ -220,8 +247,13 @@ const [status, setStatus] = useState(MAP_STATUS.LOADING);
   /* Camera helpers (also exposed via ref)                             */
   /* ---------------------------------------------------------------- */
   const handleFlyToCyclone = useCallback(() => flyToCyclone(mapRef.current, state), [state]);
+<<<<<<< HEAD
   const handleResetView    = useCallback(() => resetView(mapRef.current), []);
   const handleFitTrack     = useCallback(() => {
+=======
+  const handleResetView = useCallback(() => resetView(mapRef.current), []);
+  const handleFitTrack = useCallback(() => {
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
     const map = mapRef.current;
     const fc = map?.getSource('cyclone-track')?.serialize?.().data;
     const line = fc?.features?.find(f => f.geometry?.type === 'LineString');
@@ -239,7 +271,11 @@ const [status, setStatus] = useState(MAP_STATUS.LOADING);
   useEffect(() => {
     if (!regime) return;
     if (prevRegime.current === null ||
+<<<<<<< HEAD
         (prevRegime.current !== 'RAPID_INTENSIFICATION' && regime === 'RAPID_INTENSIFICATION')) {
+=======
+      (prevRegime.current !== 'RAPID_INTENSIFICATION' && regime === 'RAPID_INTENSIFICATION')) {
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
       setShowDetection(true);
       const t = setTimeout(() => setShowDetection(false), 3000);
       return () => clearTimeout(t);

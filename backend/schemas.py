@@ -9,7 +9,11 @@ from enum import Enum
 from typing import Any, Dict, List, Optional
 from uuid import uuid4
 
+<<<<<<< HEAD
 from pydantic import BaseModel, Field
+=======
+from pydantic import BaseModel, ConfigDict, Field
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 
 
 # ---------------------------------------------------------------------------
@@ -36,6 +40,10 @@ class Basin(str, Enum):
 
 class Regime(str, Enum):
     FORMATION = "FORMATION"
+<<<<<<< HEAD
+=======
+    GENESIS = "GENESIS"
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
     DEVELOPING = "DEVELOPING"
     INTENSIFYING = "INTENSIFYING"
     RAPID_INTENSIFICATION = "RAPID_INTENSIFICATION"
@@ -239,6 +247,10 @@ class ForecastTrackPoint(BaseModel):
 
 
 class ForecastMember(BaseModel):
+<<<<<<< HEAD
+=======
+    model_config = ConfigDict(protected_namespaces=())
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
     id: str = Field(default_factory=lambda: str(uuid4()))
     forecast_version_id: str
     model_name: str
@@ -249,6 +261,10 @@ class ForecastMember(BaseModel):
 
 
 class Forecast(BaseModel):
+<<<<<<< HEAD
+=======
+    model_config = ConfigDict(protected_namespaces=())
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
     id: str = Field(default_factory=lambda: str(uuid4()))
     event_id: str
     tick: int
@@ -372,6 +388,10 @@ class TimelineEvent(BaseModel):
 
 
 class AuditRecord(BaseModel):
+<<<<<<< HEAD
+=======
+    model_config = ConfigDict(protected_namespaces=())
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
     id: str = Field(default_factory=lambda: str(uuid4()))
     event_id: str
     prediction_tick: int
@@ -491,6 +511,26 @@ class UnifiedIntelligenceResponse(BaseModel):
     metadata: Dict[str, Any] = {}
 
 
+<<<<<<< HEAD
+=======
+class CanonicalEventResponse(BaseModel):
+    """Unified canonical event state returned by POST /advance and GET /canonical."""
+    event: Dict[str, Any]
+    tick: int
+    state: Optional[Dict[str, Any]] = None
+    intelligence: Optional[Dict[str, Any]] = None
+    forecasts: Optional[Dict[str, Any]] = None
+    scenarios: Any = None
+    hazards: Optional[Dict[str, Any]] = None
+    hazard: Optional[Dict[str, Any]] = None
+    impact: Optional[Dict[str, Any]] = None
+    alert: Optional[Dict[str, Any]] = None
+    operations: Any = None
+    rras: Optional[Dict[str, Any]] = None
+    timeline: List[Dict[str, Any]] = []
+
+
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 class SOSSubmitRequest(BaseModel):
     event_id: str
     category: SOSCategory

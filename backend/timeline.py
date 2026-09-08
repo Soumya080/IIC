@@ -60,8 +60,14 @@ def log(
     payload: Optional[Dict[str, Any]] = None,
     severity: str = "INFO",
 ) -> TimelineEvent:
+<<<<<<< HEAD
     evt = TimelineEvent(
         id=str(uuid4()),
+=======
+    evt_id = f"EVT-{event_id}-T{tick}-{len(_timelines.get(event_id, []))}"
+    evt = TimelineEvent(
+        id=evt_id,
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
         event_id=event_id,
         tick=tick,
         timestamp=ts,

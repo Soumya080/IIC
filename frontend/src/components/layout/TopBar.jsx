@@ -69,9 +69,20 @@ export default function TopBar() {
       </div>
 
       {/* Alert */}
+<<<<<<< HEAD
       <div className="topbar-indicator">
         <span className={`alert-indicator alert-${alertState}`}>
           <AlertTriangle size={9} /> {alertState}
+=======
+      <div className="topbar-indicator" style={{ cursor: alertState === 'RED' ? 'pointer' : 'default' }} onClick={() => {
+        if (alertState === 'RED') {
+          useAppStore.getState().setRedAlertDismissed(false);
+          useAppStore.getState().dispatchRedAlertToRRAS();
+        }
+      }}>
+        <span className={`alert-indicator alert-${alertState}`} title={alertState === 'RED' ? 'Click to Dispatch RRAS Emergency Alert' : `Alert Level: ${alertState}`}>
+          <AlertTriangle size={9} /> {alertState} {alertState === 'RED' && '· DISPATCH'}
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
         </span>
       </div>
 

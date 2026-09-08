@@ -30,8 +30,13 @@ export const MAX_ZOOM = 16;
 
 export const MAP_STYLE_URL = import.meta.env?.VITE_MAP_STYLE_URL || null;
 
+<<<<<<< HEAD
 // Local-testing-only fallback style. Set VITE_MAP_STYLE_URL for any real deployment.
 export const FALLBACK_STYLE_URL = 'https://demotiles.maplibre.org/style.json';
+=======
+// High-quality dark basemap style URL for local development and offline fallback.
+export const FALLBACK_STYLE_URL = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 
 export const MAP_CONFIG = {
   DEFAULT_CENTER,

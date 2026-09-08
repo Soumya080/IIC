@@ -3,7 +3,11 @@
  */
 import { create } from 'zustand';
 import * as api from '../services/api.js';
+<<<<<<< HEAD
 import { getDemoIntelligence, DEMO_EVENT_ID, DEMO_RESOURCES, DEMO_DISTRICTS } from '../services/demo.js';
+=======
+import { getDemoIntelligence, DEMO_EVENT_ID, DEMO_RESOURCES, DEMO_DISTRICTS, DEMO_SOS } from '../services/demo.js';
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 
 const useAppStore = create((set, get) => ({
   // ─── Connection ─────────────────────────────────────────────────────────
@@ -27,20 +31,48 @@ const useAppStore = create((set, get) => ({
   setCurrentTick: (tick) => set({ currentTick: tick }),
   setIsPlaying: (v) => set({ isPlaying: v }),
 
+<<<<<<< HEAD
   // ─── Intelligence Data ───────────────────────────────────────────────────
   intelligence: null,
   isLoadingIntelligence: false,
   intelligenceError: null,
 
+=======
+  // ─── Intelligence & RRAS Data ────────────────────────────────────────────
+  intelligence: null,
+  rrasData: null,
+  isLoadingIntelligence: false,
+  intelligenceError: null,
+
+  fetchRRAS: async (eventId, tick = null) => {
+    const id = eventId || get().selectedEventId;
+    if (!id) return;
+    try {
+      const data = await api.getRRAS(id, tick);
+      set({ rrasData: data });
+    } catch {
+      // keep null or static
+    }
+  },
+
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
   fetchIntelligence: async (eventId, tick = null) => {
     const id = eventId || get().selectedEventId;
     if (!id) return;
     set({ isLoadingIntelligence: true, intelligenceError: null });
     try {
       const data = await api.getIntelligence(id, tick);
+<<<<<<< HEAD
       const connState = api.getConnectionState();
       set({
         intelligence: data,
+=======
+      const rras = await api.getRRAS(id, tick).catch(() => null);
+      const connState = api.getConnectionState();
+      set({
+        intelligence: data,
+        rrasData: rras,
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
         currentTick: data.metadata?.tick ?? data.event?.current_tick ?? 0,
         maxTick: data.event?.max_tick ?? 11,
         connectionState: connState,
@@ -123,12 +155,37 @@ const useAppStore = create((set, get) => ({
   activeScenario: 'BASE',
   setActiveScenario: (s) => set({ activeScenario: s }),
 
+<<<<<<< HEAD
   // ─── Alert State ─────────────────────────────────────────────────────────
   alertState: 'GREEN',
   setAlertState: (s) => set({ alertState: s }),
 
   // ─── SOS State ───────────────────────────────────────────────────────────
   sosReports: [],
+=======
+  // ─── Active Tab / Navigation ──────────────────────────────────────────────
+  activeTab: 'COMMAND_CENTER',
+  setActiveTab: (tab) => set({ activeTab: tab }),
+
+  // ─── Alert State & Emergency Dispatch ─────────────────────────────────────
+  alertState: 'GREEN',
+  redAlertDismissed: false,
+  redAlertDispatched: false,
+  setAlertState: (s) => set({ alertState: s }),
+  setRedAlertDismissed: (v) => set({ redAlertDismissed: v }),
+
+  dispatchRedAlertToRRAS: () => {
+    set({
+      activeTab: 'RESOURCE_OPS',
+      redAlertDismissed: true,
+      redAlertDispatched: true,
+    });
+    get().fetchRRAS();
+  },
+
+  // ─── SOS State ───────────────────────────────────────────────────────────
+  sosReports: DEMO_SOS,
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
   ndrfAlerts: [],
   setSosReports: (r) => set({ sosReports: r }),
   setNdrfAlerts: (a) => set({ ndrfAlerts: a }),
@@ -137,9 +194,16 @@ const useAppStore = create((set, get) => ({
     const id = eventId || get().selectedEventId;
     try {
       const data = await api.listSOS(id);
+<<<<<<< HEAD
       set({ sosReports: data.reports || [] });
     } catch {
       // keep existing
+=======
+      const reports = (data.reports && data.reports.length > 0) ? data.reports : DEMO_SOS;
+      set({ sosReports: reports });
+    } catch {
+      if (get().sosReports.length === 0) set({ sosReports: DEMO_SOS });
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
     }
   },
 
@@ -153,6 +217,66 @@ const useAppStore = create((set, get) => ({
     }
   },
 
+<<<<<<< HEAD
+=======
+  submitSOS: async (sosPayload) => {
+    const id = get().selectedEventId || 'CYC-2020-AMPHAN';
+    try {
+      const res = await api.submitSOS({ event_id: id, ...sosPayload });
+      await get().fetchSOS(id);
+      await get().fetchNDRF(id);
+      return res;
+    } catch (err) {
+      console.warn('[AppStore] API submitSOS failed, inserting local mock:', err);
+      const newMock = {
+        id: `SOS-${Math.floor(1000 + Math.random() * 9000)}`,
+        event_id: id,
+        category: sosPayload.category || 'TRAPPED',
+        severity: sosPayload.severity || 'CRITICAL',
+        district: sosPayload.district || 'South 24 Parganas',
+        lat: sosPayload.lat || 22.0,
+        lon: sosPayload.lon || 88.3,
+        people_count: sosPayload.people_count || 1,
+        description: sosPayload.description || 'Emergency SOS',
+        contact: sosPayload.contact || '+91 98300 00000',
+        status: 'NEW',
+        priority_score: (sosPayload.people_count || 1) * 4,
+      };
+      set(s => ({ sosReports: [newMock, ...s.sosReports] }));
+      return { report_id: newMock.id, status: 'RECEIVED' };
+    }
+  },
+
+  updateSOSStatus: async (sosId, status) => {
+    const id = get().selectedEventId || 'CYC-2020-AMPHAN';
+    try {
+      const res = await api.updateSOSStatus(sosId, status);
+      set(s => ({
+        sosReports: s.sosReports.map(r => (r.id === sosId || r.sos_id === sosId) ? { ...r, status: status } : r)
+      }));
+      await get().fetchSOS(id);
+      return res;
+    } catch (err) {
+      console.warn('[AppStore] API updateSOSStatus failed, updating local state:', err);
+      set(s => ({
+        sosReports: s.sosReports.map(r => (r.id === sosId || r.sos_id === sosId) ? { ...r, status: status } : r)
+      }));
+      return { id: sosId, status };
+    }
+  },
+
+  dispatchAndRemoveSOS: async (sosId) => {
+    try {
+      await api.updateSOSStatus(sosId, 'ASSIGNED');
+    } catch (err) {
+      console.warn('[AppStore] API updateSOSStatus failed:', err);
+    }
+    set(s => ({
+      sosReports: s.sosReports.filter(r => r.id !== sosId && r.sos_id !== sosId)
+    }));
+  },
+
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
   // ─── Resources ───────────────────────────────────────────────────────────
   resources: [],
   resourceGap: null,

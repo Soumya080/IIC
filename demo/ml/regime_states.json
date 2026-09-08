@@ -1,0 +1,194 @@
+[
+  {
+    "event_id": "DEMO-001",
+    "tick": 0,
+    "timestamp": "2020-05-16T00:00:00Z",
+    "probabilities": {
+      "GENESIS": 0.7,
+      "DEVELOPING": 0.22,
+      "INTENSIFYING": 0.05,
+      "MATURE": 0.02,
+      "WEAKENING": 0.01
+    },
+    "dominant_regime": "GENESIS",
+    "confidence": 0.7,
+    "source": "MOCK_REGIME_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 1,
+    "timestamp": "2020-05-16T12:00:00Z",
+    "probabilities": {
+      "GENESIS": 0.5,
+      "DEVELOPING": 0.38,
+      "INTENSIFYING": 0.08,
+      "MATURE": 0.03,
+      "WEAKENING": 0.01
+    },
+    "dominant_regime": "GENESIS",
+    "confidence": 0.68,
+    "source": "MOCK_REGIME_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 2,
+    "timestamp": "2020-05-17T00:00:00Z",
+    "probabilities": {
+      "GENESIS": 0.15,
+      "DEVELOPING": 0.62,
+      "INTENSIFYING": 0.18,
+      "MATURE": 0.04,
+      "WEAKENING": 0.01
+    },
+    "dominant_regime": "DEVELOPING",
+    "confidence": 0.72,
+    "source": "MOCK_REGIME_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 3,
+    "timestamp": "2020-05-17T12:00:00Z",
+    "probabilities": {
+      "GENESIS": 0.05,
+      "DEVELOPING": 0.55,
+      "INTENSIFYING": 0.32,
+      "MATURE": 0.06,
+      "WEAKENING": 0.02
+    },
+    "dominant_regime": "DEVELOPING",
+    "confidence": 0.74,
+    "source": "MOCK_REGIME_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 4,
+    "timestamp": "2020-05-18T00:00:00Z",
+    "probabilities": {
+      "GENESIS": 0.02,
+      "DEVELOPING": 0.12,
+      "INTENSIFYING": 0.74,
+      "MATURE": 0.1,
+      "WEAKENING": 0.02
+    },
+    "dominant_regime": "INTENSIFYING",
+    "confidence": 0.82,
+    "source": "MOCK_REGIME_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 5,
+    "timestamp": "2020-05-18T12:00:00Z",
+    "probabilities": {
+      "GENESIS": 0.01,
+      "DEVELOPING": 0.05,
+      "INTENSIFYING": 0.78,
+      "MATURE": 0.14,
+      "WEAKENING": 0.02
+    },
+    "dominant_regime": "INTENSIFYING",
+    "confidence": 0.86,
+    "source": "MOCK_REGIME_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 6,
+    "timestamp": "2020-05-19T00:00:00Z",
+    "probabilities": {
+      "GENESIS": 0.01,
+      "DEVELOPING": 0.03,
+      "INTENSIFYING": 0.65,
+      "MATURE": 0.28,
+      "WEAKENING": 0.03
+    },
+    "dominant_regime": "INTENSIFYING",
+    "confidence": 0.85,
+    "source": "MOCK_REGIME_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 7,
+    "timestamp": "2020-05-19T12:00:00Z",
+    "probabilities": {
+      "GENESIS": 0.01,
+      "DEVELOPING": 0.02,
+      "INTENSIFYING": 0.15,
+      "MATURE": 0.75,
+      "WEAKENING": 0.07
+    },
+    "dominant_regime": "MATURE",
+    "confidence": 0.88,
+    "source": "MOCK_REGIME_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 8,
+    "timestamp": "2020-05-20T00:00:00Z",
+    "probabilities": {
+      "GENESIS": 0.01,
+      "DEVELOPING": 0.01,
+      "INTENSIFYING": 0.08,
+      "MATURE": 0.7,
+      "WEAKENING": 0.2
+    },
+    "dominant_regime": "MATURE",
+    "confidence": 0.85,
+    "source": "MOCK_REGIME_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 9,
+    "timestamp": "2020-05-20T06:00:00Z",
+    "probabilities": {
+      "GENESIS": 0.01,
+      "DEVELOPING": 0.01,
+      "INTENSIFYING": 0.05,
+      "MATURE": 0.58,
+      "WEAKENING": 0.35
+    },
+    "dominant_regime": "MATURE",
+    "confidence": 0.78,
+    "source": "MOCK_REGIME_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 10,
+    "timestamp": "2020-05-20T10:00:00Z",
+    "probabilities": {
+      "GENESIS": 0.01,
+      "DEVELOPING": 0.01,
+      "INTENSIFYING": 0.03,
+      "MATURE": 0.2,
+      "WEAKENING": 0.75
+    },
+    "dominant_regime": "WEAKENING",
+    "confidence": 0.8,
+    "source": "MOCK_REGIME_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 11,
+    "timestamp": "2020-05-20T18:00:00Z",
+    "probabilities": {
+      "GENESIS": 0.01,
+      "DEVELOPING": 0.01,
+      "INTENSIFYING": 0.02,
+      "MATURE": 0.06,
+      "WEAKENING": 0.9
+    },
+    "dominant_regime": "WEAKENING",
+    "confidence": 0.88,
+    "source": "MOCK_REGIME_PROVIDER",
+    "demo_mode": true
+  }
+]

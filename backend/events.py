@@ -14,15 +14,27 @@ from fastapi import APIRouter, HTTPException, Query
 
 import alert_engine
 import replay_engine as re
+<<<<<<< HEAD
 import timeline as tl
 from schemas import (
     AdvanceRequest, AlertLevel, AuditRecord, Basin,
     CreateEventRequest, CycloneEvent, CycloneState,
+=======
+import rras_engine
+import timeline as tl
+from schemas import (
+    AdvanceRequest, AlertLevel, AuditRecord, Basin,
+    CanonicalEventResponse, CreateEventRequest, CycloneEvent, CycloneState,
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
     EventStatus, Forecast, Hazard, ImpactAssessment,
     OperationalTask, Outcome, ReplayStartRequest,
     Scenario, ScenarioType, TimelineEvent,
 )
+<<<<<<< HEAD
 from seed_data import AMPHAN_TICKS
+=======
+from seed_data import AMPHAN_TICKS, AMPHAN_EVENT_ID
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 
 router = APIRouter()
 
@@ -32,13 +44,25 @@ def _utc_now() -> datetime:
 
 
 def _utc(s: str) -> datetime:
+<<<<<<< HEAD
     return datetime.fromisoformat(s).replace(tzinfo=timezone.utc)
+=======
+    return datetime.fromisoformat(s.replace("Z", "+00:00")).replace(tzinfo=timezone.utc)
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 
 
 def _get_event(event_id: str) -> CycloneEvent:
     ev = re.store.events.get(event_id)
     if not ev:
+<<<<<<< HEAD
         raise HTTPException(404, f"Event '{event_id}' not found")
+=======
+        if event_id in ("DEMO-001", AMPHAN_EVENT_ID):
+            re.seed_amphan(event_id)
+            ev = re.store.events.get(event_id)
+        if not ev:
+            raise HTTPException(404, f"Event '{event_id}' not found")
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
     return ev
 
 
@@ -193,6 +217,27 @@ def get_operations(event_id: str, tick: Optional[int] = Query(default=None)):
     return re.store.tasks.get(event_id, {}).get(t, [])
 
 
+<<<<<<< HEAD
+=======
+@router.get("/{event_id}/rras",
+            summary="RRAS road status & depot resource allocation plan at current tick")
+def get_rras(event_id: str, tick: Optional[int] = Query(default=None)):
+    ev = _get_event(event_id)
+    t = tick if tick is not None else ev.current_tick
+    rras = re.store.rras.get(event_id, {}).get(t)
+    if not rras:
+        impact = re.store.impacts.get(event_id, {}).get(t)
+        hazard = re.store.hazards.get(event_id, {}).get(t)
+        alert = re.store.alerts.get(event_id, {}).get(t)
+        if impact and hazard:
+            rras = rras_engine.build_rras_output(event_id, t, impact, hazard, alert)
+            re.store.rras.setdefault(event_id, {})[t] = rras
+    if not rras:
+        raise HTTPException(404, f"No RRAS data available at tick {t} for event '{event_id}'")
+    return rras
+
+
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 # ===========================================================================
 # Timeline
 # ===========================================================================
@@ -240,8 +285,13 @@ def get_outcome(event_id: str):
 # Replay — THE CLOCK  (only these endpoints mutate current_tick)
 # ===========================================================================
 
+<<<<<<< HEAD
 @router.post("/{event_id}/advance", response_model=CycloneEvent,
              summary="Advance replay N steps (body: {steps: 1})")
+=======
+@router.post("/{event_id}/advance", response_model=CanonicalEventResponse,
+             summary="Advance replay N steps and return complete canonical event state")
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 def advance(event_id: str, req: AdvanceRequest = None):
     _get_event(event_id)
     steps = req.steps if req else 1
@@ -249,9 +299,17 @@ def advance(event_id: str, req: AdvanceRequest = None):
         return re.advance(event_id, steps)
     except ValueError as e:
         raise HTTPException(400, str(e))
+<<<<<<< HEAD
 
 
 @router.post("/{event_id}/replay/advance", response_model=CycloneEvent,
+=======
+    except RuntimeError as e:
+        raise HTTPException(502, str(e))
+
+
+@router.post("/{event_id}/replay/advance", response_model=CanonicalEventResponse,
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
              summary="Advance replay by 1 step (no body needed)")
 def replay_advance(event_id: str):
     _get_event(event_id)
@@ -259,9 +317,17 @@ def replay_advance(event_id: str):
         return re.advance(event_id, 1)
     except ValueError as e:
         raise HTTPException(400, str(e))
+<<<<<<< HEAD
 
 
 @router.post("/{event_id}/replay/start", response_model=CycloneEvent,
+=======
+    except RuntimeError as e:
+        raise HTTPException(502, str(e))
+
+
+@router.post("/{event_id}/replay/start", response_model=CanonicalEventResponse,
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
              summary="Jump to a specific tick (body: {from_tick: 3})")
 def replay_start(event_id: str, req: ReplayStartRequest = None):
     _get_event(event_id)
@@ -272,7 +338,11 @@ def replay_start(event_id: str, req: ReplayStartRequest = None):
         raise HTTPException(400, str(e))
 
 
+<<<<<<< HEAD
 @router.post("/{event_id}/replay/reset", response_model=CycloneEvent,
+=======
+@router.post("/{event_id}/replay/reset", response_model=CanonicalEventResponse,
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
              summary="Reset replay to T0")
 def replay_reset(event_id: str):
     _get_event(event_id)
@@ -282,7 +352,11 @@ def replay_reset(event_id: str):
         raise HTTPException(400, str(e))
 
 
+<<<<<<< HEAD
 @router.post("/{event_id}/replay/goto", response_model=CycloneEvent,
+=======
+@router.post("/{event_id}/replay/goto", response_model=CanonicalEventResponse,
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
              summary="Jump directly to tick N (query param: ?tick=5)")
 def replay_goto(event_id: str, tick: int = Query(...)):
     _get_event(event_id)
@@ -295,6 +369,19 @@ def replay_goto(event_id: str, tick: int = Query(...)):
         raise HTTPException(400, str(e))
 
 
+<<<<<<< HEAD
+=======
+@router.get("/{event_id}/canonical", response_model=CanonicalEventResponse,
+            summary="Unified canonical event state at current tick (or ?tick=N)")
+def get_canonical(event_id: str, tick: Optional[int] = Query(default=None)):
+    _get_event(event_id)
+    try:
+        return re.get_canonical_state(event_id, tick)
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+
+
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 # ===========================================================================
 # Unified Intelligence endpoint  (frontend preferred)
 # ===========================================================================

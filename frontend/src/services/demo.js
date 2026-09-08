@@ -195,3 +195,12 @@ export const DEMO_DISTRICTS = [
   { district: 'Bhadrak', evacuation: 55, shelter: 62, medical: 58, transport: 50, overall: 56, label: 'MODERATE' },
   { district: 'Puri', evacuation: 65, shelter: 70, medical: 68, transport: 60, overall: 66, label: 'MODERATE' },
 ];
+<<<<<<< HEAD
+=======
+
+export const DEMO_SOS = [
+  { id: 'SOS-8801', sos_id: 'SOS-8801', event_id: 'CYC-2020-AMPHAN', category: 'TRAPPED', severity: 'CRITICAL', district: 'South 24 Parganas', lat: 22.00, lon: 88.30, people_count: 14, description: 'Storm surge flooded ground floor. 14 citizens trapped on roof.', contact: '+91 98301 11223', status: 'NEW', priority_score: 56.0 },
+  { id: 'SOS-8802', sos_id: 'SOS-8802', event_id: 'CYC-2020-AMPHAN', category: 'MEDICAL', severity: 'HIGH', district: 'East Medinipur', lat: 21.62, lon: 87.51, people_count: 6, description: 'Severe trauma casualties requiring immediate ambulance.', contact: '+91 94331 44556', status: 'ACKNOWLEDGED', priority_score: 18.0 },
+  { id: 'SOS-8803', sos_id: 'SOS-8803', event_id: 'CYC-2020-AMPHAN', category: 'EVACUATION', severity: 'CRITICAL', district: 'Kolkata', lat: 22.57, lon: 88.36, people_count: 22, description: 'Power grid collapsed and water level rising near canal.', contact: '+91 98312 99887', status: 'ASSIGNED', priority_score: 88.0 },
+];
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)

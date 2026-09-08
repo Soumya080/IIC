@@ -104,6 +104,19 @@ export const getOperations = (eventId, tick = null) => {
   return request(`/api/v1/events/${eventId}/operations${params}`);
 };
 
+<<<<<<< HEAD
+=======
+export const getCanonical = (eventId, tick = null) => {
+  const params = tick !== null ? `?tick=${tick}` : '';
+  return request(`/api/v1/events/${eventId}/canonical${params}`);
+};
+
+export const getRRAS = (eventId, tick = null) => {
+  const params = tick !== null ? `?tick=${tick}` : '';
+  return request(`/api/v1/events/${eventId}/rras${params}`);
+};
+
+>>>>>>> 52a07e3 (feat: Integrate RRAS engine, FastAPI backend, React frontend, and SOS triage system)
 // ─── Timeline / Audit ────────────────────────────────────────────────────
 
 export const getTimeline = (eventId, sinceTick = 0) =>
