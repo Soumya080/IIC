@@ -36,6 +36,7 @@ class Basin(str, Enum):
 
 class Regime(str, Enum):
     FORMATION = "FORMATION"
+    GENESIS = "GENESIS"
     DEVELOPING = "DEVELOPING"
     INTENSIFYING = "INTENSIFYING"
     RAPID_INTENSIFICATION = "RAPID_INTENSIFICATION"
@@ -489,6 +490,23 @@ class UnifiedIntelligenceResponse(BaseModel):
     operations: List[OperationalTask] = []
     timeline: List[TimelineEvent] = []
     metadata: Dict[str, Any] = {}
+
+
+class CanonicalEventResponse(BaseModel):
+    """Unified canonical event state returned by POST /advance and GET /canonical."""
+    event: Dict[str, Any]
+    tick: int
+    state: Optional[Dict[str, Any]] = None
+    intelligence: Optional[Dict[str, Any]] = None
+    forecasts: Optional[Dict[str, Any]] = None
+    scenarios: Any = None
+    hazards: Optional[Dict[str, Any]] = None
+    hazard: Optional[Dict[str, Any]] = None
+    impact: Optional[Dict[str, Any]] = None
+    alert: Optional[Dict[str, Any]] = None
+    operations: Any = None
+    rras: Optional[Dict[str, Any]] = None
+    timeline: List[Dict[str, Any]] = []
 
 
 class SOSSubmitRequest(BaseModel):

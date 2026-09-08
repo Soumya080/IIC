@@ -60,8 +60,9 @@ def log(
     payload: Optional[Dict[str, Any]] = None,
     severity: str = "INFO",
 ) -> TimelineEvent:
+    evt_id = f"EVT-{event_id}-T{tick}-{len(_timelines.get(event_id, []))}"
     evt = TimelineEvent(
-        id=str(uuid4()),
+        id=evt_id,
         event_id=event_id,
         tick=tick,
         timestamp=ts,

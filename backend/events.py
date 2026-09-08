@@ -17,12 +17,12 @@ import replay_engine as re
 import timeline as tl
 from schemas import (
     AdvanceRequest, AlertLevel, AuditRecord, Basin,
-    CreateEventRequest, CycloneEvent, CycloneState,
+    CanonicalEventResponse, CreateEventRequest, CycloneEvent, CycloneState,
     EventStatus, Forecast, Hazard, ImpactAssessment,
     OperationalTask, Outcome, ReplayStartRequest,
     Scenario, ScenarioType, TimelineEvent,
 )
-from seed_data import AMPHAN_TICKS
+from seed_data import AMPHAN_TICKS, AMPHAN_EVENT_ID
 
 router = APIRouter()
 
@@ -32,13 +32,17 @@ def _utc_now() -> datetime:
 
 
 def _utc(s: str) -> datetime:
-    return datetime.fromisoformat(s).replace(tzinfo=timezone.utc)
+    return datetime.fromisoformat(s.replace("Z", "+00:00")).replace(tzinfo=timezone.utc)
 
 
 def _get_event(event_id: str) -> CycloneEvent:
     ev = re.store.events.get(event_id)
     if not ev:
-        raise HTTPException(404, f"Event '{event_id}' not found")
+        if event_id in ("DEMO-001", AMPHAN_EVENT_ID):
+            re.seed_amphan(event_id)
+            ev = re.store.events.get(event_id)
+        if not ev:
+            raise HTTPException(404, f"Event '{event_id}' not found")
     return ev
 
 
@@ -240,8 +244,8 @@ def get_outcome(event_id: str):
 # Replay — THE CLOCK  (only these endpoints mutate current_tick)
 # ===========================================================================
 
-@router.post("/{event_id}/advance", response_model=CycloneEvent,
-             summary="Advance replay N steps (body: {steps: 1})")
+@router.post("/{event_id}/advance", response_model=CanonicalEventResponse,
+             summary="Advance replay N steps and return complete canonical event state")
 def advance(event_id: str, req: AdvanceRequest = None):
     _get_event(event_id)
     steps = req.steps if req else 1
@@ -249,9 +253,11 @@ def advance(event_id: str, req: AdvanceRequest = None):
         return re.advance(event_id, steps)
     except ValueError as e:
         raise HTTPException(400, str(e))
+    except RuntimeError as e:
+        raise HTTPException(502, str(e))
 
 
-@router.post("/{event_id}/replay/advance", response_model=CycloneEvent,
+@router.post("/{event_id}/replay/advance", response_model=CanonicalEventResponse,
              summary="Advance replay by 1 step (no body needed)")
 def replay_advance(event_id: str):
     _get_event(event_id)
@@ -259,9 +265,11 @@ def replay_advance(event_id: str):
         return re.advance(event_id, 1)
     except ValueError as e:
         raise HTTPException(400, str(e))
+    except RuntimeError as e:
+        raise HTTPException(502, str(e))
 
 
-@router.post("/{event_id}/replay/start", response_model=CycloneEvent,
+@router.post("/{event_id}/replay/start", response_model=CanonicalEventResponse,
              summary="Jump to a specific tick (body: {from_tick: 3})")
 def replay_start(event_id: str, req: ReplayStartRequest = None):
     _get_event(event_id)
@@ -272,7 +280,7 @@ def replay_start(event_id: str, req: ReplayStartRequest = None):
         raise HTTPException(400, str(e))
 
 
-@router.post("/{event_id}/replay/reset", response_model=CycloneEvent,
+@router.post("/{event_id}/replay/reset", response_model=CanonicalEventResponse,
              summary="Reset replay to T0")
 def replay_reset(event_id: str):
     _get_event(event_id)
@@ -282,7 +290,7 @@ def replay_reset(event_id: str):
         raise HTTPException(400, str(e))
 
 
-@router.post("/{event_id}/replay/goto", response_model=CycloneEvent,
+@router.post("/{event_id}/replay/goto", response_model=CanonicalEventResponse,
              summary="Jump directly to tick N (query param: ?tick=5)")
 def replay_goto(event_id: str, tick: int = Query(...)):
     _get_event(event_id)
@@ -291,6 +299,16 @@ def replay_goto(event_id: str, tick: int = Query(...)):
         raise HTTPException(400, f"tick must be 0–{ev.max_tick}")
     try:
         return re.goto(event_id, tick)
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+
+
+@router.get("/{event_id}/canonical", response_model=CanonicalEventResponse,
+            summary="Unified canonical event state at current tick (or ?tick=N)")
+def get_canonical(event_id: str, tick: Optional[int] = Query(default=None)):
+    _get_event(event_id)
+    try:
+        return re.get_canonical_state(event_id, tick)
     except ValueError as e:
         raise HTTPException(400, str(e))
 
