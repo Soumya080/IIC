@@ -1,0 +1,490 @@
+{
+  "event_id": "DEMO-001",
+  "storm_name": "Amphan",
+  "simulation": "GOLDEN_REPLAY",
+  "total_ticks": 12,
+  "ticks": [
+    {
+      "tick": 0,
+      "timestamp": "2020-05-16T00:00:00Z",
+      "cyclone_center": {
+        "lat": 8.0,
+        "lon": 85.0
+      },
+      "intensity_kt": 30.0,
+      "regime": "GENESIS",
+      "overall_uncertainty": 0.362,
+      "confidence": 0.638,
+      "change_point_detected": false,
+      "change_point_description": "",
+      "forecast_member_count": 4,
+      "scenario_count": 3,
+      "hazard_thresholds": [],
+      "affected_districts": [],
+      "exposed_population": 0,
+      "risk_level": "LOW",
+      "time_to_impact_hours": null,
+      "road_status_counts": {
+        "NORMAL": 23
+      },
+      "food_allocation": 0,
+      "water_allocation": 0,
+      "medical_allocation": 0,
+      "ndrf_allocation": 0,
+      "operational_task_count": 0,
+      "operational_sample_tasks": [],
+      "alert_level": "GREEN"
+    },
+    {
+      "tick": 1,
+      "timestamp": "2020-05-16T12:00:00Z",
+      "cyclone_center": {
+        "lat": 8.5,
+        "lon": 85.2
+      },
+      "intensity_kt": 35.0,
+      "regime": "GENESIS",
+      "overall_uncertainty": 0.35,
+      "confidence": 0.65,
+      "change_point_detected": false,
+      "change_point_description": "",
+      "forecast_member_count": 4,
+      "scenario_count": 3,
+      "hazard_thresholds": [
+        "34kt"
+      ],
+      "affected_districts": [],
+      "exposed_population": 0,
+      "risk_level": "LOW",
+      "time_to_impact_hours": null,
+      "road_status_counts": {
+        "NORMAL": 23
+      },
+      "food_allocation": 0,
+      "water_allocation": 0,
+      "medical_allocation": 0,
+      "ndrf_allocation": 0,
+      "operational_task_count": 0,
+      "operational_sample_tasks": [],
+      "alert_level": "GREEN"
+    },
+    {
+      "tick": 2,
+      "timestamp": "2020-05-17T00:00:00Z",
+      "cyclone_center": {
+        "lat": 9.2,
+        "lon": 85.5
+      },
+      "intensity_kt": 45.0,
+      "regime": "DEVELOPING",
+      "overall_uncertainty": 0.307,
+      "confidence": 0.693,
+      "change_point_detected": false,
+      "change_point_description": "",
+      "forecast_member_count": 4,
+      "scenario_count": 3,
+      "hazard_thresholds": [
+        "34kt"
+      ],
+      "affected_districts": [
+        "Puri"
+      ],
+      "exposed_population": 50000,
+      "risk_level": "LOW",
+      "time_to_impact_hours": 96.0,
+      "road_status_counts": {
+        "NORMAL": 23
+      },
+      "food_allocation": 450,
+      "water_allocation": 600,
+      "medical_allocation": 12,
+      "ndrf_allocation": 0,
+      "operational_task_count": 0,
+      "operational_sample_tasks": [],
+      "alert_level": "GREEN"
+    },
+    {
+      "tick": 3,
+      "timestamp": "2020-05-17T12:00:00Z",
+      "cyclone_center": {
+        "lat": 10.0,
+        "lon": 85.8
+      },
+      "intensity_kt": 55.0,
+      "regime": "DEVELOPING",
+      "overall_uncertainty": 0.425,
+      "confidence": 0.575,
+      "change_point_detected": false,
+      "change_point_description": "",
+      "forecast_member_count": 4,
+      "scenario_count": 3,
+      "hazard_thresholds": [
+        "34kt",
+        "50kt"
+      ],
+      "affected_districts": [
+        "Puri",
+        "Khordha"
+      ],
+      "exposed_population": 200000,
+      "risk_level": "MODERATE",
+      "time_to_impact_hours": 84.0,
+      "road_status_counts": {
+        "NORMAL": 23
+      },
+      "food_allocation": 2250,
+      "water_allocation": 3000,
+      "medical_allocation": 60,
+      "ndrf_allocation": 2,
+      "operational_task_count": 0,
+      "operational_sample_tasks": [],
+      "alert_level": "GREEN"
+    },
+    {
+      "tick": 4,
+      "timestamp": "2020-05-18T00:00:00Z",
+      "cyclone_center": {
+        "lat": 11.2,
+        "lon": 86.0
+      },
+      "intensity_kt": 75.0,
+      "regime": "INTENSIFYING",
+      "overall_uncertainty": 0.255,
+      "confidence": 0.745,
+      "change_point_detected": true,
+      "change_point_description": "Change point detected at T4: DEVELOPING -> INTENSIFYING",
+      "forecast_member_count": 4,
+      "scenario_count": 3,
+      "hazard_thresholds": [
+        "34kt",
+        "50kt",
+        "64kt"
+      ],
+      "affected_districts": [
+        "Puri",
+        "Khordha",
+        "Jagatsinghpur"
+      ],
+      "exposed_population": 500000,
+      "risk_level": "MODERATE",
+      "time_to_impact_hours": 72.0,
+      "road_status_counts": {
+        "REROUTED": 7,
+        "NORMAL": 16
+      },
+      "food_allocation": 5622,
+      "water_allocation": 7497,
+      "medical_allocation": 90,
+      "ndrf_allocation": 3,
+      "operational_task_count": 1,
+      "operational_sample_tasks": [
+        "Initiate Coastal Evacuation Warning"
+      ],
+      "alert_level": "YELLOW"
+    },
+    {
+      "tick": 5,
+      "timestamp": "2020-05-18T12:00:00Z",
+      "cyclone_center": {
+        "lat": 13.0,
+        "lon": 86.3
+      },
+      "intensity_kt": 100.0,
+      "regime": "INTENSIFYING",
+      "overall_uncertainty": 0.203,
+      "confidence": 0.797,
+      "change_point_detected": false,
+      "change_point_description": "",
+      "forecast_member_count": 4,
+      "scenario_count": 3,
+      "hazard_thresholds": [
+        "34kt",
+        "50kt",
+        "64kt"
+      ],
+      "affected_districts": [
+        "Jagatsinghpur",
+        "Kendrapara",
+        "Bhadrak"
+      ],
+      "exposed_population": 1200000,
+      "risk_level": "HIGH",
+      "time_to_impact_hours": 60.0,
+      "road_status_counts": {
+        "NORMAL": 16,
+        "REROUTED": 7
+      },
+      "food_allocation": 15300,
+      "water_allocation": 20400,
+      "medical_allocation": 126,
+      "ndrf_allocation": 3,
+      "operational_task_count": 1,
+      "operational_sample_tasks": [
+        "Initiate Coastal Evacuation Warning"
+      ],
+      "alert_level": "YELLOW"
+    },
+    {
+      "tick": 6,
+      "timestamp": "2020-05-19T00:00:00Z",
+      "cyclone_center": {
+        "lat": 15.0,
+        "lon": 86.8
+      },
+      "intensity_kt": 125.0,
+      "regime": "INTENSIFYING",
+      "overall_uncertainty": 0.175,
+      "confidence": 0.825,
+      "change_point_detected": false,
+      "change_point_description": "",
+      "forecast_member_count": 4,
+      "scenario_count": 3,
+      "hazard_thresholds": [
+        "34kt",
+        "50kt",
+        "64kt"
+      ],
+      "affected_districts": [
+        "Bhadrak",
+        "Balasore",
+        "East Medinipur"
+      ],
+      "exposed_population": 1800000,
+      "risk_level": "HIGH",
+      "time_to_impact_hours": 48.0,
+      "road_status_counts": {
+        "NORMAL": 17,
+        "REROUTED": 6
+      },
+      "food_allocation": 22950,
+      "water_allocation": 30600,
+      "medical_allocation": 126,
+      "ndrf_allocation": 3,
+      "operational_task_count": 3,
+      "operational_sample_tasks": [
+        "Initiate Coastal Evacuation Warning",
+        "Pre-Position NDRF Teams"
+      ],
+      "alert_level": "ORANGE"
+    },
+    {
+      "tick": 7,
+      "timestamp": "2020-05-19T12:00:00Z",
+      "cyclone_center": {
+        "lat": 17.5,
+        "lon": 87.2
+      },
+      "intensity_kt": 140.0,
+      "regime": "MATURE",
+      "overall_uncertainty": 0.143,
+      "confidence": 0.857,
+      "change_point_detected": true,
+      "change_point_description": "Change point detected at T7: INTENSIFYING -> MATURE",
+      "forecast_member_count": 4,
+      "scenario_count": 3,
+      "hazard_thresholds": [
+        "34kt",
+        "50kt",
+        "64kt"
+      ],
+      "affected_districts": [
+        "East Medinipur",
+        "24 Parganas North",
+        "South 24 Parganas"
+      ],
+      "exposed_population": 2400000,
+      "risk_level": "HIGH",
+      "time_to_impact_hours": 36.0,
+      "road_status_counts": {
+        "NORMAL": 17,
+        "REROUTED": 6
+      },
+      "food_allocation": 20400,
+      "water_allocation": 27200,
+      "medical_allocation": 84,
+      "ndrf_allocation": 2,
+      "operational_task_count": 3,
+      "operational_sample_tasks": [
+        "Initiate Coastal Evacuation Warning",
+        "Pre-Position NDRF Teams"
+      ],
+      "alert_level": "ORANGE"
+    },
+    {
+      "tick": 8,
+      "timestamp": "2020-05-20T00:00:00Z",
+      "cyclone_center": {
+        "lat": 19.5,
+        "lon": 87.8
+      },
+      "intensity_kt": 135.0,
+      "regime": "MATURE",
+      "overall_uncertainty": 0.182,
+      "confidence": 0.818,
+      "change_point_detected": false,
+      "change_point_description": "",
+      "forecast_member_count": 4,
+      "scenario_count": 3,
+      "hazard_thresholds": [
+        "34kt",
+        "50kt",
+        "64kt"
+      ],
+      "affected_districts": [
+        "South 24 Parganas",
+        "Kolkata",
+        "Howrah"
+      ],
+      "exposed_population": 3000000,
+      "risk_level": "EXTREME",
+      "time_to_impact_hours": 24.0,
+      "road_status_counts": {
+        "NORMAL": 15,
+        "REROUTED": 6,
+        "BLOCKED": 2
+      },
+      "food_allocation": 45000,
+      "water_allocation": 60000,
+      "medical_allocation": 180,
+      "ndrf_allocation": 6,
+      "operational_task_count": 5,
+      "operational_sample_tasks": [
+        "Initiate Coastal Evacuation Warning",
+        "Pre-Position NDRF Teams"
+      ],
+      "alert_level": "RED"
+    },
+    {
+      "tick": 9,
+      "timestamp": "2020-05-20T06:00:00Z",
+      "cyclone_center": {
+        "lat": 20.5,
+        "lon": 88.0
+      },
+      "intensity_kt": 130.0,
+      "regime": "MATURE",
+      "overall_uncertainty": 0.238,
+      "confidence": 0.762,
+      "change_point_detected": false,
+      "change_point_description": "",
+      "forecast_member_count": 4,
+      "scenario_count": 3,
+      "hazard_thresholds": [
+        "34kt",
+        "50kt",
+        "64kt"
+      ],
+      "affected_districts": [
+        "South 24 Parganas",
+        "Kolkata",
+        "Howrah",
+        "Hooghly"
+      ],
+      "exposed_population": 3400000,
+      "risk_level": "EXTREME",
+      "time_to_impact_hours": 12.0,
+      "road_status_counts": {
+        "REROUTED": 9,
+        "BLOCKED": 13,
+        "NORMAL": 1
+      },
+      "food_allocation": 51000,
+      "water_allocation": 68000,
+      "medical_allocation": 240,
+      "ndrf_allocation": 8,
+      "operational_task_count": 5,
+      "operational_sample_tasks": [
+        "Initiate Coastal Evacuation Warning",
+        "Pre-Position NDRF Teams"
+      ],
+      "alert_level": "RED"
+    },
+    {
+      "tick": 10,
+      "timestamp": "2020-05-20T10:00:00Z",
+      "cyclone_center": {
+        "lat": 21.6,
+        "lon": 88.3
+      },
+      "intensity_kt": 110.0,
+      "regime": "WEAKENING",
+      "overall_uncertainty": 0.305,
+      "confidence": 0.695,
+      "change_point_detected": true,
+      "change_point_description": "Change point detected at T10: MATURE -> WEAKENING",
+      "forecast_member_count": 4,
+      "scenario_count": 3,
+      "hazard_thresholds": [
+        "34kt",
+        "50kt",
+        "64kt"
+      ],
+      "affected_districts": [
+        "Kolkata",
+        "Howrah",
+        "Hooghly",
+        "Nadia"
+      ],
+      "exposed_population": 2800000,
+      "risk_level": "EXTREME",
+      "time_to_impact_hours": 2.0,
+      "road_status_counts": {
+        "REROUTED": 9,
+        "UNREACHABLE": 13,
+        "NORMAL": 1
+      },
+      "food_allocation": 42000,
+      "water_allocation": 56000,
+      "medical_allocation": 240,
+      "ndrf_allocation": 8,
+      "operational_task_count": 5,
+      "operational_sample_tasks": [
+        "Initiate Coastal Evacuation Warning",
+        "Pre-Position NDRF Teams"
+      ],
+      "alert_level": "RED"
+    },
+    {
+      "tick": 11,
+      "timestamp": "2020-05-20T18:00:00Z",
+      "cyclone_center": {
+        "lat": 22.5,
+        "lon": 88.8
+      },
+      "intensity_kt": 60.0,
+      "regime": "WEAKENING",
+      "overall_uncertainty": 0.345,
+      "confidence": 0.655,
+      "change_point_detected": false,
+      "change_point_description": "",
+      "forecast_member_count": 0,
+      "scenario_count": 3,
+      "hazard_thresholds": [
+        "34kt",
+        "50kt"
+      ],
+      "affected_districts": [
+        "Nadia",
+        "Murshidabad"
+      ],
+      "exposed_population": 1500000,
+      "risk_level": "HIGH",
+      "time_to_impact_hours": 0.0,
+      "road_status_counts": {
+        "REROUTED": 9,
+        "UNREACHABLE": 13,
+        "NORMAL": 1
+      },
+      "food_allocation": 20250,
+      "water_allocation": 27000,
+      "medical_allocation": 96,
+      "ndrf_allocation": 4,
+      "operational_task_count": 2,
+      "operational_sample_tasks": [
+        "Initiate Coastal Evacuation Warning",
+        "Pre-Position NDRF Teams"
+      ],
+      "alert_level": "YELLOW"
+    }
+  ]
+}

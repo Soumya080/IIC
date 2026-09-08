@@ -1,0 +1,6229 @@
+[
+  {
+    "event_id": "DEMO-001",
+    "tick": 0,
+    "timestamp": "2020-05-16T00:00:00Z",
+    "center": {
+      "lat": 8.0,
+      "lon": 85.0
+    },
+    "intensity": {
+      "event_id": "DEMO-001",
+      "tick": 0,
+      "timestamp": "2020-05-16T00:00:00Z",
+      "value_kt": 30.0,
+      "lower_bound_kt": 25.0,
+      "upper_bound_kt": 35.0,
+      "min_pressure_hpa": 1002.0,
+      "confidence": 0.7,
+      "source": "MOCK_INTENSITY_PROVIDER",
+      "demo_mode": true
+    },
+    "structure": {
+      "event_id": "DEMO-001",
+      "tick": 0,
+      "timestamp": "2020-05-16T00:00:00Z",
+      "organization": 0.2,
+      "eye_probability": 0.02,
+      "symmetry": 0.25,
+      "convective_organization": 0.22,
+      "banding": 0.15,
+      "rmw_km": 220.0,
+      "confidence": 0.6,
+      "source": "MOCK_STRUCTURE_PROVIDER",
+      "demo_mode": true
+    },
+    "environment": {
+      "event_id": "DEMO-001",
+      "tick": 0,
+      "timestamp": "2020-05-16T00:00:00Z",
+      "sst_c": 31.2,
+      "wind_shear_kt": 18.0,
+      "mid_level_humidity_pct": 72.0,
+      "upper_divergence": 0.4,
+      "confidence": 0.8,
+      "source": "MOCK_ENVIRONMENT_PROVIDER",
+      "demo_mode": true
+    },
+    "regime": {
+      "event_id": "DEMO-001",
+      "tick": 0,
+      "timestamp": "2020-05-16T00:00:00Z",
+      "probabilities": {
+        "GENESIS": 0.7,
+        "DEVELOPING": 0.22,
+        "INTENSIFYING": 0.05,
+        "MATURE": 0.02,
+        "WEAKENING": 0.01
+      },
+      "dominant_regime": "GENESIS",
+      "confidence": 0.7,
+      "source": "MOCK_REGIME_PROVIDER",
+      "demo_mode": true
+    },
+    "change_point": {
+      "event_id": "DEMO-001",
+      "tick": 0,
+      "timestamp": "2020-05-16T00:00:00Z",
+      "detected": false,
+      "previous_regime": null,
+      "new_regime": null,
+      "severity": null,
+      "trigger_features": null,
+      "confidence": null,
+      "source": "DEMO_CHANGE_POINT_DETECTOR",
+      "demo_mode": true
+    },
+    "uncertainty": {
+      "event_id": "DEMO-001",
+      "tick": 0,
+      "timestamp": "2020-05-16T00:00:00Z",
+      "intensity_uncertainty": 0.35,
+      "structure_uncertainty": 0.45,
+      "regime_uncertainty": 0.35,
+      "forecast_spread": 0.3,
+      "overall_uncertainty": 0.362,
+      "data_quality_flag": "GOOD",
+      "source": "RULE_BASED_UNCERTAINTY",
+      "demo_mode": true
+    },
+    "forecasts": {
+      "event_id": "DEMO-001",
+      "tick": 0,
+      "timestamp": "2020-05-16T00:00:00Z",
+      "members": [
+        {
+          "model_name": "ECMWF_HRES",
+          "init_time": "2020-05-16T00:00:00Z",
+          "track": [
+            {
+              "lat": 8.5,
+              "lon": 85.2,
+              "lead_time_h": 12,
+              "wind_kt": 35.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.3,
+              "lon": 85.55,
+              "lead_time_h": 24,
+              "wind_kt": 45.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.2,
+              "lon": 85.9,
+              "lead_time_h": 36,
+              "wind_kt": 55.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.5,
+              "lon": 86.15,
+              "lead_time_h": 48,
+              "wind_kt": 75.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 35.0,
+          "confidence": 0.85
+        },
+        {
+          "model_name": "GFS",
+          "init_time": "2020-05-16T00:00:00Z",
+          "track": [
+            {
+              "lat": 8.5,
+              "lon": 85.2,
+              "lead_time_h": 12,
+              "wind_kt": 30.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.35,
+              "lon": 85.7,
+              "lead_time_h": 24,
+              "wind_kt": 40.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.3,
+              "lon": 86.3,
+              "lead_time_h": 36,
+              "wind_kt": 50.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.7,
+              "lon": 86.8,
+              "lead_time_h": 48,
+              "wind_kt": 70.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 30.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "UKMET",
+          "init_time": "2020-05-16T00:00:00Z",
+          "track": [
+            {
+              "lat": 8.5,
+              "lon": 85.2,
+              "lead_time_h": 12,
+              "wind_kt": 27.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.1,
+              "lon": 85.35,
+              "lead_time_h": 24,
+              "wind_kt": 37.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.8,
+              "lon": 85.5,
+              "lead_time_h": 36,
+              "wind_kt": 47.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.8,
+              "lon": 85.5,
+              "lead_time_h": 48,
+              "wind_kt": 67.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 27.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "HWRF",
+          "init_time": "2020-05-16T00:00:00Z",
+          "track": [
+            {
+              "lat": 8.5,
+              "lon": 85.2,
+              "lead_time_h": 12,
+              "wind_kt": 45.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.25,
+              "lon": 85.6,
+              "lead_time_h": 24,
+              "wind_kt": 55.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.1,
+              "lon": 85.95,
+              "lead_time_h": 36,
+              "wind_kt": 65.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.35,
+              "lon": 86.2,
+              "lead_time_h": 48,
+              "wind_kt": 85.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 45.0,
+          "confidence": 0.75
+        }
+      ],
+      "disagreement_score": 0.215,
+      "source": "MOCK_FORECAST_PROVIDER",
+      "demo_mode": true
+    },
+    "scenarios": {
+      "event_id": "DEMO-001",
+      "tick": 0,
+      "timestamp": "2020-05-16T00:00:00Z",
+      "scenarios": [
+        {
+          "scenario_id": "SCEN-A",
+          "name": "Consensus (West Bengal Landfall)",
+          "probability": 0.55,
+          "track": [
+            {
+              "lat": 8.0,
+              "lon": 85.0,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 8.5,
+              "lon": 85.2,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.2,
+              "lon": 85.5,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.0,
+              "lon": 85.8,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.2,
+              "lon": 86.0,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  85.0,
+                  8.0
+                ],
+                [
+                  85.0,
+                  8.56
+                ],
+                [
+                  85.1,
+                  9.32
+                ],
+                [
+                  85.2,
+                  10.18
+                ],
+                [
+                  85.2,
+                  11.44
+                ],
+                [
+                  86.8,
+                  10.96
+                ],
+                [
+                  86.4,
+                  9.82
+                ],
+                [
+                  85.9,
+                  9.08
+                ],
+                [
+                  85.4,
+                  8.44
+                ],
+                [
+                  85.0,
+                  8.0
+                ],
+                [
+                  85.0,
+                  8.0
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            100.0,
+            140.0
+          ],
+          "landfall_region": "West Bengal Coast (Digha\u2013Sagar Island)",
+          "description": "Model-weighted consensus track. Most probable path."
+        },
+        {
+          "scenario_id": "SCEN-B",
+          "name": "Eastern Recurve (Bangladesh Landfall)",
+          "probability": 0.25,
+          "track": [
+            {
+              "lat": 8.0,
+              "lon": 85.0,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 8.55,
+              "lon": 85.4,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.3,
+              "lon": 85.9,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.15,
+              "lon": 86.4,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.4,
+              "lon": 86.8,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  85.0,
+                  8.0
+                ],
+                [
+                  85.15,
+                  8.625
+                ],
+                [
+                  85.4,
+                  9.45
+                ],
+                [
+                  85.65,
+                  10.375
+                ],
+                [
+                  85.8,
+                  11.7
+                ],
+                [
+                  87.8,
+                  11.1
+                ],
+                [
+                  87.15,
+                  9.925
+                ],
+                [
+                  86.4,
+                  9.15
+                ],
+                [
+                  85.65,
+                  8.475
+                ],
+                [
+                  85.0,
+                  8.0
+                ],
+                [
+                  85.0,
+                  8.0
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            95.0,
+            135.0
+          ],
+          "landfall_region": "Bangladesh Coast (Sundarbans\u2013Chittagong)",
+          "description": "GFS-influenced track with eastern recurvature."
+        },
+        {
+          "scenario_id": "SCEN-C",
+          "name": "Western Track (Odisha Landfall)",
+          "probability": 0.2,
+          "track": [
+            {
+              "lat": 8.0,
+              "lon": 85.0,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 8.45,
+              "lon": 85.03,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.1,
+              "lon": 85.15,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.85,
+              "lon": 85.27,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.0,
+              "lon": 85.3,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  85.0,
+                  8.0
+                ],
+                [
+                  84.805,
+                  8.518
+                ],
+                [
+                  84.7,
+                  9.235
+                ],
+                [
+                  84.595,
+                  10.053
+                ],
+                [
+                  84.4,
+                  11.27
+                ],
+                [
+                  86.2,
+                  10.73
+                ],
+                [
+                  85.945,
+                  9.647
+                ],
+                [
+                  85.6,
+                  8.965
+                ],
+                [
+                  85.255,
+                  8.382
+                ],
+                [
+                  85.0,
+                  8.0
+                ],
+                [
+                  85.0,
+                  8.0
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            90.0,
+            130.0
+          ],
+          "landfall_region": "Odisha Coast (Paradip\u2013Chandbali)",
+          "description": "UKMET-influenced western track variant."
+        }
+      ],
+      "source": "MOCK_SCENARIO_PROVIDER",
+      "demo_mode": true
+    },
+    "analogs": [
+      {
+        "storm_name": "Cyclone Phailin",
+        "year": 2013,
+        "basin": "North Indian Ocean",
+        "similarity": 0.82,
+        "matched_features": [
+          "RI_over_BoB",
+          "Odisha_landfall",
+          "similar_SST"
+        ],
+        "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+      },
+      {
+        "storm_name": "Cyclone Fani",
+        "year": 2019,
+        "basin": "North Indian Ocean",
+        "similarity": 0.78,
+        "matched_features": [
+          "May_season",
+          "RI_episode",
+          "WB_coast_threat"
+        ],
+        "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+      },
+      {
+        "storm_name": "Cyclone Hudhud",
+        "year": 2014,
+        "basin": "North Indian Ocean",
+        "similarity": 0.71,
+        "matched_features": [
+          "RI_24h_window",
+          "eye_replacement_cycle"
+        ],
+        "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+      }
+    ]
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 1,
+    "timestamp": "2020-05-16T12:00:00Z",
+    "center": {
+      "lat": 8.5,
+      "lon": 85.2
+    },
+    "intensity": {
+      "event_id": "DEMO-001",
+      "tick": 1,
+      "timestamp": "2020-05-16T12:00:00Z",
+      "value_kt": 35.0,
+      "lower_bound_kt": 30.0,
+      "upper_bound_kt": 42.0,
+      "min_pressure_hpa": 998.0,
+      "confidence": 0.72,
+      "source": "MOCK_INTENSITY_PROVIDER",
+      "demo_mode": true
+    },
+    "structure": {
+      "event_id": "DEMO-001",
+      "tick": 1,
+      "timestamp": "2020-05-16T12:00:00Z",
+      "organization": 0.28,
+      "eye_probability": 0.04,
+      "symmetry": 0.3,
+      "convective_organization": 0.3,
+      "banding": 0.22,
+      "rmw_km": 200.0,
+      "confidence": 0.63,
+      "source": "MOCK_STRUCTURE_PROVIDER",
+      "demo_mode": true
+    },
+    "environment": {
+      "event_id": "DEMO-001",
+      "tick": 1,
+      "timestamp": "2020-05-16T12:00:00Z",
+      "sst_c": 31.3,
+      "wind_shear_kt": 15.0,
+      "mid_level_humidity_pct": 74.0,
+      "upper_divergence": 0.5,
+      "confidence": 0.82,
+      "source": "MOCK_ENVIRONMENT_PROVIDER",
+      "demo_mode": true
+    },
+    "regime": {
+      "event_id": "DEMO-001",
+      "tick": 1,
+      "timestamp": "2020-05-16T12:00:00Z",
+      "probabilities": {
+        "GENESIS": 0.5,
+        "DEVELOPING": 0.38,
+        "INTENSIFYING": 0.08,
+        "MATURE": 0.03,
+        "WEAKENING": 0.01
+      },
+      "dominant_regime": "GENESIS",
+      "confidence": 0.68,
+      "source": "MOCK_REGIME_PROVIDER",
+      "demo_mode": true
+    },
+    "change_point": {
+      "event_id": "DEMO-001",
+      "tick": 1,
+      "timestamp": "2020-05-16T12:00:00Z",
+      "detected": false,
+      "previous_regime": null,
+      "new_regime": null,
+      "severity": null,
+      "trigger_features": null,
+      "confidence": null,
+      "source": "DEMO_CHANGE_POINT_DETECTOR",
+      "demo_mode": true
+    },
+    "uncertainty": {
+      "event_id": "DEMO-001",
+      "tick": 1,
+      "timestamp": "2020-05-16T12:00:00Z",
+      "intensity_uncertainty": 0.32,
+      "structure_uncertainty": 0.42,
+      "regime_uncertainty": 0.38,
+      "forecast_spread": 0.28,
+      "overall_uncertainty": 0.35,
+      "data_quality_flag": "GOOD",
+      "source": "RULE_BASED_UNCERTAINTY",
+      "demo_mode": true
+    },
+    "forecasts": {
+      "event_id": "DEMO-001",
+      "tick": 1,
+      "timestamp": "2020-05-16T12:00:00Z",
+      "members": [
+        {
+          "model_name": "ECMWF_HRES",
+          "init_time": "2020-05-16T12:00:00Z",
+          "track": [
+            {
+              "lat": 9.2,
+              "lon": 85.5,
+              "lead_time_h": 12,
+              "wind_kt": 45.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.1,
+              "lon": 85.85,
+              "lead_time_h": 24,
+              "wind_kt": 55.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.4,
+              "lon": 86.1,
+              "lead_time_h": 36,
+              "wind_kt": 75.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.3,
+              "lon": 86.45,
+              "lead_time_h": 48,
+              "wind_kt": 100.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 45.0,
+          "confidence": 0.85
+        },
+        {
+          "model_name": "GFS",
+          "init_time": "2020-05-16T12:00:00Z",
+          "track": [
+            {
+              "lat": 9.2,
+              "lon": 85.5,
+              "lead_time_h": 12,
+              "wind_kt": 40.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.15,
+              "lon": 86.0,
+              "lead_time_h": 24,
+              "wind_kt": 50.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.5,
+              "lon": 86.5,
+              "lead_time_h": 36,
+              "wind_kt": 70.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.5,
+              "lon": 87.1,
+              "lead_time_h": 48,
+              "wind_kt": 95.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 40.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "UKMET",
+          "init_time": "2020-05-16T12:00:00Z",
+          "track": [
+            {
+              "lat": 9.2,
+              "lon": 85.5,
+              "lead_time_h": 12,
+              "wind_kt": 37.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.9,
+              "lon": 85.65,
+              "lead_time_h": 24,
+              "wind_kt": 47.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.0,
+              "lon": 85.7,
+              "lead_time_h": 36,
+              "wind_kt": 67.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 12.6,
+              "lon": 85.8,
+              "lead_time_h": 48,
+              "wind_kt": 92.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 37.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "HWRF",
+          "init_time": "2020-05-16T12:00:00Z",
+          "track": [
+            {
+              "lat": 9.2,
+              "lon": 85.5,
+              "lead_time_h": 12,
+              "wind_kt": 55.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.05,
+              "lon": 85.9,
+              "lead_time_h": 24,
+              "wind_kt": 65.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.3,
+              "lon": 86.15,
+              "lead_time_h": 36,
+              "wind_kt": 85.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.15,
+              "lon": 86.5,
+              "lead_time_h": 48,
+              "wind_kt": 110.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 55.0,
+          "confidence": 0.75
+        }
+      ],
+      "disagreement_score": 0.215,
+      "source": "MOCK_FORECAST_PROVIDER",
+      "demo_mode": true
+    },
+    "scenarios": {
+      "event_id": "DEMO-001",
+      "tick": 1,
+      "timestamp": "2020-05-16T12:00:00Z",
+      "scenarios": [
+        {
+          "scenario_id": "SCEN-A",
+          "name": "Consensus (West Bengal Landfall)",
+          "probability": 0.58,
+          "track": [
+            {
+              "lat": 8.5,
+              "lon": 85.2,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.2,
+              "lon": 85.5,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.0,
+              "lon": 85.8,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.2,
+              "lon": 86.0,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.0,
+              "lon": 86.3,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  85.2,
+                  8.5
+                ],
+                [
+                  85.3,
+                  9.26
+                ],
+                [
+                  85.4,
+                  10.12
+                ],
+                [
+                  85.4,
+                  11.38
+                ],
+                [
+                  85.5,
+                  13.24
+                ],
+                [
+                  87.1,
+                  12.76
+                ],
+                [
+                  86.6,
+                  11.02
+                ],
+                [
+                  86.2,
+                  9.88
+                ],
+                [
+                  85.7,
+                  9.14
+                ],
+                [
+                  85.2,
+                  8.5
+                ],
+                [
+                  85.2,
+                  8.5
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            100.0,
+            140.0
+          ],
+          "landfall_region": "West Bengal Coast (Digha\u2013Sagar Island)",
+          "description": "Model-weighted consensus track. Most probable path."
+        },
+        {
+          "scenario_id": "SCEN-B",
+          "name": "Eastern Recurve (Bangladesh Landfall)",
+          "probability": 0.23,
+          "track": [
+            {
+              "lat": 8.5,
+              "lon": 85.2,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.25,
+              "lon": 85.7,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.1,
+              "lon": 86.2,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.35,
+              "lon": 86.6,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.2,
+              "lon": 87.1,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  85.2,
+                  8.5
+                ],
+                [
+                  85.45,
+                  9.325
+                ],
+                [
+                  85.7,
+                  10.25
+                ],
+                [
+                  85.85,
+                  11.575
+                ],
+                [
+                  86.1,
+                  13.5
+                ],
+                [
+                  88.1,
+                  12.9
+                ],
+                [
+                  87.35,
+                  11.125
+                ],
+                [
+                  86.7,
+                  9.95
+                ],
+                [
+                  85.95,
+                  9.175
+                ],
+                [
+                  85.2,
+                  8.5
+                ],
+                [
+                  85.2,
+                  8.5
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            95.0,
+            135.0
+          ],
+          "landfall_region": "Bangladesh Coast (Sundarbans\u2013Chittagong)",
+          "description": "GFS-influenced track with eastern recurvature."
+        },
+        {
+          "scenario_id": "SCEN-C",
+          "name": "Western Track (Odisha Landfall)",
+          "probability": 0.19,
+          "track": [
+            {
+              "lat": 8.5,
+              "lon": 85.2,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.15,
+              "lon": 85.33,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.9,
+              "lon": 85.45,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.05,
+              "lon": 85.47,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 12.8,
+              "lon": 85.6,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  85.2,
+                  8.5
+                ],
+                [
+                  85.105,
+                  9.218
+                ],
+                [
+                  85.0,
+                  10.035
+                ],
+                [
+                  84.795,
+                  11.253
+                ],
+                [
+                  84.7,
+                  13.07
+                ],
+                [
+                  86.5,
+                  12.53
+                ],
+                [
+                  86.145,
+                  10.848
+                ],
+                [
+                  85.9,
+                  9.765
+                ],
+                [
+                  85.555,
+                  9.082
+                ],
+                [
+                  85.2,
+                  8.5
+                ],
+                [
+                  85.2,
+                  8.5
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            90.0,
+            130.0
+          ],
+          "landfall_region": "Odisha Coast (Paradip\u2013Chandbali)",
+          "description": "UKMET-influenced western track variant."
+        }
+      ],
+      "source": "MOCK_SCENARIO_PROVIDER",
+      "demo_mode": true
+    },
+    "analogs": [
+      {
+        "storm_name": "Cyclone Phailin",
+        "year": 2013,
+        "basin": "North Indian Ocean",
+        "similarity": 0.82,
+        "matched_features": [
+          "RI_over_BoB",
+          "Odisha_landfall",
+          "similar_SST"
+        ],
+        "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+      },
+      {
+        "storm_name": "Cyclone Fani",
+        "year": 2019,
+        "basin": "North Indian Ocean",
+        "similarity": 0.78,
+        "matched_features": [
+          "May_season",
+          "RI_episode",
+          "WB_coast_threat"
+        ],
+        "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+      },
+      {
+        "storm_name": "Cyclone Hudhud",
+        "year": 2014,
+        "basin": "North Indian Ocean",
+        "similarity": 0.71,
+        "matched_features": [
+          "RI_24h_window",
+          "eye_replacement_cycle"
+        ],
+        "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+      }
+    ]
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 2,
+    "timestamp": "2020-05-17T00:00:00Z",
+    "center": {
+      "lat": 9.2,
+      "lon": 85.5
+    },
+    "intensity": {
+      "event_id": "DEMO-001",
+      "tick": 2,
+      "timestamp": "2020-05-17T00:00:00Z",
+      "value_kt": 45.0,
+      "lower_bound_kt": 38.0,
+      "upper_bound_kt": 52.0,
+      "min_pressure_hpa": 994.0,
+      "confidence": 0.75,
+      "source": "MOCK_INTENSITY_PROVIDER",
+      "demo_mode": true
+    },
+    "structure": {
+      "event_id": "DEMO-001",
+      "tick": 2,
+      "timestamp": "2020-05-17T00:00:00Z",
+      "organization": 0.38,
+      "eye_probability": 0.08,
+      "symmetry": 0.38,
+      "convective_organization": 0.42,
+      "banding": 0.35,
+      "rmw_km": 170.0,
+      "confidence": 0.68,
+      "source": "MOCK_STRUCTURE_PROVIDER",
+      "demo_mode": true
+    },
+    "environment": {
+      "event_id": "DEMO-001",
+      "tick": 2,
+      "timestamp": "2020-05-17T00:00:00Z",
+      "sst_c": 31.4,
+      "wind_shear_kt": 12.0,
+      "mid_level_humidity_pct": 76.0,
+      "upper_divergence": 0.6,
+      "confidence": 0.84,
+      "source": "MOCK_ENVIRONMENT_PROVIDER",
+      "demo_mode": true
+    },
+    "regime": {
+      "event_id": "DEMO-001",
+      "tick": 2,
+      "timestamp": "2020-05-17T00:00:00Z",
+      "probabilities": {
+        "GENESIS": 0.15,
+        "DEVELOPING": 0.62,
+        "INTENSIFYING": 0.18,
+        "MATURE": 0.04,
+        "WEAKENING": 0.01
+      },
+      "dominant_regime": "DEVELOPING",
+      "confidence": 0.72,
+      "source": "MOCK_REGIME_PROVIDER",
+      "demo_mode": true
+    },
+    "change_point": {
+      "event_id": "DEMO-001",
+      "tick": 2,
+      "timestamp": "2020-05-17T00:00:00Z",
+      "detected": false,
+      "previous_regime": null,
+      "new_regime": null,
+      "severity": null,
+      "trigger_features": null,
+      "confidence": null,
+      "source": "DEMO_CHANGE_POINT_DETECTOR",
+      "demo_mode": true
+    },
+    "uncertainty": {
+      "event_id": "DEMO-001",
+      "tick": 2,
+      "timestamp": "2020-05-17T00:00:00Z",
+      "intensity_uncertainty": 0.28,
+      "structure_uncertainty": 0.38,
+      "regime_uncertainty": 0.32,
+      "forecast_spread": 0.25,
+      "overall_uncertainty": 0.307,
+      "data_quality_flag": "GOOD",
+      "source": "RULE_BASED_UNCERTAINTY",
+      "demo_mode": true
+    },
+    "forecasts": {
+      "event_id": "DEMO-001",
+      "tick": 2,
+      "timestamp": "2020-05-17T00:00:00Z",
+      "members": [
+        {
+          "model_name": "ECMWF_HRES",
+          "init_time": "2020-05-17T00:00:00Z",
+          "track": [
+            {
+              "lat": 10.0,
+              "lon": 85.8,
+              "lead_time_h": 12,
+              "wind_kt": 55.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.3,
+              "lon": 86.05,
+              "lead_time_h": 24,
+              "wind_kt": 75.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.2,
+              "lon": 86.4,
+              "lead_time_h": 36,
+              "wind_kt": 100.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.3,
+              "lon": 86.95,
+              "lead_time_h": 48,
+              "wind_kt": 125.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 55.0,
+          "confidence": 0.85
+        },
+        {
+          "model_name": "GFS",
+          "init_time": "2020-05-17T00:00:00Z",
+          "track": [
+            {
+              "lat": 10.0,
+              "lon": 85.8,
+              "lead_time_h": 12,
+              "wind_kt": 50.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.35,
+              "lon": 86.2,
+              "lead_time_h": 24,
+              "wind_kt": 70.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.3,
+              "lon": 86.8,
+              "lead_time_h": 36,
+              "wind_kt": 95.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.5,
+              "lon": 87.6,
+              "lead_time_h": 48,
+              "wind_kt": 120.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 50.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "UKMET",
+          "init_time": "2020-05-17T00:00:00Z",
+          "track": [
+            {
+              "lat": 10.0,
+              "lon": 85.8,
+              "lead_time_h": 12,
+              "wind_kt": 47.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.1,
+              "lon": 85.85,
+              "lead_time_h": 24,
+              "wind_kt": 67.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 12.8,
+              "lon": 86.0,
+              "lead_time_h": 36,
+              "wind_kt": 92.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 14.6,
+              "lon": 86.3,
+              "lead_time_h": 48,
+              "wind_kt": 117.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 47.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "HWRF",
+          "init_time": "2020-05-17T00:00:00Z",
+          "track": [
+            {
+              "lat": 10.0,
+              "lon": 85.8,
+              "lead_time_h": 12,
+              "wind_kt": 65.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.25,
+              "lon": 86.1,
+              "lead_time_h": 24,
+              "wind_kt": 85.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.1,
+              "lon": 86.45,
+              "lead_time_h": 36,
+              "wind_kt": 110.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.15,
+              "lon": 87.0,
+              "lead_time_h": 48,
+              "wind_kt": 135.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 65.0,
+          "confidence": 0.75
+        }
+      ],
+      "disagreement_score": 0.215,
+      "source": "MOCK_FORECAST_PROVIDER",
+      "demo_mode": true
+    },
+    "scenarios": {
+      "event_id": "DEMO-001",
+      "tick": 2,
+      "timestamp": "2020-05-17T00:00:00Z",
+      "scenarios": [
+        {
+          "scenario_id": "SCEN-A",
+          "name": "Consensus (West Bengal Landfall)",
+          "probability": 0.6,
+          "track": [
+            {
+              "lat": 9.2,
+              "lon": 85.5,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.0,
+              "lon": 85.8,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.2,
+              "lon": 86.0,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.0,
+              "lon": 86.3,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.0,
+              "lon": 86.8,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  85.5,
+                  9.2
+                ],
+                [
+                  85.6,
+                  10.06
+                ],
+                [
+                  85.6,
+                  11.32
+                ],
+                [
+                  85.7,
+                  13.18
+                ],
+                [
+                  86.0,
+                  15.24
+                ],
+                [
+                  87.6,
+                  14.76
+                ],
+                [
+                  86.9,
+                  12.82
+                ],
+                [
+                  86.4,
+                  11.08
+                ],
+                [
+                  86.0,
+                  9.94
+                ],
+                [
+                  85.5,
+                  9.2
+                ],
+                [
+                  85.5,
+                  9.2
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            100.0,
+            140.0
+          ],
+          "landfall_region": "West Bengal Coast (Digha\u2013Sagar Island)",
+          "description": "Model-weighted consensus track. Most probable path."
+        },
+        {
+          "scenario_id": "SCEN-B",
+          "name": "Eastern Recurve (Bangladesh Landfall)",
+          "probability": 0.22,
+          "track": [
+            {
+              "lat": 9.2,
+              "lon": 85.5,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 10.05,
+              "lon": 86.0,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.3,
+              "lon": 86.4,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.15,
+              "lon": 86.9,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.2,
+              "lon": 87.6,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  85.5,
+                  9.2
+                ],
+                [
+                  85.75,
+                  10.125
+                ],
+                [
+                  85.9,
+                  11.45
+                ],
+                [
+                  86.15,
+                  13.375
+                ],
+                [
+                  86.6,
+                  15.5
+                ],
+                [
+                  88.6,
+                  14.9
+                ],
+                [
+                  87.65,
+                  12.925
+                ],
+                [
+                  86.9,
+                  11.15
+                ],
+                [
+                  86.25,
+                  9.975
+                ],
+                [
+                  85.5,
+                  9.2
+                ],
+                [
+                  85.5,
+                  9.2
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            95.0,
+            135.0
+          ],
+          "landfall_region": "Bangladesh Coast (Sundarbans\u2013Chittagong)",
+          "description": "GFS-influenced track with eastern recurvature."
+        },
+        {
+          "scenario_id": "SCEN-C",
+          "name": "Western Track (Odisha Landfall)",
+          "probability": 0.18,
+          "track": [
+            {
+              "lat": 9.2,
+              "lon": 85.5,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 9.95,
+              "lon": 85.62,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.1,
+              "lon": 85.65,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 12.85,
+              "lon": 85.77,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 14.8,
+              "lon": 86.1,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  85.5,
+                  9.2
+                ],
+                [
+                  85.395,
+                  10.018
+                ],
+                [
+                  85.2,
+                  11.235
+                ],
+                [
+                  85.095,
+                  13.053
+                ],
+                [
+                  85.2,
+                  15.07
+                ],
+                [
+                  87.0,
+                  14.53
+                ],
+                [
+                  86.445,
+                  12.647
+                ],
+                [
+                  86.1,
+                  10.965
+                ],
+                [
+                  85.845,
+                  9.882
+                ],
+                [
+                  85.5,
+                  9.2
+                ],
+                [
+                  85.5,
+                  9.2
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            90.0,
+            130.0
+          ],
+          "landfall_region": "Odisha Coast (Paradip\u2013Chandbali)",
+          "description": "UKMET-influenced western track variant."
+        }
+      ],
+      "source": "MOCK_SCENARIO_PROVIDER",
+      "demo_mode": true
+    },
+    "analogs": [
+      {
+        "storm_name": "Cyclone Phailin",
+        "year": 2013,
+        "basin": "North Indian Ocean",
+        "similarity": 0.82,
+        "matched_features": [
+          "RI_over_BoB",
+          "Odisha_landfall",
+          "similar_SST"
+        ],
+        "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+      },
+      {
+        "storm_name": "Cyclone Fani",
+        "year": 2019,
+        "basin": "North Indian Ocean",
+        "similarity": 0.78,
+        "matched_features": [
+          "May_season",
+          "RI_episode",
+          "WB_coast_threat"
+        ],
+        "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+      },
+      {
+        "storm_name": "Cyclone Hudhud",
+        "year": 2014,
+        "basin": "North Indian Ocean",
+        "similarity": 0.71,
+        "matched_features": [
+          "RI_24h_window",
+          "eye_replacement_cycle"
+        ],
+        "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+      }
+    ]
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 3,
+    "timestamp": "2020-05-17T12:00:00Z",
+    "center": {
+      "lat": 10.0,
+      "lon": 85.8
+    },
+    "intensity": {
+      "event_id": "DEMO-001",
+      "tick": 3,
+      "timestamp": "2020-05-17T12:00:00Z",
+      "value_kt": 55.0,
+      "lower_bound_kt": 48.0,
+      "upper_bound_kt": 64.0,
+      "min_pressure_hpa": 988.0,
+      "confidence": 0.78,
+      "source": "MOCK_INTENSITY_PROVIDER",
+      "demo_mode": true
+    },
+    "structure": {
+      "event_id": "DEMO-001",
+      "tick": 3,
+      "timestamp": "2020-05-17T12:00:00Z",
+      "organization": 0.48,
+      "eye_probability": 0.15,
+      "symmetry": 0.45,
+      "convective_organization": 0.52,
+      "banding": 0.45,
+      "rmw_km": 140.0,
+      "confidence": 0.72,
+      "source": "MOCK_STRUCTURE_PROVIDER",
+      "demo_mode": true
+    },
+    "environment": {
+      "event_id": "DEMO-001",
+      "tick": 3,
+      "timestamp": "2020-05-17T12:00:00Z",
+      "sst_c": 31.5,
+      "wind_shear_kt": 10.0,
+      "mid_level_humidity_pct": 78.0,
+      "upper_divergence": 0.7,
+      "confidence": 0.85,
+      "source": "MOCK_ENVIRONMENT_PROVIDER",
+      "demo_mode": true
+    },
+    "regime": {
+      "event_id": "DEMO-001",
+      "tick": 3,
+      "timestamp": "2020-05-17T12:00:00Z",
+      "probabilities": {
+        "GENESIS": 0.05,
+        "DEVELOPING": 0.55,
+        "INTENSIFYING": 0.32,
+        "MATURE": 0.06,
+        "WEAKENING": 0.02
+      },
+      "dominant_regime": "DEVELOPING",
+      "confidence": 0.74,
+      "source": "MOCK_REGIME_PROVIDER",
+      "demo_mode": true
+    },
+    "change_point": {
+      "event_id": "DEMO-001",
+      "tick": 3,
+      "timestamp": "2020-05-17T12:00:00Z",
+      "detected": false,
+      "previous_regime": null,
+      "new_regime": null,
+      "severity": null,
+      "trigger_features": null,
+      "confidence": null,
+      "source": "DEMO_CHANGE_POINT_DETECTOR",
+      "demo_mode": true
+    },
+    "uncertainty": {
+      "event_id": "DEMO-001",
+      "tick": 3,
+      "timestamp": "2020-05-17T12:00:00Z",
+      "intensity_uncertainty": 0.4,
+      "structure_uncertainty": 0.5,
+      "regime_uncertainty": 0.42,
+      "forecast_spread": 0.38,
+      "overall_uncertainty": 0.425,
+      "data_quality_flag": "DEGRADED_MW_MISSING",
+      "source": "RULE_BASED_UNCERTAINTY",
+      "demo_mode": true
+    },
+    "forecasts": {
+      "event_id": "DEMO-001",
+      "tick": 3,
+      "timestamp": "2020-05-17T12:00:00Z",
+      "members": [
+        {
+          "model_name": "ECMWF_HRES",
+          "init_time": "2020-05-17T12:00:00Z",
+          "track": [
+            {
+              "lat": 11.2,
+              "lon": 86.0,
+              "lead_time_h": 12,
+              "wind_kt": 75.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.1,
+              "lon": 86.35,
+              "lead_time_h": 24,
+              "wind_kt": 100.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.2,
+              "lon": 86.9,
+              "lead_time_h": 36,
+              "wind_kt": 125.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.8,
+              "lon": 87.35,
+              "lead_time_h": 48,
+              "wind_kt": 140.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 75.0,
+          "confidence": 0.85
+        },
+        {
+          "model_name": "GFS",
+          "init_time": "2020-05-17T12:00:00Z",
+          "track": [
+            {
+              "lat": 11.2,
+              "lon": 86.0,
+              "lead_time_h": 12,
+              "wind_kt": 70.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.15,
+              "lon": 86.5,
+              "lead_time_h": 24,
+              "wind_kt": 95.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.3,
+              "lon": 87.3,
+              "lead_time_h": 36,
+              "wind_kt": 120.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 18.0,
+              "lon": 88.0,
+              "lead_time_h": 48,
+              "wind_kt": 135.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 70.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "UKMET",
+          "init_time": "2020-05-17T12:00:00Z",
+          "track": [
+            {
+              "lat": 11.2,
+              "lon": 86.0,
+              "lead_time_h": 12,
+              "wind_kt": 67.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 12.9,
+              "lon": 86.15,
+              "lead_time_h": 24,
+              "wind_kt": 92.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 14.8,
+              "lon": 86.5,
+              "lead_time_h": 36,
+              "wind_kt": 117.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.1,
+              "lon": 86.7,
+              "lead_time_h": 48,
+              "wind_kt": 132.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 67.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "HWRF",
+          "init_time": "2020-05-17T12:00:00Z",
+          "track": [
+            {
+              "lat": 11.2,
+              "lon": 86.0,
+              "lead_time_h": 12,
+              "wind_kt": 85.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.05,
+              "lon": 86.4,
+              "lead_time_h": 24,
+              "wind_kt": 110.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.1,
+              "lon": 86.95,
+              "lead_time_h": 36,
+              "wind_kt": 135.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.65,
+              "lon": 87.4,
+              "lead_time_h": 48,
+              "wind_kt": 150.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 85.0,
+          "confidence": 0.75
+        }
+      ],
+      "disagreement_score": 0.215,
+      "source": "MOCK_FORECAST_PROVIDER",
+      "demo_mode": true
+    },
+    "scenarios": {
+      "event_id": "DEMO-001",
+      "tick": 3,
+      "timestamp": "2020-05-17T12:00:00Z",
+      "scenarios": [
+        {
+          "scenario_id": "SCEN-A",
+          "name": "Consensus (West Bengal Landfall)",
+          "probability": 0.55,
+          "track": [
+            {
+              "lat": 10.0,
+              "lon": 85.8,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.2,
+              "lon": 86.0,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.0,
+              "lon": 86.3,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.0,
+              "lon": 86.8,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.5,
+              "lon": 87.2,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  85.8,
+                  10.0
+                ],
+                [
+                  85.8,
+                  11.26
+                ],
+                [
+                  85.9,
+                  13.12
+                ],
+                [
+                  86.2,
+                  15.18
+                ],
+                [
+                  86.4,
+                  17.74
+                ],
+                [
+                  88.0,
+                  17.26
+                ],
+                [
+                  87.4,
+                  14.82
+                ],
+                [
+                  86.7,
+                  12.88
+                ],
+                [
+                  86.2,
+                  11.14
+                ],
+                [
+                  85.8,
+                  10.0
+                ],
+                [
+                  85.8,
+                  10.0
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            100.0,
+            140.0
+          ],
+          "landfall_region": "West Bengal Coast (Digha\u2013Sagar Island)",
+          "description": "Model-weighted consensus track. Most probable path."
+        },
+        {
+          "scenario_id": "SCEN-B",
+          "name": "Eastern Recurve (Bangladesh Landfall)",
+          "probability": 0.28,
+          "track": [
+            {
+              "lat": 10.0,
+              "lon": 85.8,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.25,
+              "lon": 86.2,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.1,
+              "lon": 86.7,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.15,
+              "lon": 87.4,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.7,
+              "lon": 88.0,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  85.8,
+                  10.0
+                ],
+                [
+                  85.95,
+                  11.325
+                ],
+                [
+                  86.2,
+                  13.25
+                ],
+                [
+                  86.65,
+                  15.375
+                ],
+                [
+                  87.0,
+                  18.0
+                ],
+                [
+                  89.0,
+                  17.4
+                ],
+                [
+                  88.15,
+                  14.925
+                ],
+                [
+                  87.2,
+                  12.95
+                ],
+                [
+                  86.45,
+                  11.175
+                ],
+                [
+                  85.8,
+                  10.0
+                ],
+                [
+                  85.8,
+                  10.0
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            95.0,
+            135.0
+          ],
+          "landfall_region": "Bangladesh Coast (Sundarbans\u2013Chittagong)",
+          "description": "GFS-influenced track with eastern recurvature."
+        },
+        {
+          "scenario_id": "SCEN-C",
+          "name": "Western Track (Odisha Landfall)",
+          "probability": 0.17,
+          "track": [
+            {
+              "lat": 10.0,
+              "lon": 85.8,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 11.15,
+              "lon": 85.83,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 12.9,
+              "lon": 85.95,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 14.85,
+              "lon": 86.27,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.3,
+              "lon": 86.5,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  85.8,
+                  10.0
+                ],
+                [
+                  85.605,
+                  11.218
+                ],
+                [
+                  85.5,
+                  13.035
+                ],
+                [
+                  85.595,
+                  15.053
+                ],
+                [
+                  85.6,
+                  17.57
+                ],
+                [
+                  87.4,
+                  17.03
+                ],
+                [
+                  86.945,
+                  14.647
+                ],
+                [
+                  86.4,
+                  12.765
+                ],
+                [
+                  86.055,
+                  11.082
+                ],
+                [
+                  85.8,
+                  10.0
+                ],
+                [
+                  85.8,
+                  10.0
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            90.0,
+            130.0
+          ],
+          "landfall_region": "Odisha Coast (Paradip\u2013Chandbali)",
+          "description": "UKMET-influenced western track variant."
+        }
+      ],
+      "source": "MOCK_SCENARIO_PROVIDER",
+      "demo_mode": true
+    },
+    "analogs": [
+      {
+        "storm_name": "Cyclone Phailin",
+        "year": 2013,
+        "basin": "North Indian Ocean",
+        "similarity": 0.82,
+        "matched_features": [
+          "RI_over_BoB",
+          "Odisha_landfall",
+          "similar_SST"
+        ],
+        "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+      },
+      {
+        "storm_name": "Cyclone Fani",
+        "year": 2019,
+        "basin": "North Indian Ocean",
+        "similarity": 0.78,
+        "matched_features": [
+          "May_season",
+          "RI_episode",
+          "WB_coast_threat"
+        ],
+        "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+      },
+      {
+        "storm_name": "Cyclone Hudhud",
+        "year": 2014,
+        "basin": "North Indian Ocean",
+        "similarity": 0.71,
+        "matched_features": [
+          "RI_24h_window",
+          "eye_replacement_cycle"
+        ],
+        "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+      }
+    ]
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 4,
+    "timestamp": "2020-05-18T00:00:00Z",
+    "center": {
+      "lat": 11.2,
+      "lon": 86.0
+    },
+    "intensity": {
+      "event_id": "DEMO-001",
+      "tick": 4,
+      "timestamp": "2020-05-18T00:00:00Z",
+      "value_kt": 75.0,
+      "lower_bound_kt": 65.0,
+      "upper_bound_kt": 88.0,
+      "min_pressure_hpa": 972.0,
+      "confidence": 0.82,
+      "source": "MOCK_INTENSITY_PROVIDER",
+      "demo_mode": true
+    },
+    "structure": {
+      "event_id": "DEMO-001",
+      "tick": 4,
+      "timestamp": "2020-05-18T00:00:00Z",
+      "organization": 0.62,
+      "eye_probability": 0.35,
+      "symmetry": 0.58,
+      "convective_organization": 0.68,
+      "banding": 0.6,
+      "rmw_km": 100.0,
+      "confidence": 0.78,
+      "source": "MOCK_STRUCTURE_PROVIDER",
+      "demo_mode": true
+    },
+    "environment": {
+      "event_id": "DEMO-001",
+      "tick": 4,
+      "timestamp": "2020-05-18T00:00:00Z",
+      "sst_c": 31.5,
+      "wind_shear_kt": 8.0,
+      "mid_level_humidity_pct": 80.0,
+      "upper_divergence": 0.8,
+      "confidence": 0.88,
+      "source": "MOCK_ENVIRONMENT_PROVIDER",
+      "demo_mode": true
+    },
+    "regime": {
+      "event_id": "DEMO-001",
+      "tick": 4,
+      "timestamp": "2020-05-18T00:00:00Z",
+      "probabilities": {
+        "GENESIS": 0.02,
+        "DEVELOPING": 0.12,
+        "INTENSIFYING": 0.74,
+        "MATURE": 0.1,
+        "WEAKENING": 0.02
+      },
+      "dominant_regime": "INTENSIFYING",
+      "confidence": 0.82,
+      "source": "MOCK_REGIME_PROVIDER",
+      "demo_mode": true
+    },
+    "change_point": {
+      "event_id": "DEMO-001",
+      "tick": 4,
+      "timestamp": "2020-05-18T00:00:00Z",
+      "detected": true,
+      "previous_regime": "DEVELOPING",
+      "new_regime": "INTENSIFYING",
+      "severity": "HIGH",
+      "trigger_features": [
+        "intensity_delta_+20kt",
+        "regime_prob_shift_0.42",
+        "eye_probability_jump"
+      ],
+      "confidence": 0.88,
+      "source": "DEMO_CHANGE_POINT_DETECTOR",
+      "demo_mode": true
+    },
+    "uncertainty": {
+      "event_id": "DEMO-001",
+      "tick": 4,
+      "timestamp": "2020-05-18T00:00:00Z",
+      "intensity_uncertainty": 0.22,
+      "structure_uncertainty": 0.28,
+      "regime_uncertainty": 0.22,
+      "forecast_spread": 0.3,
+      "overall_uncertainty": 0.255,
+      "data_quality_flag": "GOOD",
+      "source": "RULE_BASED_UNCERTAINTY",
+      "demo_mode": true
+    },
+    "forecasts": {
+      "event_id": "DEMO-001",
+      "tick": 4,
+      "timestamp": "2020-05-18T00:00:00Z",
+      "members": [
+        {
+          "model_name": "ECMWF_HRES",
+          "init_time": "2020-05-18T00:00:00Z",
+          "track": [
+            {
+              "lat": 13.0,
+              "lon": 86.3,
+              "lead_time_h": 12,
+              "wind_kt": 100.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.1,
+              "lon": 86.85,
+              "lead_time_h": 24,
+              "wind_kt": 125.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.7,
+              "lon": 87.3,
+              "lead_time_h": 36,
+              "wind_kt": 140.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.8,
+              "lon": 87.95,
+              "lead_time_h": 48,
+              "wind_kt": 135.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 100.0,
+          "confidence": 0.85
+        },
+        {
+          "model_name": "GFS",
+          "init_time": "2020-05-18T00:00:00Z",
+          "track": [
+            {
+              "lat": 13.0,
+              "lon": 86.3,
+              "lead_time_h": 12,
+              "wind_kt": 95.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.15,
+              "lon": 87.0,
+              "lead_time_h": 24,
+              "wind_kt": 120.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.8,
+              "lon": 87.7,
+              "lead_time_h": 36,
+              "wind_kt": 135.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.0,
+              "lon": 88.6,
+              "lead_time_h": 48,
+              "wind_kt": 130.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 95.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "UKMET",
+          "init_time": "2020-05-18T00:00:00Z",
+          "track": [
+            {
+              "lat": 13.0,
+              "lon": 86.3,
+              "lead_time_h": 12,
+              "wind_kt": 92.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 14.9,
+              "lon": 86.65,
+              "lead_time_h": 24,
+              "wind_kt": 117.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.3,
+              "lon": 86.9,
+              "lead_time_h": 36,
+              "wind_kt": 132.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.1,
+              "lon": 87.3,
+              "lead_time_h": 48,
+              "wind_kt": 127.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 92.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "HWRF",
+          "init_time": "2020-05-18T00:00:00Z",
+          "track": [
+            {
+              "lat": 13.0,
+              "lon": 86.3,
+              "lead_time_h": 12,
+              "wind_kt": 110.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.05,
+              "lon": 86.9,
+              "lead_time_h": 24,
+              "wind_kt": 135.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.6,
+              "lon": 87.35,
+              "lead_time_h": 36,
+              "wind_kt": 150.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.65,
+              "lon": 88.0,
+              "lead_time_h": 48,
+              "wind_kt": 145.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 110.0,
+          "confidence": 0.75
+        }
+      ],
+      "disagreement_score": 0.215,
+      "source": "MOCK_FORECAST_PROVIDER",
+      "demo_mode": true
+    },
+    "scenarios": {
+      "event_id": "DEMO-001",
+      "tick": 4,
+      "timestamp": "2020-05-18T00:00:00Z",
+      "scenarios": [
+        {
+          "scenario_id": "SCEN-A",
+          "name": "Consensus (West Bengal Landfall)",
+          "probability": 0.5,
+          "track": [
+            {
+              "lat": 11.2,
+              "lon": 86.0,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.0,
+              "lon": 86.3,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.0,
+              "lon": 86.8,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.5,
+              "lon": 87.2,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.5,
+              "lon": 87.8,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  86.0,
+                  11.2
+                ],
+                [
+                  86.1,
+                  13.06
+                ],
+                [
+                  86.4,
+                  15.12
+                ],
+                [
+                  86.6,
+                  17.68
+                ],
+                [
+                  87.0,
+                  19.74
+                ],
+                [
+                  88.6,
+                  19.26
+                ],
+                [
+                  87.8,
+                  17.32
+                ],
+                [
+                  87.2,
+                  14.88
+                ],
+                [
+                  86.5,
+                  12.94
+                ],
+                [
+                  86.0,
+                  11.2
+                ],
+                [
+                  86.0,
+                  11.2
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            100.0,
+            140.0
+          ],
+          "landfall_region": "West Bengal Coast (Digha\u2013Sagar Island)",
+          "description": "Model-weighted consensus track. Most probable path."
+        },
+        {
+          "scenario_id": "SCEN-B",
+          "name": "Eastern Recurve (Bangladesh Landfall)",
+          "probability": 0.32,
+          "track": [
+            {
+              "lat": 11.2,
+              "lon": 86.0,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 13.05,
+              "lon": 86.5,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.1,
+              "lon": 87.2,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.65,
+              "lon": 87.8,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.7,
+              "lon": 88.6,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  86.0,
+                  11.2
+                ],
+                [
+                  86.25,
+                  13.125
+                ],
+                [
+                  86.7,
+                  15.25
+                ],
+                [
+                  87.05,
+                  17.875
+                ],
+                [
+                  87.6,
+                  20.0
+                ],
+                [
+                  89.6,
+                  19.4
+                ],
+                [
+                  88.55,
+                  17.425
+                ],
+                [
+                  87.7,
+                  14.95
+                ],
+                [
+                  86.75,
+                  12.975
+                ],
+                [
+                  86.0,
+                  11.2
+                ],
+                [
+                  86.0,
+                  11.2
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            95.0,
+            135.0
+          ],
+          "landfall_region": "Bangladesh Coast (Sundarbans\u2013Chittagong)",
+          "description": "GFS-influenced track with eastern recurvature."
+        },
+        {
+          "scenario_id": "SCEN-C",
+          "name": "Western Track (Odisha Landfall)",
+          "probability": 0.18,
+          "track": [
+            {
+              "lat": 11.2,
+              "lon": 86.0,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 12.95,
+              "lon": 86.12,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 14.9,
+              "lon": 86.45,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.35,
+              "lon": 86.67,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.3,
+              "lon": 87.1,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  86.0,
+                  11.2
+                ],
+                [
+                  85.895,
+                  13.018
+                ],
+                [
+                  86.0,
+                  15.035
+                ],
+                [
+                  85.995,
+                  17.553
+                ],
+                [
+                  86.2,
+                  19.57
+                ],
+                [
+                  88.0,
+                  19.03
+                ],
+                [
+                  87.345,
+                  17.148
+                ],
+                [
+                  86.9,
+                  14.765
+                ],
+                [
+                  86.345,
+                  12.882
+                ],
+                [
+                  86.0,
+                  11.2
+                ],
+                [
+                  86.0,
+                  11.2
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            90.0,
+            130.0
+          ],
+          "landfall_region": "Odisha Coast (Paradip\u2013Chandbali)",
+          "description": "UKMET-influenced western track variant."
+        }
+      ],
+      "source": "MOCK_SCENARIO_PROVIDER",
+      "demo_mode": true
+    },
+    "analogs": [
+      {
+        "storm_name": "Cyclone Phailin",
+        "year": 2013,
+        "basin": "North Indian Ocean",
+        "similarity": 0.82,
+        "matched_features": [
+          "RI_over_BoB",
+          "Odisha_landfall",
+          "similar_SST"
+        ],
+        "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+      },
+      {
+        "storm_name": "Cyclone Fani",
+        "year": 2019,
+        "basin": "North Indian Ocean",
+        "similarity": 0.78,
+        "matched_features": [
+          "May_season",
+          "RI_episode",
+          "WB_coast_threat"
+        ],
+        "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+      },
+      {
+        "storm_name": "Cyclone Hudhud",
+        "year": 2014,
+        "basin": "North Indian Ocean",
+        "similarity": 0.71,
+        "matched_features": [
+          "RI_24h_window",
+          "eye_replacement_cycle"
+        ],
+        "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+      }
+    ]
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 5,
+    "timestamp": "2020-05-18T12:00:00Z",
+    "center": {
+      "lat": 13.0,
+      "lon": 86.3
+    },
+    "intensity": {
+      "event_id": "DEMO-001",
+      "tick": 5,
+      "timestamp": "2020-05-18T12:00:00Z",
+      "value_kt": 100.0,
+      "lower_bound_kt": 88.0,
+      "upper_bound_kt": 115.0,
+      "min_pressure_hpa": 954.0,
+      "confidence": 0.85,
+      "source": "MOCK_INTENSITY_PROVIDER",
+      "demo_mode": true
+    },
+    "structure": {
+      "event_id": "DEMO-001",
+      "tick": 5,
+      "timestamp": "2020-05-18T12:00:00Z",
+      "organization": 0.76,
+      "eye_probability": 0.6,
+      "symmetry": 0.72,
+      "convective_organization": 0.8,
+      "banding": 0.74,
+      "rmw_km": 65.0,
+      "confidence": 0.84,
+      "source": "MOCK_STRUCTURE_PROVIDER",
+      "demo_mode": true
+    },
+    "environment": {
+      "event_id": "DEMO-001",
+      "tick": 5,
+      "timestamp": "2020-05-18T12:00:00Z",
+      "sst_c": 31.4,
+      "wind_shear_kt": 7.0,
+      "mid_level_humidity_pct": 82.0,
+      "upper_divergence": 0.9,
+      "confidence": 0.9,
+      "source": "MOCK_ENVIRONMENT_PROVIDER",
+      "demo_mode": true
+    },
+    "regime": {
+      "event_id": "DEMO-001",
+      "tick": 5,
+      "timestamp": "2020-05-18T12:00:00Z",
+      "probabilities": {
+        "GENESIS": 0.01,
+        "DEVELOPING": 0.05,
+        "INTENSIFYING": 0.78,
+        "MATURE": 0.14,
+        "WEAKENING": 0.02
+      },
+      "dominant_regime": "INTENSIFYING",
+      "confidence": 0.86,
+      "source": "MOCK_REGIME_PROVIDER",
+      "demo_mode": true
+    },
+    "change_point": {
+      "event_id": "DEMO-001",
+      "tick": 5,
+      "timestamp": "2020-05-18T12:00:00Z",
+      "detected": false,
+      "previous_regime": null,
+      "new_regime": null,
+      "severity": null,
+      "trigger_features": null,
+      "confidence": null,
+      "source": "DEMO_CHANGE_POINT_DETECTOR",
+      "demo_mode": true
+    },
+    "uncertainty": {
+      "event_id": "DEMO-001",
+      "tick": 5,
+      "timestamp": "2020-05-18T12:00:00Z",
+      "intensity_uncertainty": 0.18,
+      "structure_uncertainty": 0.2,
+      "regime_uncertainty": 0.18,
+      "forecast_spread": 0.25,
+      "overall_uncertainty": 0.203,
+      "data_quality_flag": "GOOD",
+      "source": "RULE_BASED_UNCERTAINTY",
+      "demo_mode": true
+    },
+    "forecasts": {
+      "event_id": "DEMO-001",
+      "tick": 5,
+      "timestamp": "2020-05-18T12:00:00Z",
+      "members": [
+        {
+          "model_name": "ECMWF_HRES",
+          "init_time": "2020-05-18T12:00:00Z",
+          "track": [
+            {
+              "lat": 15.0,
+              "lon": 86.8,
+              "lead_time_h": 12,
+              "wind_kt": 125.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.6,
+              "lon": 87.25,
+              "lead_time_h": 24,
+              "wind_kt": 140.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.7,
+              "lon": 87.9,
+              "lead_time_h": 36,
+              "wind_kt": 135.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.8,
+              "lon": 88.15,
+              "lead_time_h": 48,
+              "wind_kt": 130.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 125.0,
+          "confidence": 0.85
+        },
+        {
+          "model_name": "GFS",
+          "init_time": "2020-05-18T12:00:00Z",
+          "track": [
+            {
+              "lat": 15.0,
+              "lon": 86.8,
+              "lead_time_h": 12,
+              "wind_kt": 120.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.65,
+              "lon": 87.4,
+              "lead_time_h": 24,
+              "wind_kt": 135.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.8,
+              "lon": 88.3,
+              "lead_time_h": 36,
+              "wind_kt": 130.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.0,
+              "lon": 88.8,
+              "lead_time_h": 48,
+              "wind_kt": 125.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 120.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "UKMET",
+          "init_time": "2020-05-18T12:00:00Z",
+          "track": [
+            {
+              "lat": 15.0,
+              "lon": 86.8,
+              "lead_time_h": 12,
+              "wind_kt": 117.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.4,
+              "lon": 87.05,
+              "lead_time_h": 24,
+              "wind_kt": 132.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.3,
+              "lon": 87.5,
+              "lead_time_h": 36,
+              "wind_kt": 127.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.1,
+              "lon": 87.5,
+              "lead_time_h": 48,
+              "wind_kt": 122.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 117.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "HWRF",
+          "init_time": "2020-05-18T12:00:00Z",
+          "track": [
+            {
+              "lat": 15.0,
+              "lon": 86.8,
+              "lead_time_h": 12,
+              "wind_kt": 135.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.55,
+              "lon": 87.3,
+              "lead_time_h": 24,
+              "wind_kt": 150.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.6,
+              "lon": 87.95,
+              "lead_time_h": 36,
+              "wind_kt": 145.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.65,
+              "lon": 88.2,
+              "lead_time_h": 48,
+              "wind_kt": 140.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 135.0,
+          "confidence": 0.75
+        }
+      ],
+      "disagreement_score": 0.215,
+      "source": "MOCK_FORECAST_PROVIDER",
+      "demo_mode": true
+    },
+    "scenarios": {
+      "event_id": "DEMO-001",
+      "tick": 5,
+      "timestamp": "2020-05-18T12:00:00Z",
+      "scenarios": [
+        {
+          "scenario_id": "SCEN-A",
+          "name": "Consensus (West Bengal Landfall)",
+          "probability": 0.52,
+          "track": [
+            {
+              "lat": 13.0,
+              "lon": 86.3,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.0,
+              "lon": 86.8,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.5,
+              "lon": 87.2,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.5,
+              "lon": 87.8,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.5,
+              "lon": 88.0,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  86.3,
+                  13.0
+                ],
+                [
+                  86.6,
+                  15.06
+                ],
+                [
+                  86.8,
+                  17.62
+                ],
+                [
+                  87.2,
+                  19.68
+                ],
+                [
+                  87.2,
+                  20.74
+                ],
+                [
+                  88.8,
+                  20.26
+                ],
+                [
+                  88.4,
+                  19.32
+                ],
+                [
+                  87.6,
+                  17.38
+                ],
+                [
+                  87.0,
+                  14.94
+                ],
+                [
+                  86.3,
+                  13.0
+                ],
+                [
+                  86.3,
+                  13.0
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            100.0,
+            140.0
+          ],
+          "landfall_region": "West Bengal Coast (Digha\u2013Sagar Island)",
+          "description": "Model-weighted consensus track. Most probable path."
+        },
+        {
+          "scenario_id": "SCEN-B",
+          "name": "Eastern Recurve (Bangladesh Landfall)",
+          "probability": 0.3,
+          "track": [
+            {
+              "lat": 13.0,
+              "lon": 86.3,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 15.05,
+              "lon": 87.0,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.6,
+              "lon": 87.6,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.65,
+              "lon": 88.4,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.7,
+              "lon": 88.8,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  86.3,
+                  13.0
+                ],
+                [
+                  86.75,
+                  15.125
+                ],
+                [
+                  87.1,
+                  17.75
+                ],
+                [
+                  87.65,
+                  19.875
+                ],
+                [
+                  87.8,
+                  21.0
+                ],
+                [
+                  89.8,
+                  20.4
+                ],
+                [
+                  89.15,
+                  19.425
+                ],
+                [
+                  88.1,
+                  17.45
+                ],
+                [
+                  87.25,
+                  14.975
+                ],
+                [
+                  86.3,
+                  13.0
+                ],
+                [
+                  86.3,
+                  13.0
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            95.0,
+            135.0
+          ],
+          "landfall_region": "Bangladesh Coast (Sundarbans\u2013Chittagong)",
+          "description": "GFS-influenced track with eastern recurvature."
+        },
+        {
+          "scenario_id": "SCEN-C",
+          "name": "Western Track (Odisha Landfall)",
+          "probability": 0.18,
+          "track": [
+            {
+              "lat": 13.0,
+              "lon": 86.3,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 14.95,
+              "lon": 86.62,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.4,
+              "lon": 86.85,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.35,
+              "lon": 87.27,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.3,
+              "lon": 87.3,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  86.3,
+                  13.0
+                ],
+                [
+                  86.395,
+                  15.018
+                ],
+                [
+                  86.4,
+                  17.535
+                ],
+                [
+                  86.595,
+                  19.553
+                ],
+                [
+                  86.4,
+                  20.57
+                ],
+                [
+                  88.2,
+                  20.03
+                ],
+                [
+                  87.945,
+                  19.148
+                ],
+                [
+                  87.3,
+                  17.265
+                ],
+                [
+                  86.845,
+                  14.882
+                ],
+                [
+                  86.3,
+                  13.0
+                ],
+                [
+                  86.3,
+                  13.0
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            90.0,
+            130.0
+          ],
+          "landfall_region": "Odisha Coast (Paradip\u2013Chandbali)",
+          "description": "UKMET-influenced western track variant."
+        }
+      ],
+      "source": "MOCK_SCENARIO_PROVIDER",
+      "demo_mode": true
+    },
+    "analogs": [
+      {
+        "storm_name": "Cyclone Phailin",
+        "year": 2013,
+        "basin": "North Indian Ocean",
+        "similarity": 0.82,
+        "matched_features": [
+          "RI_over_BoB",
+          "Odisha_landfall",
+          "similar_SST"
+        ],
+        "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+      },
+      {
+        "storm_name": "Cyclone Fani",
+        "year": 2019,
+        "basin": "North Indian Ocean",
+        "similarity": 0.78,
+        "matched_features": [
+          "May_season",
+          "RI_episode",
+          "WB_coast_threat"
+        ],
+        "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+      },
+      {
+        "storm_name": "Cyclone Hudhud",
+        "year": 2014,
+        "basin": "North Indian Ocean",
+        "similarity": 0.71,
+        "matched_features": [
+          "RI_24h_window",
+          "eye_replacement_cycle"
+        ],
+        "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+      }
+    ]
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 6,
+    "timestamp": "2020-05-19T00:00:00Z",
+    "center": {
+      "lat": 15.0,
+      "lon": 86.8
+    },
+    "intensity": {
+      "event_id": "DEMO-001",
+      "tick": 6,
+      "timestamp": "2020-05-19T00:00:00Z",
+      "value_kt": 125.0,
+      "lower_bound_kt": 112.0,
+      "upper_bound_kt": 138.0,
+      "min_pressure_hpa": 932.0,
+      "confidence": 0.88,
+      "source": "MOCK_INTENSITY_PROVIDER",
+      "demo_mode": true
+    },
+    "structure": {
+      "event_id": "DEMO-001",
+      "tick": 6,
+      "timestamp": "2020-05-19T00:00:00Z",
+      "organization": 0.88,
+      "eye_probability": 0.82,
+      "symmetry": 0.85,
+      "convective_organization": 0.9,
+      "banding": 0.86,
+      "rmw_km": 40.0,
+      "confidence": 0.9,
+      "source": "MOCK_STRUCTURE_PROVIDER",
+      "demo_mode": true
+    },
+    "environment": {
+      "event_id": "DEMO-001",
+      "tick": 6,
+      "timestamp": "2020-05-19T00:00:00Z",
+      "sst_c": 31.2,
+      "wind_shear_kt": 8.0,
+      "mid_level_humidity_pct": 80.0,
+      "upper_divergence": 0.8,
+      "confidence": 0.88,
+      "source": "MOCK_ENVIRONMENT_PROVIDER",
+      "demo_mode": true
+    },
+    "regime": {
+      "event_id": "DEMO-001",
+      "tick": 6,
+      "timestamp": "2020-05-19T00:00:00Z",
+      "probabilities": {
+        "GENESIS": 0.01,
+        "DEVELOPING": 0.03,
+        "INTENSIFYING": 0.65,
+        "MATURE": 0.28,
+        "WEAKENING": 0.03
+      },
+      "dominant_regime": "INTENSIFYING",
+      "confidence": 0.85,
+      "source": "MOCK_REGIME_PROVIDER",
+      "demo_mode": true
+    },
+    "change_point": {
+      "event_id": "DEMO-001",
+      "tick": 6,
+      "timestamp": "2020-05-19T00:00:00Z",
+      "detected": false,
+      "previous_regime": null,
+      "new_regime": null,
+      "severity": null,
+      "trigger_features": null,
+      "confidence": null,
+      "source": "DEMO_CHANGE_POINT_DETECTOR",
+      "demo_mode": true
+    },
+    "uncertainty": {
+      "event_id": "DEMO-001",
+      "tick": 6,
+      "timestamp": "2020-05-19T00:00:00Z",
+      "intensity_uncertainty": 0.15,
+      "structure_uncertainty": 0.15,
+      "regime_uncertainty": 0.18,
+      "forecast_spread": 0.22,
+      "overall_uncertainty": 0.175,
+      "data_quality_flag": "GOOD",
+      "source": "RULE_BASED_UNCERTAINTY",
+      "demo_mode": true
+    },
+    "forecasts": {
+      "event_id": "DEMO-001",
+      "tick": 6,
+      "timestamp": "2020-05-19T00:00:00Z",
+      "members": [
+        {
+          "model_name": "ECMWF_HRES",
+          "init_time": "2020-05-19T00:00:00Z",
+          "track": [
+            {
+              "lat": 17.5,
+              "lon": 87.2,
+              "lead_time_h": 12,
+              "wind_kt": 140.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.6,
+              "lon": 87.85,
+              "lead_time_h": 24,
+              "wind_kt": 135.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.7,
+              "lon": 88.1,
+              "lead_time_h": 36,
+              "wind_kt": 130.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.9,
+              "lon": 88.45,
+              "lead_time_h": 48,
+              "wind_kt": 110.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 140.0,
+          "confidence": 0.85
+        },
+        {
+          "model_name": "GFS",
+          "init_time": "2020-05-19T00:00:00Z",
+          "track": [
+            {
+              "lat": 17.5,
+              "lon": 87.2,
+              "lead_time_h": 12,
+              "wind_kt": 135.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.65,
+              "lon": 88.0,
+              "lead_time_h": 24,
+              "wind_kt": 130.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.8,
+              "lon": 88.5,
+              "lead_time_h": 36,
+              "wind_kt": 125.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.1,
+              "lon": 89.1,
+              "lead_time_h": 48,
+              "wind_kt": 105.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 135.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "UKMET",
+          "init_time": "2020-05-19T00:00:00Z",
+          "track": [
+            {
+              "lat": 17.5,
+              "lon": 87.2,
+              "lead_time_h": 12,
+              "wind_kt": 132.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.4,
+              "lon": 87.65,
+              "lead_time_h": 24,
+              "wind_kt": 127.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.3,
+              "lon": 87.7,
+              "lead_time_h": 36,
+              "wind_kt": 122.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.2,
+              "lon": 87.8,
+              "lead_time_h": 48,
+              "wind_kt": 102.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 132.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "HWRF",
+          "init_time": "2020-05-19T00:00:00Z",
+          "track": [
+            {
+              "lat": 17.5,
+              "lon": 87.2,
+              "lead_time_h": 12,
+              "wind_kt": 150.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.55,
+              "lon": 87.9,
+              "lead_time_h": 24,
+              "wind_kt": 145.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.6,
+              "lon": 88.15,
+              "lead_time_h": 36,
+              "wind_kt": 140.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.75,
+              "lon": 88.5,
+              "lead_time_h": 48,
+              "wind_kt": 120.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 150.0,
+          "confidence": 0.75
+        }
+      ],
+      "disagreement_score": 0.215,
+      "source": "MOCK_FORECAST_PROVIDER",
+      "demo_mode": true
+    },
+    "scenarios": {
+      "event_id": "DEMO-001",
+      "tick": 6,
+      "timestamp": "2020-05-19T00:00:00Z",
+      "scenarios": [
+        {
+          "scenario_id": "SCEN-A",
+          "name": "Consensus (West Bengal Landfall)",
+          "probability": 0.6,
+          "track": [
+            {
+              "lat": 15.0,
+              "lon": 86.8,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.5,
+              "lon": 87.2,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.5,
+              "lon": 87.8,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.5,
+              "lon": 88.0,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.6,
+              "lon": 88.3,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  86.8,
+                  15.0
+                ],
+                [
+                  87.0,
+                  17.56
+                ],
+                [
+                  87.4,
+                  19.62
+                ],
+                [
+                  87.4,
+                  20.68
+                ],
+                [
+                  87.5,
+                  21.84
+                ],
+                [
+                  89.1,
+                  21.36
+                ],
+                [
+                  88.6,
+                  20.32
+                ],
+                [
+                  88.2,
+                  19.38
+                ],
+                [
+                  87.4,
+                  17.44
+                ],
+                [
+                  86.8,
+                  15.0
+                ],
+                [
+                  86.8,
+                  15.0
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            100.0,
+            140.0
+          ],
+          "landfall_region": "West Bengal Coast (Digha\u2013Sagar Island)",
+          "description": "Model-weighted consensus track. Most probable path."
+        },
+        {
+          "scenario_id": "SCEN-B",
+          "name": "Eastern Recurve (Bangladesh Landfall)",
+          "probability": 0.25,
+          "track": [
+            {
+              "lat": 15.0,
+              "lon": 86.8,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.55,
+              "lon": 87.4,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.6,
+              "lon": 88.2,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.65,
+              "lon": 88.6,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.8,
+              "lon": 89.1,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  86.8,
+                  15.0
+                ],
+                [
+                  87.15,
+                  17.625
+                ],
+                [
+                  87.7,
+                  19.75
+                ],
+                [
+                  87.85,
+                  20.875
+                ],
+                [
+                  88.1,
+                  22.1
+                ],
+                [
+                  90.1,
+                  21.5
+                ],
+                [
+                  89.35,
+                  20.425
+                ],
+                [
+                  88.7,
+                  19.45
+                ],
+                [
+                  87.65,
+                  17.475
+                ],
+                [
+                  86.8,
+                  15.0
+                ],
+                [
+                  86.8,
+                  15.0
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            95.0,
+            135.0
+          ],
+          "landfall_region": "Bangladesh Coast (Sundarbans\u2013Chittagong)",
+          "description": "GFS-influenced track with eastern recurvature."
+        },
+        {
+          "scenario_id": "SCEN-C",
+          "name": "Western Track (Odisha Landfall)",
+          "probability": 0.15,
+          "track": [
+            {
+              "lat": 15.0,
+              "lon": 86.8,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 17.45,
+              "lon": 87.03,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.4,
+              "lon": 87.45,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.35,
+              "lon": 87.47,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.4,
+              "lon": 87.6,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  86.8,
+                  15.0
+                ],
+                [
+                  86.805,
+                  17.517
+                ],
+                [
+                  87.0,
+                  19.535
+                ],
+                [
+                  86.795,
+                  20.553
+                ],
+                [
+                  86.7,
+                  21.67
+                ],
+                [
+                  88.5,
+                  21.13
+                ],
+                [
+                  88.145,
+                  20.148
+                ],
+                [
+                  87.9,
+                  19.265
+                ],
+                [
+                  87.255,
+                  17.383
+                ],
+                [
+                  86.8,
+                  15.0
+                ],
+                [
+                  86.8,
+                  15.0
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            90.0,
+            130.0
+          ],
+          "landfall_region": "Odisha Coast (Paradip\u2013Chandbali)",
+          "description": "UKMET-influenced western track variant."
+        }
+      ],
+      "source": "MOCK_SCENARIO_PROVIDER",
+      "demo_mode": true
+    },
+    "analogs": [
+      {
+        "storm_name": "Cyclone Phailin",
+        "year": 2013,
+        "basin": "North Indian Ocean",
+        "similarity": 0.82,
+        "matched_features": [
+          "RI_over_BoB",
+          "Odisha_landfall",
+          "similar_SST"
+        ],
+        "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+      },
+      {
+        "storm_name": "Cyclone Fani",
+        "year": 2019,
+        "basin": "North Indian Ocean",
+        "similarity": 0.78,
+        "matched_features": [
+          "May_season",
+          "RI_episode",
+          "WB_coast_threat"
+        ],
+        "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+      },
+      {
+        "storm_name": "Cyclone Hudhud",
+        "year": 2014,
+        "basin": "North Indian Ocean",
+        "similarity": 0.71,
+        "matched_features": [
+          "RI_24h_window",
+          "eye_replacement_cycle"
+        ],
+        "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+      }
+    ]
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 7,
+    "timestamp": "2020-05-19T12:00:00Z",
+    "center": {
+      "lat": 17.5,
+      "lon": 87.2
+    },
+    "intensity": {
+      "event_id": "DEMO-001",
+      "tick": 7,
+      "timestamp": "2020-05-19T12:00:00Z",
+      "value_kt": 140.0,
+      "lower_bound_kt": 130.0,
+      "upper_bound_kt": 150.0,
+      "min_pressure_hpa": 920.0,
+      "confidence": 0.9,
+      "source": "MOCK_INTENSITY_PROVIDER",
+      "demo_mode": true
+    },
+    "structure": {
+      "event_id": "DEMO-001",
+      "tick": 7,
+      "timestamp": "2020-05-19T12:00:00Z",
+      "organization": 0.92,
+      "eye_probability": 0.95,
+      "symmetry": 0.9,
+      "convective_organization": 0.93,
+      "banding": 0.9,
+      "rmw_km": 30.0,
+      "confidence": 0.92,
+      "source": "MOCK_STRUCTURE_PROVIDER",
+      "demo_mode": true
+    },
+    "environment": {
+      "event_id": "DEMO-001",
+      "tick": 7,
+      "timestamp": "2020-05-19T12:00:00Z",
+      "sst_c": 30.8,
+      "wind_shear_kt": 10.0,
+      "mid_level_humidity_pct": 76.0,
+      "upper_divergence": 0.7,
+      "confidence": 0.85,
+      "source": "MOCK_ENVIRONMENT_PROVIDER",
+      "demo_mode": true
+    },
+    "regime": {
+      "event_id": "DEMO-001",
+      "tick": 7,
+      "timestamp": "2020-05-19T12:00:00Z",
+      "probabilities": {
+        "GENESIS": 0.01,
+        "DEVELOPING": 0.02,
+        "INTENSIFYING": 0.15,
+        "MATURE": 0.75,
+        "WEAKENING": 0.07
+      },
+      "dominant_regime": "MATURE",
+      "confidence": 0.88,
+      "source": "MOCK_REGIME_PROVIDER",
+      "demo_mode": true
+    },
+    "change_point": {
+      "event_id": "DEMO-001",
+      "tick": 7,
+      "timestamp": "2020-05-19T12:00:00Z",
+      "detected": true,
+      "previous_regime": "INTENSIFYING",
+      "new_regime": "MATURE",
+      "severity": "MEDIUM",
+      "trigger_features": [
+        "intensity_plateau",
+        "regime_prob_shift_0.60",
+        "peak_organisation"
+      ],
+      "confidence": 0.85,
+      "source": "DEMO_CHANGE_POINT_DETECTOR",
+      "demo_mode": true
+    },
+    "uncertainty": {
+      "event_id": "DEMO-001",
+      "tick": 7,
+      "timestamp": "2020-05-19T12:00:00Z",
+      "intensity_uncertainty": 0.12,
+      "structure_uncertainty": 0.12,
+      "regime_uncertainty": 0.15,
+      "forecast_spread": 0.18,
+      "overall_uncertainty": 0.143,
+      "data_quality_flag": "GOOD",
+      "source": "RULE_BASED_UNCERTAINTY",
+      "demo_mode": true
+    },
+    "forecasts": {
+      "event_id": "DEMO-001",
+      "tick": 7,
+      "timestamp": "2020-05-19T12:00:00Z",
+      "members": [
+        {
+          "model_name": "ECMWF_HRES",
+          "init_time": "2020-05-19T12:00:00Z",
+          "track": [
+            {
+              "lat": 19.5,
+              "lon": 87.8,
+              "lead_time_h": 12,
+              "wind_kt": 135.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.6,
+              "lon": 88.05,
+              "lead_time_h": 24,
+              "wind_kt": 130.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.8,
+              "lon": 88.4,
+              "lead_time_h": 36,
+              "wind_kt": 110.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.8,
+              "lon": 88.95,
+              "lead_time_h": 48,
+              "wind_kt": 60.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 135.0,
+          "confidence": 0.85
+        },
+        {
+          "model_name": "GFS",
+          "init_time": "2020-05-19T12:00:00Z",
+          "track": [
+            {
+              "lat": 19.5,
+              "lon": 87.8,
+              "lead_time_h": 12,
+              "wind_kt": 130.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.65,
+              "lon": 88.2,
+              "lead_time_h": 24,
+              "wind_kt": 125.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.9,
+              "lon": 88.8,
+              "lead_time_h": 36,
+              "wind_kt": 105.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 23.0,
+              "lon": 89.6,
+              "lead_time_h": 48,
+              "wind_kt": 55.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 130.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "UKMET",
+          "init_time": "2020-05-19T12:00:00Z",
+          "track": [
+            {
+              "lat": 19.5,
+              "lon": 87.8,
+              "lead_time_h": 12,
+              "wind_kt": 127.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.4,
+              "lon": 87.85,
+              "lead_time_h": 24,
+              "wind_kt": 122.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.4,
+              "lon": 88.0,
+              "lead_time_h": 36,
+              "wind_kt": 102.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.1,
+              "lon": 88.3,
+              "lead_time_h": 48,
+              "wind_kt": 52.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 127.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "HWRF",
+          "init_time": "2020-05-19T12:00:00Z",
+          "track": [
+            {
+              "lat": 19.5,
+              "lon": 87.8,
+              "lead_time_h": 12,
+              "wind_kt": 145.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.55,
+              "lon": 88.1,
+              "lead_time_h": 24,
+              "wind_kt": 140.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.7,
+              "lon": 88.45,
+              "lead_time_h": 36,
+              "wind_kt": 120.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.65,
+              "lon": 89.0,
+              "lead_time_h": 48,
+              "wind_kt": 70.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 145.0,
+          "confidence": 0.75
+        }
+      ],
+      "disagreement_score": 0.215,
+      "source": "MOCK_FORECAST_PROVIDER",
+      "demo_mode": true
+    },
+    "scenarios": {
+      "event_id": "DEMO-001",
+      "tick": 7,
+      "timestamp": "2020-05-19T12:00:00Z",
+      "scenarios": [
+        {
+          "scenario_id": "SCEN-A",
+          "name": "Consensus (West Bengal Landfall)",
+          "probability": 0.68,
+          "track": [
+            {
+              "lat": 17.5,
+              "lon": 87.2,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.5,
+              "lon": 87.8,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.5,
+              "lon": 88.0,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.6,
+              "lon": 88.3,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.5,
+              "lon": 88.8,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  87.2,
+                  17.5
+                ],
+                [
+                  87.6,
+                  19.56
+                ],
+                [
+                  87.6,
+                  20.62
+                ],
+                [
+                  87.7,
+                  21.78
+                ],
+                [
+                  88.0,
+                  22.74
+                ],
+                [
+                  89.6,
+                  22.26
+                ],
+                [
+                  88.9,
+                  21.42
+                ],
+                [
+                  88.4,
+                  20.38
+                ],
+                [
+                  88.0,
+                  19.44
+                ],
+                [
+                  87.2,
+                  17.5
+                ],
+                [
+                  87.2,
+                  17.5
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            100.0,
+            140.0
+          ],
+          "landfall_region": "West Bengal Coast (Digha\u2013Sagar Island)",
+          "description": "Model-weighted consensus track. Most probable path."
+        },
+        {
+          "scenario_id": "SCEN-B",
+          "name": "Eastern Recurve (Bangladesh Landfall)",
+          "probability": 0.2,
+          "track": [
+            {
+              "lat": 17.5,
+              "lon": 87.2,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.55,
+              "lon": 88.0,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.6,
+              "lon": 88.4,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.75,
+              "lon": 88.9,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.7,
+              "lon": 89.6,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  87.2,
+                  17.5
+                ],
+                [
+                  87.75,
+                  19.625
+                ],
+                [
+                  87.9,
+                  20.75
+                ],
+                [
+                  88.15,
+                  21.975
+                ],
+                [
+                  88.6,
+                  23.0
+                ],
+                [
+                  90.6,
+                  22.4
+                ],
+                [
+                  89.65,
+                  21.525
+                ],
+                [
+                  88.9,
+                  20.45
+                ],
+                [
+                  88.25,
+                  19.475
+                ],
+                [
+                  87.2,
+                  17.5
+                ],
+                [
+                  87.2,
+                  17.5
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            95.0,
+            135.0
+          ],
+          "landfall_region": "Bangladesh Coast (Sundarbans\u2013Chittagong)",
+          "description": "GFS-influenced track with eastern recurvature."
+        },
+        {
+          "scenario_id": "SCEN-C",
+          "name": "Western Track (Odisha Landfall)",
+          "probability": 0.12,
+          "track": [
+            {
+              "lat": 17.5,
+              "lon": 87.2,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 19.45,
+              "lon": 87.62,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.4,
+              "lon": 87.65,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.45,
+              "lon": 87.77,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.3,
+              "lon": 88.1,
+              "lead_time_h": 48,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  87.2,
+                  17.5
+                ],
+                [
+                  87.395,
+                  19.517
+                ],
+                [
+                  87.2,
+                  20.535
+                ],
+                [
+                  87.095,
+                  21.652
+                ],
+                [
+                  87.2,
+                  22.57
+                ],
+                [
+                  89.0,
+                  22.03
+                ],
+                [
+                  88.445,
+                  21.247
+                ],
+                [
+                  88.1,
+                  20.265
+                ],
+                [
+                  87.845,
+                  19.383
+                ],
+                [
+                  87.2,
+                  17.5
+                ],
+                [
+                  87.2,
+                  17.5
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            90.0,
+            130.0
+          ],
+          "landfall_region": "Odisha Coast (Paradip\u2013Chandbali)",
+          "description": "UKMET-influenced western track variant."
+        }
+      ],
+      "source": "MOCK_SCENARIO_PROVIDER",
+      "demo_mode": true
+    },
+    "analogs": [
+      {
+        "storm_name": "Cyclone Phailin",
+        "year": 2013,
+        "basin": "North Indian Ocean",
+        "similarity": 0.82,
+        "matched_features": [
+          "RI_over_BoB",
+          "Odisha_landfall",
+          "similar_SST"
+        ],
+        "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+      },
+      {
+        "storm_name": "Cyclone Fani",
+        "year": 2019,
+        "basin": "North Indian Ocean",
+        "similarity": 0.78,
+        "matched_features": [
+          "May_season",
+          "RI_episode",
+          "WB_coast_threat"
+        ],
+        "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+      },
+      {
+        "storm_name": "Cyclone Hudhud",
+        "year": 2014,
+        "basin": "North Indian Ocean",
+        "similarity": 0.71,
+        "matched_features": [
+          "RI_24h_window",
+          "eye_replacement_cycle"
+        ],
+        "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+      }
+    ]
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 8,
+    "timestamp": "2020-05-20T00:00:00Z",
+    "center": {
+      "lat": 19.5,
+      "lon": 87.8
+    },
+    "intensity": {
+      "event_id": "DEMO-001",
+      "tick": 8,
+      "timestamp": "2020-05-20T00:00:00Z",
+      "value_kt": 135.0,
+      "lower_bound_kt": 125.0,
+      "upper_bound_kt": 145.0,
+      "min_pressure_hpa": 925.0,
+      "confidence": 0.88,
+      "source": "MOCK_INTENSITY_PROVIDER",
+      "demo_mode": true
+    },
+    "structure": {
+      "event_id": "DEMO-001",
+      "tick": 8,
+      "timestamp": "2020-05-20T00:00:00Z",
+      "organization": 0.88,
+      "eye_probability": 0.88,
+      "symmetry": 0.82,
+      "convective_organization": 0.85,
+      "banding": 0.83,
+      "rmw_km": 35.0,
+      "confidence": 0.88,
+      "source": "MOCK_STRUCTURE_PROVIDER",
+      "demo_mode": true
+    },
+    "environment": {
+      "event_id": "DEMO-001",
+      "tick": 8,
+      "timestamp": "2020-05-20T00:00:00Z",
+      "sst_c": 30.4,
+      "wind_shear_kt": 14.0,
+      "mid_level_humidity_pct": 72.0,
+      "upper_divergence": 0.5,
+      "confidence": 0.82,
+      "source": "MOCK_ENVIRONMENT_PROVIDER",
+      "demo_mode": true
+    },
+    "regime": {
+      "event_id": "DEMO-001",
+      "tick": 8,
+      "timestamp": "2020-05-20T00:00:00Z",
+      "probabilities": {
+        "GENESIS": 0.01,
+        "DEVELOPING": 0.01,
+        "INTENSIFYING": 0.08,
+        "MATURE": 0.7,
+        "WEAKENING": 0.2
+      },
+      "dominant_regime": "MATURE",
+      "confidence": 0.85,
+      "source": "MOCK_REGIME_PROVIDER",
+      "demo_mode": true
+    },
+    "change_point": {
+      "event_id": "DEMO-001",
+      "tick": 8,
+      "timestamp": "2020-05-20T00:00:00Z",
+      "detected": false,
+      "previous_regime": null,
+      "new_regime": null,
+      "severity": null,
+      "trigger_features": null,
+      "confidence": null,
+      "source": "DEMO_CHANGE_POINT_DETECTOR",
+      "demo_mode": true
+    },
+    "uncertainty": {
+      "event_id": "DEMO-001",
+      "tick": 8,
+      "timestamp": "2020-05-20T00:00:00Z",
+      "intensity_uncertainty": 0.15,
+      "structure_uncertainty": 0.18,
+      "regime_uncertainty": 0.18,
+      "forecast_spread": 0.22,
+      "overall_uncertainty": 0.182,
+      "data_quality_flag": "GOOD",
+      "source": "RULE_BASED_UNCERTAINTY",
+      "demo_mode": true
+    },
+    "forecasts": {
+      "event_id": "DEMO-001",
+      "tick": 8,
+      "timestamp": "2020-05-20T00:00:00Z",
+      "members": [
+        {
+          "model_name": "ECMWF_HRES",
+          "init_time": "2020-05-20T00:00:00Z",
+          "track": [
+            {
+              "lat": 20.5,
+              "lon": 88.0,
+              "lead_time_h": 12,
+              "wind_kt": 130.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.7,
+              "lon": 88.35,
+              "lead_time_h": 24,
+              "wind_kt": 110.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.7,
+              "lon": 88.9,
+              "lead_time_h": 36,
+              "wind_kt": 60.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 130.0,
+          "confidence": 0.85
+        },
+        {
+          "model_name": "GFS",
+          "init_time": "2020-05-20T00:00:00Z",
+          "track": [
+            {
+              "lat": 20.5,
+              "lon": 88.0,
+              "lead_time_h": 12,
+              "wind_kt": 125.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.75,
+              "lon": 88.5,
+              "lead_time_h": 24,
+              "wind_kt": 105.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.8,
+              "lon": 89.3,
+              "lead_time_h": 36,
+              "wind_kt": 55.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 125.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "UKMET",
+          "init_time": "2020-05-20T00:00:00Z",
+          "track": [
+            {
+              "lat": 20.5,
+              "lon": 88.0,
+              "lead_time_h": 12,
+              "wind_kt": 122.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.5,
+              "lon": 88.15,
+              "lead_time_h": 24,
+              "wind_kt": 102.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.3,
+              "lon": 88.5,
+              "lead_time_h": 36,
+              "wind_kt": 52.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 122.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "HWRF",
+          "init_time": "2020-05-20T00:00:00Z",
+          "track": [
+            {
+              "lat": 20.5,
+              "lon": 88.0,
+              "lead_time_h": 12,
+              "wind_kt": 140.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.65,
+              "lon": 88.4,
+              "lead_time_h": 24,
+              "wind_kt": 120.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.6,
+              "lon": 88.95,
+              "lead_time_h": 36,
+              "wind_kt": 70.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 140.0,
+          "confidence": 0.75
+        }
+      ],
+      "disagreement_score": 0.215,
+      "source": "MOCK_FORECAST_PROVIDER",
+      "demo_mode": true
+    },
+    "scenarios": {
+      "event_id": "DEMO-001",
+      "tick": 8,
+      "timestamp": "2020-05-20T00:00:00Z",
+      "scenarios": [
+        {
+          "scenario_id": "SCEN-A",
+          "name": "Consensus (West Bengal Landfall)",
+          "probability": 0.72,
+          "track": [
+            {
+              "lat": 19.5,
+              "lon": 87.8,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.5,
+              "lon": 88.0,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.6,
+              "lon": 88.3,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.5,
+              "lon": 88.8,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  87.8,
+                  19.5
+                ],
+                [
+                  87.733,
+                  20.58
+                ],
+                [
+                  87.767,
+                  21.76
+                ],
+                [
+                  88.0,
+                  22.74
+                ],
+                [
+                  89.6,
+                  22.26
+                ],
+                [
+                  88.833,
+                  21.44
+                ],
+                [
+                  88.267,
+                  20.42
+                ],
+                [
+                  87.8,
+                  19.5
+                ],
+                [
+                  87.8,
+                  19.5
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            100.0,
+            140.0
+          ],
+          "landfall_region": "West Bengal Coast (Digha\u2013Sagar Island)",
+          "description": "Model-weighted consensus track. Most probable path."
+        },
+        {
+          "scenario_id": "SCEN-B",
+          "name": "Eastern Recurve (Bangladesh Landfall)",
+          "probability": 0.18,
+          "track": [
+            {
+              "lat": 19.5,
+              "lon": 87.8,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.55,
+              "lon": 88.2,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.7,
+              "lon": 88.7,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.65,
+              "lon": 89.4,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  87.8,
+                  19.5
+                ],
+                [
+                  87.867,
+                  20.65
+                ],
+                [
+                  88.033,
+                  21.9
+                ],
+                [
+                  88.4,
+                  22.95
+                ],
+                [
+                  90.4,
+                  22.35
+                ],
+                [
+                  89.367,
+                  21.5
+                ],
+                [
+                  88.533,
+                  20.45
+                ],
+                [
+                  87.8,
+                  19.5
+                ],
+                [
+                  87.8,
+                  19.5
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            95.0,
+            135.0
+          ],
+          "landfall_region": "Bangladesh Coast (Sundarbans\u2013Chittagong)",
+          "description": "GFS-influenced track with eastern recurvature."
+        },
+        {
+          "scenario_id": "SCEN-C",
+          "name": "Western Track (Odisha Landfall)",
+          "probability": 0.1,
+          "track": [
+            {
+              "lat": 19.5,
+              "lon": 87.8,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 20.45,
+              "lon": 87.83,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.5,
+              "lon": 87.95,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.35,
+              "lon": 88.27,
+              "lead_time_h": 36,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  87.8,
+                  19.5
+                ],
+                [
+                  87.53,
+                  20.54
+                ],
+                [
+                  87.35,
+                  21.68
+                ],
+                [
+                  87.37,
+                  22.62
+                ],
+                [
+                  89.17,
+                  22.08
+                ],
+                [
+                  88.55,
+                  21.32
+                ],
+                [
+                  88.13,
+                  20.36
+                ],
+                [
+                  87.8,
+                  19.5
+                ],
+                [
+                  87.8,
+                  19.5
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            90.0,
+            130.0
+          ],
+          "landfall_region": "Odisha Coast (Paradip\u2013Chandbali)",
+          "description": "UKMET-influenced western track variant."
+        }
+      ],
+      "source": "MOCK_SCENARIO_PROVIDER",
+      "demo_mode": true
+    },
+    "analogs": [
+      {
+        "storm_name": "Cyclone Phailin",
+        "year": 2013,
+        "basin": "North Indian Ocean",
+        "similarity": 0.82,
+        "matched_features": [
+          "RI_over_BoB",
+          "Odisha_landfall",
+          "similar_SST"
+        ],
+        "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+      },
+      {
+        "storm_name": "Cyclone Fani",
+        "year": 2019,
+        "basin": "North Indian Ocean",
+        "similarity": 0.78,
+        "matched_features": [
+          "May_season",
+          "RI_episode",
+          "WB_coast_threat"
+        ],
+        "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+      },
+      {
+        "storm_name": "Cyclone Hudhud",
+        "year": 2014,
+        "basin": "North Indian Ocean",
+        "similarity": 0.71,
+        "matched_features": [
+          "RI_24h_window",
+          "eye_replacement_cycle"
+        ],
+        "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+      }
+    ]
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 9,
+    "timestamp": "2020-05-20T06:00:00Z",
+    "center": {
+      "lat": 20.5,
+      "lon": 88.0
+    },
+    "intensity": {
+      "event_id": "DEMO-001",
+      "tick": 9,
+      "timestamp": "2020-05-20T06:00:00Z",
+      "value_kt": 130.0,
+      "lower_bound_kt": 118.0,
+      "upper_bound_kt": 140.0,
+      "min_pressure_hpa": 930.0,
+      "confidence": 0.85,
+      "source": "MOCK_INTENSITY_PROVIDER",
+      "demo_mode": true
+    },
+    "structure": {
+      "event_id": "DEMO-001",
+      "tick": 9,
+      "timestamp": "2020-05-20T06:00:00Z",
+      "organization": 0.82,
+      "eye_probability": 0.78,
+      "symmetry": 0.75,
+      "convective_organization": 0.78,
+      "banding": 0.76,
+      "rmw_km": 40.0,
+      "confidence": 0.84,
+      "source": "MOCK_STRUCTURE_PROVIDER",
+      "demo_mode": true
+    },
+    "environment": {
+      "event_id": "DEMO-001",
+      "tick": 9,
+      "timestamp": "2020-05-20T06:00:00Z",
+      "sst_c": 30.0,
+      "wind_shear_kt": 18.0,
+      "mid_level_humidity_pct": 68.0,
+      "upper_divergence": 0.4,
+      "confidence": 0.78,
+      "source": "MOCK_ENVIRONMENT_PROVIDER",
+      "demo_mode": true
+    },
+    "regime": {
+      "event_id": "DEMO-001",
+      "tick": 9,
+      "timestamp": "2020-05-20T06:00:00Z",
+      "probabilities": {
+        "GENESIS": 0.01,
+        "DEVELOPING": 0.01,
+        "INTENSIFYING": 0.05,
+        "MATURE": 0.58,
+        "WEAKENING": 0.35
+      },
+      "dominant_regime": "MATURE",
+      "confidence": 0.78,
+      "source": "MOCK_REGIME_PROVIDER",
+      "demo_mode": true
+    },
+    "change_point": {
+      "event_id": "DEMO-001",
+      "tick": 9,
+      "timestamp": "2020-05-20T06:00:00Z",
+      "detected": false,
+      "previous_regime": null,
+      "new_regime": null,
+      "severity": null,
+      "trigger_features": null,
+      "confidence": null,
+      "source": "DEMO_CHANGE_POINT_DETECTOR",
+      "demo_mode": true
+    },
+    "uncertainty": {
+      "event_id": "DEMO-001",
+      "tick": 9,
+      "timestamp": "2020-05-20T06:00:00Z",
+      "intensity_uncertainty": 0.2,
+      "structure_uncertainty": 0.22,
+      "regime_uncertainty": 0.25,
+      "forecast_spread": 0.28,
+      "overall_uncertainty": 0.238,
+      "data_quality_flag": "GOOD",
+      "source": "RULE_BASED_UNCERTAINTY",
+      "demo_mode": true
+    },
+    "forecasts": {
+      "event_id": "DEMO-001",
+      "tick": 9,
+      "timestamp": "2020-05-20T06:00:00Z",
+      "members": [
+        {
+          "model_name": "ECMWF_HRES",
+          "init_time": "2020-05-20T06:00:00Z",
+          "track": [
+            {
+              "lat": 21.6,
+              "lon": 88.3,
+              "lead_time_h": 12,
+              "wind_kt": 110.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.6,
+              "lon": 88.85,
+              "lead_time_h": 24,
+              "wind_kt": 60.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 110.0,
+          "confidence": 0.85
+        },
+        {
+          "model_name": "GFS",
+          "init_time": "2020-05-20T06:00:00Z",
+          "track": [
+            {
+              "lat": 21.6,
+              "lon": 88.3,
+              "lead_time_h": 12,
+              "wind_kt": 105.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.65,
+              "lon": 89.0,
+              "lead_time_h": 24,
+              "wind_kt": 55.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 105.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "UKMET",
+          "init_time": "2020-05-20T06:00:00Z",
+          "track": [
+            {
+              "lat": 21.6,
+              "lon": 88.3,
+              "lead_time_h": 12,
+              "wind_kt": 102.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.4,
+              "lon": 88.65,
+              "lead_time_h": 24,
+              "wind_kt": 52.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 102.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "HWRF",
+          "init_time": "2020-05-20T06:00:00Z",
+          "track": [
+            {
+              "lat": 21.6,
+              "lon": 88.3,
+              "lead_time_h": 12,
+              "wind_kt": 120.0,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.55,
+              "lon": 88.9,
+              "lead_time_h": 24,
+              "wind_kt": 70.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 120.0,
+          "confidence": 0.75
+        }
+      ],
+      "disagreement_score": 0.215,
+      "source": "MOCK_FORECAST_PROVIDER",
+      "demo_mode": true
+    },
+    "scenarios": {
+      "event_id": "DEMO-001",
+      "tick": 9,
+      "timestamp": "2020-05-20T06:00:00Z",
+      "scenarios": [
+        {
+          "scenario_id": "SCEN-A",
+          "name": "Consensus (West Bengal Landfall)",
+          "probability": 0.75,
+          "track": [
+            {
+              "lat": 20.5,
+              "lon": 88.0,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.6,
+              "lon": 88.3,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.5,
+              "lon": 88.8,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  88.0,
+                  20.5
+                ],
+                [
+                  87.9,
+                  21.72
+                ],
+                [
+                  88.0,
+                  22.74
+                ],
+                [
+                  89.6,
+                  22.26
+                ],
+                [
+                  88.7,
+                  21.48
+                ],
+                [
+                  88.0,
+                  20.5
+                ],
+                [
+                  88.0,
+                  20.5
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            100.0,
+            140.0
+          ],
+          "landfall_region": "West Bengal Coast (Digha\u2013Sagar Island)",
+          "description": "Model-weighted consensus track. Most probable path."
+        },
+        {
+          "scenario_id": "SCEN-B",
+          "name": "Eastern Recurve (Bangladesh Landfall)",
+          "probability": 0.16,
+          "track": [
+            {
+              "lat": 20.5,
+              "lon": 88.0,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.65,
+              "lon": 88.5,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.6,
+              "lon": 89.2,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  88.0,
+                  20.5
+                ],
+                [
+                  88.0,
+                  21.8
+                ],
+                [
+                  88.2,
+                  22.9
+                ],
+                [
+                  90.2,
+                  22.3
+                ],
+                [
+                  89.0,
+                  21.5
+                ],
+                [
+                  88.0,
+                  20.5
+                ],
+                [
+                  88.0,
+                  20.5
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            95.0,
+            135.0
+          ],
+          "landfall_region": "Bangladesh Coast (Sundarbans\u2013Chittagong)",
+          "description": "GFS-influenced track with eastern recurvature."
+        },
+        {
+          "scenario_id": "SCEN-C",
+          "name": "Western Track (Odisha Landfall)",
+          "probability": 0.09,
+          "track": [
+            {
+              "lat": 20.5,
+              "lon": 88.0,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 21.55,
+              "lon": 88.12,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.4,
+              "lon": 88.45,
+              "lead_time_h": 24,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  88.0,
+                  20.5
+                ],
+                [
+                  87.67,
+                  21.685
+                ],
+                [
+                  87.55,
+                  22.67
+                ],
+                [
+                  89.35,
+                  22.13
+                ],
+                [
+                  88.57,
+                  21.415
+                ],
+                [
+                  88.0,
+                  20.5
+                ],
+                [
+                  88.0,
+                  20.5
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            90.0,
+            130.0
+          ],
+          "landfall_region": "Odisha Coast (Paradip\u2013Chandbali)",
+          "description": "UKMET-influenced western track variant."
+        }
+      ],
+      "source": "MOCK_SCENARIO_PROVIDER",
+      "demo_mode": true
+    },
+    "analogs": [
+      {
+        "storm_name": "Cyclone Phailin",
+        "year": 2013,
+        "basin": "North Indian Ocean",
+        "similarity": 0.82,
+        "matched_features": [
+          "RI_over_BoB",
+          "Odisha_landfall",
+          "similar_SST"
+        ],
+        "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+      },
+      {
+        "storm_name": "Cyclone Fani",
+        "year": 2019,
+        "basin": "North Indian Ocean",
+        "similarity": 0.78,
+        "matched_features": [
+          "May_season",
+          "RI_episode",
+          "WB_coast_threat"
+        ],
+        "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+      },
+      {
+        "storm_name": "Cyclone Hudhud",
+        "year": 2014,
+        "basin": "North Indian Ocean",
+        "similarity": 0.71,
+        "matched_features": [
+          "RI_24h_window",
+          "eye_replacement_cycle"
+        ],
+        "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+      }
+    ]
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 10,
+    "timestamp": "2020-05-20T10:00:00Z",
+    "center": {
+      "lat": 21.6,
+      "lon": 88.3
+    },
+    "intensity": {
+      "event_id": "DEMO-001",
+      "tick": 10,
+      "timestamp": "2020-05-20T10:00:00Z",
+      "value_kt": 110.0,
+      "lower_bound_kt": 95.0,
+      "upper_bound_kt": 125.0,
+      "min_pressure_hpa": 948.0,
+      "confidence": 0.8,
+      "source": "MOCK_INTENSITY_PROVIDER",
+      "demo_mode": true
+    },
+    "structure": {
+      "event_id": "DEMO-001",
+      "tick": 10,
+      "timestamp": "2020-05-20T10:00:00Z",
+      "organization": 0.6,
+      "eye_probability": 0.4,
+      "symmetry": 0.5,
+      "convective_organization": 0.55,
+      "banding": 0.5,
+      "rmw_km": 65.0,
+      "confidence": 0.72,
+      "source": "MOCK_STRUCTURE_PROVIDER",
+      "demo_mode": true
+    },
+    "environment": {
+      "event_id": "DEMO-001",
+      "tick": 10,
+      "timestamp": "2020-05-20T10:00:00Z",
+      "sst_c": 29.2,
+      "wind_shear_kt": 25.0,
+      "mid_level_humidity_pct": 60.0,
+      "upper_divergence": 0.2,
+      "confidence": 0.72,
+      "source": "MOCK_ENVIRONMENT_PROVIDER",
+      "demo_mode": true
+    },
+    "regime": {
+      "event_id": "DEMO-001",
+      "tick": 10,
+      "timestamp": "2020-05-20T10:00:00Z",
+      "probabilities": {
+        "GENESIS": 0.01,
+        "DEVELOPING": 0.01,
+        "INTENSIFYING": 0.03,
+        "MATURE": 0.2,
+        "WEAKENING": 0.75
+      },
+      "dominant_regime": "WEAKENING",
+      "confidence": 0.8,
+      "source": "MOCK_REGIME_PROVIDER",
+      "demo_mode": true
+    },
+    "change_point": {
+      "event_id": "DEMO-001",
+      "tick": 10,
+      "timestamp": "2020-05-20T10:00:00Z",
+      "detected": true,
+      "previous_regime": "MATURE",
+      "new_regime": "WEAKENING",
+      "severity": "CRITICAL",
+      "trigger_features": [
+        "landfall_contact",
+        "intensity_drop_-20kt",
+        "shear_increase"
+      ],
+      "confidence": 0.92,
+      "source": "DEMO_CHANGE_POINT_DETECTOR",
+      "demo_mode": true
+    },
+    "uncertainty": {
+      "event_id": "DEMO-001",
+      "tick": 10,
+      "timestamp": "2020-05-20T10:00:00Z",
+      "intensity_uncertainty": 0.3,
+      "structure_uncertainty": 0.32,
+      "regime_uncertainty": 0.25,
+      "forecast_spread": 0.35,
+      "overall_uncertainty": 0.305,
+      "data_quality_flag": "GOOD",
+      "source": "RULE_BASED_UNCERTAINTY",
+      "demo_mode": true
+    },
+    "forecasts": {
+      "event_id": "DEMO-001",
+      "tick": 10,
+      "timestamp": "2020-05-20T10:00:00Z",
+      "members": [
+        {
+          "model_name": "ECMWF_HRES",
+          "init_time": "2020-05-20T10:00:00Z",
+          "track": [
+            {
+              "lat": 22.5,
+              "lon": 88.8,
+              "lead_time_h": 12,
+              "wind_kt": 60.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 60.0,
+          "confidence": 0.85
+        },
+        {
+          "model_name": "GFS",
+          "init_time": "2020-05-20T10:00:00Z",
+          "track": [
+            {
+              "lat": 22.5,
+              "lon": 88.8,
+              "lead_time_h": 12,
+              "wind_kt": 55.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 55.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "UKMET",
+          "init_time": "2020-05-20T10:00:00Z",
+          "track": [
+            {
+              "lat": 22.5,
+              "lon": 88.8,
+              "lead_time_h": 12,
+              "wind_kt": 52.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 52.0,
+          "confidence": 0.75
+        },
+        {
+          "model_name": "HWRF",
+          "init_time": "2020-05-20T10:00:00Z",
+          "track": [
+            {
+              "lat": 22.5,
+              "lon": 88.8,
+              "lead_time_h": 12,
+              "wind_kt": 70.0,
+              "pressure_hpa": null
+            }
+          ],
+          "intensity_forecast_kt": 70.0,
+          "confidence": 0.75
+        }
+      ],
+      "disagreement_score": 0.0,
+      "source": "MOCK_FORECAST_PROVIDER",
+      "demo_mode": true
+    },
+    "scenarios": {
+      "event_id": "DEMO-001",
+      "tick": 10,
+      "timestamp": "2020-05-20T10:00:00Z",
+      "scenarios": [
+        {
+          "scenario_id": "SCEN-A",
+          "name": "Consensus (West Bengal Landfall)",
+          "probability": 0.82,
+          "track": [
+            {
+              "lat": 21.6,
+              "lon": 88.3,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.5,
+              "lon": 88.8,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  88.3,
+                  21.6
+                ],
+                [
+                  88.0,
+                  22.74
+                ],
+                [
+                  89.6,
+                  22.26
+                ],
+                [
+                  88.3,
+                  21.6
+                ],
+                [
+                  88.3,
+                  21.6
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            100.0,
+            140.0
+          ],
+          "landfall_region": "West Bengal Coast (Digha\u2013Sagar Island)",
+          "description": "Model-weighted consensus track. Most probable path."
+        },
+        {
+          "scenario_id": "SCEN-B",
+          "name": "Eastern Recurve (Bangladesh Landfall)",
+          "probability": 0.12,
+          "track": [
+            {
+              "lat": 21.6,
+              "lon": 88.3,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.55,
+              "lon": 89.0,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  88.3,
+                  21.6
+                ],
+                [
+                  88.0,
+                  22.85
+                ],
+                [
+                  90.0,
+                  22.25
+                ],
+                [
+                  88.3,
+                  21.6
+                ],
+                [
+                  88.3,
+                  21.6
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            95.0,
+            135.0
+          ],
+          "landfall_region": "Bangladesh Coast (Sundarbans\u2013Chittagong)",
+          "description": "GFS-influenced track with eastern recurvature."
+        },
+        {
+          "scenario_id": "SCEN-C",
+          "name": "Western Track (Odisha Landfall)",
+          "probability": 0.06,
+          "track": [
+            {
+              "lat": 21.6,
+              "lon": 88.3,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            },
+            {
+              "lat": 22.45,
+              "lon": 88.62,
+              "lead_time_h": 12,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  88.3,
+                  21.6
+                ],
+                [
+                  87.72,
+                  22.72
+                ],
+                [
+                  89.52,
+                  22.18
+                ],
+                [
+                  88.3,
+                  21.6
+                ],
+                [
+                  88.3,
+                  21.6
+                ]
+              ]
+            ]
+          },
+          "intensity_range_kt": [
+            90.0,
+            130.0
+          ],
+          "landfall_region": "Odisha Coast (Paradip\u2013Chandbali)",
+          "description": "UKMET-influenced western track variant."
+        }
+      ],
+      "source": "MOCK_SCENARIO_PROVIDER",
+      "demo_mode": true
+    },
+    "analogs": [
+      {
+        "storm_name": "Cyclone Phailin",
+        "year": 2013,
+        "basin": "North Indian Ocean",
+        "similarity": 0.82,
+        "matched_features": [
+          "RI_over_BoB",
+          "Odisha_landfall",
+          "similar_SST"
+        ],
+        "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+      },
+      {
+        "storm_name": "Cyclone Fani",
+        "year": 2019,
+        "basin": "North Indian Ocean",
+        "similarity": 0.78,
+        "matched_features": [
+          "May_season",
+          "RI_episode",
+          "WB_coast_threat"
+        ],
+        "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+      },
+      {
+        "storm_name": "Cyclone Hudhud",
+        "year": 2014,
+        "basin": "North Indian Ocean",
+        "similarity": 0.71,
+        "matched_features": [
+          "RI_24h_window",
+          "eye_replacement_cycle"
+        ],
+        "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+      }
+    ]
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 11,
+    "timestamp": "2020-05-20T18:00:00Z",
+    "center": {
+      "lat": 22.5,
+      "lon": 88.8
+    },
+    "intensity": {
+      "event_id": "DEMO-001",
+      "tick": 11,
+      "timestamp": "2020-05-20T18:00:00Z",
+      "value_kt": 60.0,
+      "lower_bound_kt": 45.0,
+      "upper_bound_kt": 75.0,
+      "min_pressure_hpa": 978.0,
+      "confidence": 0.75,
+      "source": "MOCK_INTENSITY_PROVIDER",
+      "demo_mode": true
+    },
+    "structure": {
+      "event_id": "DEMO-001",
+      "tick": 11,
+      "timestamp": "2020-05-20T18:00:00Z",
+      "organization": 0.3,
+      "eye_probability": 0.05,
+      "symmetry": 0.28,
+      "convective_organization": 0.25,
+      "banding": 0.2,
+      "rmw_km": 120.0,
+      "confidence": 0.58,
+      "source": "MOCK_STRUCTURE_PROVIDER",
+      "demo_mode": true
+    },
+    "environment": {
+      "event_id": "DEMO-001",
+      "tick": 11,
+      "timestamp": "2020-05-20T18:00:00Z",
+      "sst_c": 27.0,
+      "wind_shear_kt": 35.0,
+      "mid_level_humidity_pct": 48.0,
+      "upper_divergence": 0.1,
+      "confidence": 0.6,
+      "source": "MOCK_ENVIRONMENT_PROVIDER",
+      "demo_mode": true
+    },
+    "regime": {
+      "event_id": "DEMO-001",
+      "tick": 11,
+      "timestamp": "2020-05-20T18:00:00Z",
+      "probabilities": {
+        "GENESIS": 0.01,
+        "DEVELOPING": 0.01,
+        "INTENSIFYING": 0.02,
+        "MATURE": 0.06,
+        "WEAKENING": 0.9
+      },
+      "dominant_regime": "WEAKENING",
+      "confidence": 0.88,
+      "source": "MOCK_REGIME_PROVIDER",
+      "demo_mode": true
+    },
+    "change_point": {
+      "event_id": "DEMO-001",
+      "tick": 11,
+      "timestamp": "2020-05-20T18:00:00Z",
+      "detected": false,
+      "previous_regime": null,
+      "new_regime": null,
+      "severity": null,
+      "trigger_features": null,
+      "confidence": null,
+      "source": "DEMO_CHANGE_POINT_DETECTOR",
+      "demo_mode": true
+    },
+    "uncertainty": {
+      "event_id": "DEMO-001",
+      "tick": 11,
+      "timestamp": "2020-05-20T18:00:00Z",
+      "intensity_uncertainty": 0.35,
+      "structure_uncertainty": 0.45,
+      "regime_uncertainty": 0.18,
+      "forecast_spread": 0.4,
+      "overall_uncertainty": 0.345,
+      "data_quality_flag": "POST_LANDFALL",
+      "source": "RULE_BASED_UNCERTAINTY",
+      "demo_mode": true
+    },
+    "forecasts": {
+      "event_id": "DEMO-001",
+      "tick": 11,
+      "timestamp": "2020-05-20T18:00:00Z",
+      "members": [],
+      "disagreement_score": 0.0,
+      "source": "MOCK_FORECAST_PROVIDER",
+      "demo_mode": true
+    },
+    "scenarios": {
+      "event_id": "DEMO-001",
+      "tick": 11,
+      "timestamp": "2020-05-20T18:00:00Z",
+      "scenarios": [
+        {
+          "scenario_id": "SCEN-A",
+          "name": "Consensus (West Bengal Landfall)",
+          "probability": 0.9,
+          "track": [
+            {
+              "lat": 22.5,
+              "lon": 88.8,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": null,
+          "intensity_range_kt": [
+            100.0,
+            140.0
+          ],
+          "landfall_region": "West Bengal Coast (Digha\u2013Sagar Island)",
+          "description": "Model-weighted consensus track. Most probable path."
+        },
+        {
+          "scenario_id": "SCEN-B",
+          "name": "Eastern Recurve (Bangladesh Landfall)",
+          "probability": 0.07,
+          "track": [
+            {
+              "lat": 22.5,
+              "lon": 88.8,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": null,
+          "intensity_range_kt": [
+            95.0,
+            135.0
+          ],
+          "landfall_region": "Bangladesh Coast (Sundarbans\u2013Chittagong)",
+          "description": "GFS-influenced track with eastern recurvature."
+        },
+        {
+          "scenario_id": "SCEN-C",
+          "name": "Western Track (Odisha Landfall)",
+          "probability": 0.03,
+          "track": [
+            {
+              "lat": 22.5,
+              "lon": 88.8,
+              "lead_time_h": 0,
+              "wind_kt": null,
+              "pressure_hpa": null
+            }
+          ],
+          "cone_geometry": null,
+          "intensity_range_kt": [
+            90.0,
+            130.0
+          ],
+          "landfall_region": "Odisha Coast (Paradip\u2013Chandbali)",
+          "description": "UKMET-influenced western track variant."
+        }
+      ],
+      "source": "MOCK_SCENARIO_PROVIDER",
+      "demo_mode": true
+    },
+    "analogs": [
+      {
+        "storm_name": "Cyclone Phailin",
+        "year": 2013,
+        "basin": "North Indian Ocean",
+        "similarity": 0.82,
+        "matched_features": [
+          "RI_over_BoB",
+          "Odisha_landfall",
+          "similar_SST"
+        ],
+        "historical_outcome": "Cat-5 equivalent at peak; rapid weakening post-landfall; effective evacuation saved lives."
+      },
+      {
+        "storm_name": "Cyclone Fani",
+        "year": 2019,
+        "basin": "North Indian Ocean",
+        "similarity": 0.78,
+        "matched_features": [
+          "May_season",
+          "RI_episode",
+          "WB_coast_threat"
+        ],
+        "historical_outcome": "Extremely severe; landfall near Puri; significant coastal surge."
+      },
+      {
+        "storm_name": "Cyclone Hudhud",
+        "year": 2014,
+        "basin": "North Indian Ocean",
+        "similarity": 0.71,
+        "matched_features": [
+          "RI_24h_window",
+          "eye_replacement_cycle"
+        ],
+        "historical_outcome": "Rapid intensification followed by eyewall replacement; landfall Vizag."
+      }
+    ]
+  }
+]

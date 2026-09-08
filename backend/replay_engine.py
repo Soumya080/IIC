@@ -13,8 +13,11 @@ from uuid import uuid4
 
 import alert_engine
 import timeline as tl
+import providers
+import rras_engine
+from backend.ml.intelligence_service import IntelligenceService
 from schemas import (
-    Alert, AlertLevel, AuditRecord, ChangePoint, CycloneEvent,
+    Alert, AlertLevel, AuditRecord, Basin, ChangePoint, CycloneEvent,
     CycloneState, DataFreshness, Environment, EventStatus,
     ExposureBreakdown, Forecast, ForecastMember, ForecastTrackPoint,
     GeoPoint, Hazard, HazardThreshold, HazardZone, ImpactAssessment,
@@ -26,7 +29,7 @@ from seed_data import AMPHAN_TICKS, AMPHAN_EVENT_ID, AMPHAN_OUTCOME
 
 
 def _utc(s: str) -> datetime:
-    return datetime.fromisoformat(s).replace(tzinfo=timezone.utc)
+    return datetime.fromisoformat(s.replace("Z", "+00:00")).replace(tzinfo=timezone.utc)
 
 
 def _utc_now() -> datetime:
@@ -42,12 +45,14 @@ class Store:
     def __init__(self):
         self.events:    Dict[str, CycloneEvent] = {}
         self.states:    Dict[str, Dict[int, CycloneState]] = {}
+        self.snapshots: Dict[str, Dict[int, Any]] = {}
         self.forecasts: Dict[str, Dict[int, Forecast]] = {}
         self.scenarios: Dict[str, Dict[int, List[Scenario]]] = {}
         self.hazards:   Dict[str, Dict[int, Hazard]] = {}
         self.impacts:   Dict[str, Dict[int, ImpactAssessment]] = {}
         self.alerts:    Dict[str, Dict[int, Alert]] = {}
         self.tasks:     Dict[str, Dict[int, List[OperationalTask]]] = {}
+        self.rras:      Dict[str, Dict[int, Any]] = {}   # NEW — RRAS outputs
         self.outcomes:  Dict[str, Outcome] = {}
         self.sos:       Dict[str, Any] = {}
         self.ndrf:      Dict[str, Any] = {}
@@ -121,7 +126,7 @@ def generate_hazard(event_id: str, tick: int, state: CycloneState,
 
     return Hazard(
         event_id=event_id, tick=tick, scenario_type=scenario_type,
-        zones=zones, generated_at=_utc_now(),
+        zones=zones, generated_at=state.timestamp,
         source="PARAMETRIC_HOLLAND_SIMPLIFIED",
     )
 
@@ -195,8 +200,23 @@ def generate_impact(event_id: str, tick: int, state: CycloneState,
 # Forecast generator
 # ---------------------------------------------------------------------------
 
-def generate_forecast(event_id: str, tick: int, state: CycloneState) -> Forecast:
-    forecast_id = str(uuid4())
+def generate_forecast(event_id: str, tick: int, state: CycloneState,
+                      snap: Optional[Any] = None) -> Forecast:
+    forecast_id = f"FC-{event_id}-T{tick}"
+
+    # Handle T11 (dissipation / past forecast horizon)
+    if tick >= len(AMPHAN_TICKS) - 1:
+        return Forecast(
+            id=forecast_id,
+            event_id=event_id,
+            tick=tick,
+            init_time=state.timestamp,
+            members=[],
+            consensus_track=[],
+            model_disagreement_score=0.0,
+            source="SIMULATED",
+        )
+
     model_offsets = {"GFS": (0.0, 0.0, -5), "ECMWF": (-0.3, 0.2, 3),
                      "IMD": (0.2, -0.3, -8), "UKMET": (0.1, 0.1, 2)}
     members: List[ForecastMember] = []
@@ -204,18 +224,22 @@ def generate_forecast(event_id: str, tick: int, state: CycloneState) -> Forecast
     for model, (dlat, dlon, dwind) in model_offsets.items():
         track_pts = []
         for lead in [6, 12, 24, 48]:
-            idx = min(tick + lead // 12, 11)
-            ref = AMPHAN_TICKS[idx]
+            lead_tick = tick + lead // 12
+            if lead_tick >= len(AMPHAN_TICKS):
+                continue
+            ref = AMPHAN_TICKS[lead_tick]
             track_pts.append(ForecastTrackPoint(
                 lead_hours=lead,
                 lat=round(ref["lat"] + dlat, 2), lon=round(ref["lon"] + dlon, 2),
                 intensity_kt=max(25.0, ref["wind"] + dwind),
                 pressure_hpa=ref["pres"] - dwind * 0.3,
             ))
-        members.append(ForecastMember(
-            forecast_version_id=forecast_id, model_name=model,
-            init_time=state.timestamp, track_points=track_pts, source="SIMULATED",
-        ))
+        if track_pts:
+            members.append(ForecastMember(
+                id=f"MEM-{forecast_id}-{model}",
+                forecast_version_id=forecast_id, model_name=model,
+                init_time=state.timestamp, track_points=track_pts, source="SIMULATED",
+            ))
 
     consensus: List[ForecastTrackPoint] = []
     for lead in [6, 12, 24, 48]:
@@ -245,14 +269,29 @@ def generate_forecast(event_id: str, tick: int, state: CycloneState) -> Forecast
 # ---------------------------------------------------------------------------
 
 def generate_scenarios(event_id: str, tick: int, state: CycloneState,
-                       forecast: Forecast) -> List[Scenario]:
-    probs: Dict[ScenarioType, float] = {
-        ScenarioType.BASE: 0.65, ScenarioType.LEFT: 0.20, ScenarioType.RIGHT: 0.15,
-    }
-    if state.regime == Regime.RAPID_INTENSIFICATION:
-        probs[ScenarioType.RAPID_INTENSIFICATION] = 0.15
-        total = sum(probs.values())
-        probs = {k: v / total for k, v in probs.items()}
+                       forecast: Forecast,
+                       snap: Optional[Any] = None) -> List[Scenario]:
+    if snap and hasattr(snap, "scenarios") and hasattr(snap.scenarios, "scenarios") and snap.scenarios.scenarios:
+        raw_probs = [s.probability for s in snap.scenarios.scenarios]
+        total = sum(raw_probs)
+        norm_probs = [p / total for p in raw_probs] if total > 0 else [0.65, 0.20, 0.15]
+        probs = {
+            ScenarioType.BASE: norm_probs[0],
+            ScenarioType.LEFT: norm_probs[1] if len(norm_probs) > 1 else 0.20,
+            ScenarioType.RIGHT: norm_probs[2] if len(norm_probs) > 2 else 0.15,
+        }
+    else:
+        probs = {
+            ScenarioType.BASE: 0.65, ScenarioType.LEFT: 0.20, ScenarioType.RIGHT: 0.15,
+        }
+        if state.regime == Regime.RAPID_INTENSIFICATION:
+            probs[ScenarioType.RAPID_INTENSIFICATION] = 0.15
+            total = sum(probs.values())
+            probs = {k: v / total for k, v in probs.items()}
+
+    # Guarantee probabilities sum to 1.0
+    tot = sum(probs.values())
+    probs = {k: v / tot for k, v in probs.items()}
 
     lat_off = {"BASE": 0.0, "LEFT": -1.5, "RIGHT": 1.5, "RAPID_INTENSIFICATION": 0.0}
     wind_mult = {"BASE": 1.0, "LEFT": 0.9, "RIGHT": 1.1, "RAPID_INTENSIFICATION": 1.15}
@@ -261,20 +300,32 @@ def generate_scenarios(event_id: str, tick: int, state: CycloneState,
     for st, prob in probs.items():
         lo = lat_off.get(st.value, 0.0)
         wm = wind_mult.get(st.value, 1.0)
-        track = [ForecastTrackPoint(
-            lead_hours=p.lead_hours,
-            lat=round(p.lat, 2), lon=round(p.lon + lo * 0.5, 2),
-            intensity_kt=round(p.intensity_kt * wm, 1), pressure_hpa=round(p.pressure_hpa, 1),
-        ) for p in forecast.consensus_track]
-        peak = max((p.intensity_kt for p in track), default=state.intensity_kt)
-        peak_p = min((p.pressure_hpa for p in track), default=state.pressure_hpa)
+        if forecast.consensus_track:
+            track = [ForecastTrackPoint(
+                lead_hours=p.lead_hours,
+                lat=round(p.lat, 2), lon=round(p.lon + lo * 0.5, 2),
+                intensity_kt=round(p.intensity_kt * wm, 1), pressure_hpa=round(p.pressure_hpa, 1),
+            ) for p in forecast.consensus_track]
+            peak = max((p.intensity_kt for p in track), default=state.intensity_kt)
+            peak_p = min((p.pressure_hpa for p in track), default=state.pressure_hpa)
+        else:
+            track = [ForecastTrackPoint(
+                lead_hours=0,
+                lat=round(state.lat, 2),
+                lon=round(state.lon, 2),
+                intensity_kt=round(state.intensity_kt, 1),
+                pressure_hpa=round(state.pressure_hpa, 1),
+            )]
+            peak = state.intensity_kt
+            peak_p = state.pressure_hpa
+
         scenarios.append(Scenario(
             event_id=event_id, tick=tick, scenario_type=st,
-            probability=round(prob, 3), track=track,
+            probability=round(prob, 4), track=track,
             peak_intensity_kt=round(peak, 1), peak_pressure_hpa=round(peak_p, 1),
             landfall_lat=round(_LANDFALL.lat + lo * 0.3, 2),
             landfall_lon=round(_LANDFALL.lon + lo * 0.5, 2),
-            time_to_impact_hours=_EXPOSURE.get(tick, {}).get("tti"),
+            time_to_impact_hours=_EXPOSURE.get(tick, {}).get("tti", 0.0) if tick < 11 else 0.0,
             source="SIMULATED",
             rationale=f"{st.value}: {'consensus' if st == ScenarioType.BASE else 'lateral perturbation'}",
         ))
@@ -292,6 +343,7 @@ def generate_tasks(event_id: str, tick: int, state: CycloneState,
     def _task(title: str, desc: str, priority: TaskPriority,
                role: str, trigger: str, district: Optional[str] = None) -> OperationalTask:
         return OperationalTask(
+            id=f"TASK-{event_id}-T{tick}-{len(tasks) + 1}",
             event_id=event_id, tick=tick, title=title, description=desc,
             priority=priority, status=TaskStatus.ACTIVE, assigned_role=role,
             trigger=trigger, district=district, activated_at=state.timestamp,
@@ -332,8 +384,91 @@ def generate_tasks(event_id: str, tick: int, state: CycloneState,
 # Build CycloneState from seed tick dict
 # ---------------------------------------------------------------------------
 
-def _build_state(event_id: str, td: Dict[str, Any]) -> CycloneState:
+# ---------------------------------------------------------------------------
+# Build CycloneState from seed tick dict and Member 3 IntelligenceSnapshot
+# ---------------------------------------------------------------------------
+
+def _build_state(event_id: str, td: Dict[str, Any], snap: Optional[Any] = None) -> CycloneState:
     tick = td["tick"]
+    if snap is None:
+        try:
+            svc = IntelligenceService()
+            snap = svc.get_snapshot(event_id, tick)
+        except Exception:
+            snap = None
+
+    if snap is not None:
+        ts = snap.timestamp
+        lat = snap.center.lat
+        lon = snap.center.lon
+        wind = float(snap.intensity.value_kt)
+        pres = float(snap.intensity.min_pressure_hpa)
+        uncert = float(round((snap.intensity.upper_bound_kt - snap.intensity.lower_bound_kt) / 2.0, 1))
+
+        env = Environment(
+            sst_c=float(snap.environment.sst_c),
+            shear_kt=float(snap.environment.wind_shear_kt),
+            humidity_pct=float(snap.environment.mid_level_humidity_pct),
+            divergence=float(snap.environment.upper_divergence),
+        )
+        struct = Structure(
+            eye_diameter_km=float(snap.structure.rmw_km) if snap.structure.eye_probability > 0.4 else None,
+            eyewall_symmetry=float(snap.structure.symmetry),
+            convective_burst=(snap.structure.convective_organization > 0.7),
+        )
+
+        if snap.change_point and snap.change_point.detected:
+            prev_r_val = snap.change_point.previous_regime.value if hasattr(snap.change_point.previous_regime, "value") else str(snap.change_point.previous_regime) if snap.change_point.previous_regime else None
+            new_r_val = snap.change_point.new_regime.value if hasattr(snap.change_point.new_regime, "value") else str(snap.change_point.new_regime) if snap.change_point.new_regime else None
+            prev_r = Regime(prev_r_val) if prev_r_val else None
+            new_r = Regime(new_r_val) if new_r_val else None
+            cpd = ChangePoint(
+                detected=True,
+                timestamp=ts,
+                from_regime=prev_r,
+                to_regime=new_r,
+                confidence=float(snap.change_point.confidence or 0.88),
+                description=f"Change point detected at T{tick}: {prev_r.value if prev_r else ''} -> {new_r.value if new_r else ''}",
+            )
+        else:
+            cpd = ChangePoint(detected=False, timestamp=ts)
+
+        regime_val = snap.regime.dominant_regime.value if hasattr(snap.regime.dominant_regime, "value") else str(snap.regime.dominant_regime)
+        try:
+            regime = Regime(regime_val)
+        except ValueError:
+            regime = Regime.DEVELOPING
+
+        conf = float(round(1.0 - snap.uncertainty.overall_uncertainty, 3))
+        is_good = snap.uncertainty.data_quality_flag == "GOOD"
+        obs_quality = ObservationQuality(
+            score=conf,
+            sources=["IBTrACS", "INSAT-3DR"] if is_good else ["IBTrACS"],
+            freshness=DataFreshness.FRESH if is_good else DataFreshness.AGING,
+        )
+
+        return CycloneState(
+            id=f"STATE-{event_id}-T{tick}",
+            event_id=event_id,
+            tick=tick,
+            timestamp=ts,
+            lat=lat,
+            lon=lon,
+            intensity_kt=wind,
+            pressure_hpa=pres,
+            intensity_uncertainty_kt=uncert,
+            movement_speed_kmh=float(td.get("spd", 12.0 + tick * 1.5)),
+            movement_heading_deg=float(td.get("hdg", 335.0 + tick * 2.5)),
+            structure=struct,
+            regime=regime,
+            regime_probabilities=snap.regime.probabilities,
+            environment=env,
+            confidence=conf,
+            observation_quality=obs_quality,
+            change_point=cpd,
+        )
+
+    # Fallback to td if snapshot not available
     ts = _utc(td["ts"])
     env = Environment(sst_c=td.get("sst"), shear_kt=td.get("shear"), humidity_pct=td.get("humidity"))
     struct = Structure(eye_diameter_km=td.get("eye_km"), eyewall_symmetry=td.get("symm"),
@@ -352,6 +487,7 @@ def _build_state(event_id: str, td: Dict[str, Any]) -> CycloneState:
                          f"ΔP={td['pres']-prev['pres']:+.0f}hPa"),
         )
     return CycloneState(
+        id=f"STATE-{event_id}-T{tick}",
         event_id=event_id, tick=tick, timestamp=ts,
         lat=td["lat"], lon=td["lon"],
         intensity_kt=float(td["wind"]), pressure_hpa=float(td["pres"]),
@@ -368,26 +504,28 @@ def _build_state(event_id: str, td: Dict[str, Any]) -> CycloneState:
 
 
 # ---------------------------------------------------------------------------
-# Seed Amphan  (idempotent)
+# Seed Amphan  (idempotent, seeds DEMO-001 and CYC-2020-AMPHAN)
 # ---------------------------------------------------------------------------
 
-def seed_amphan() -> CycloneEvent:
-    eid = AMPHAN_EVENT_ID
+def _seed_single_event(eid: str) -> CycloneEvent:
     if eid in store.events:
         return store.events[eid]
 
-    for d in [store.states, store.forecasts, store.scenarios,
-              store.hazards, store.impacts, store.alerts, store.tasks]:
+    for d in [store.states, store.snapshots, store.forecasts, store.scenarios,
+              store.hazards, store.impacts, store.alerts, store.tasks, store.rras]:
         d[eid] = {}
 
     tl.init_event(eid)
+    svc = IntelligenceService()
+    t0_snap = svc.get_snapshot(eid, 0)
+    store.snapshots[eid][0] = t0_snap
     t0 = AMPHAN_TICKS[0]
-    t0_state = _build_state(eid, t0)
+    t0_state = _build_state(eid, t0, t0_snap)
     store.states[eid][0] = t0_state
 
     event = CycloneEvent(
-        id=eid, name="Amphan", status=EventStatus.ACTIVE, basin="BOB",
-        start_time=_utc(t0["ts"]), current_time=_utc(t0["ts"]),
+        id=eid, name="Amphan", status=EventStatus.ACTIVE, basin=Basin.BOB,
+        start_time=t0_state.timestamp, current_time=t0_state.timestamp,
         current_tick=0, max_tick=len(AMPHAN_TICKS) - 1,
         demo_mode=True, current_state_id=t0_state.id,
         current_alert=AlertLevel.GREEN,
@@ -398,11 +536,13 @@ def seed_amphan() -> CycloneEvent:
     prev_alert_level: Optional[AlertLevel] = None
     for td in AMPHAN_TICKS:
         t = td["tick"]
-        st = store.states[eid].get(t) or _build_state(eid, td)
+        snap = svc.get_snapshot(eid, t)
+        store.snapshots[eid][t] = snap
+        st = store.states[eid].get(t) or _build_state(eid, td, snap)
         store.states[eid][t] = st
-        fc = generate_forecast(eid, t, st)
+        fc = generate_forecast(eid, t, st, snap)
         store.forecasts[eid][t] = fc
-        sc = generate_scenarios(eid, t, st, fc)
+        sc = generate_scenarios(eid, t, st, fc, snap)
         store.scenarios[eid][t] = sc
         hz = generate_hazard(eid, t, st)
         store.hazards[eid][t] = hz
@@ -412,6 +552,8 @@ def seed_amphan() -> CycloneEvent:
         store.alerts[eid][t] = alt
         prev_alert_level = alt.level
         store.tasks[eid][t] = generate_tasks(eid, t, st, alt, imp)
+        rras_out = rras_engine.build_rras_output(eid, t, imp, hz, alt)
+        store.rras[eid][t] = rras_out
 
     # Seed outcome
     o = AMPHAN_OUTCOME
@@ -445,122 +587,259 @@ def seed_amphan() -> CycloneEvent:
                 ))
 
     # Seed timeline (tick 0)
-    tl.log_observation(eid, 0, _utc(t0["ts"]),
+    tl.log_observation(eid, 0, t0_state.timestamp,
                        "Initial observation received — Depression forming in Bay of Bengal")
-    tl.log_state_update(eid, 0, _utc(t0["ts"]),
-                        t0["wind"], t0["pres"], t0["lat"], t0["lon"])
+    tl.log_state_update(eid, 0, t0_state.timestamp,
+                        t0_state.intensity_kt, t0_state.pressure_hpa,
+                        t0_state.lat, t0_state.lon)
 
     store.events[eid] = event
     return event
+
+
+def seed_amphan(event_id: Optional[str] = None) -> CycloneEvent:
+    _seed_single_event("DEMO-001")
+    _seed_single_event(AMPHAN_EVENT_ID)
+    if event_id:
+        _seed_single_event(event_id)
+        return store.events[event_id]
+    return store.events["DEMO-001"]
+
+
+# ---------------------------------------------------------------------------
+# Canonical Event Response builder
+# ---------------------------------------------------------------------------
+
+def get_canonical_state(event_id: str, tick: Optional[int] = None) -> Dict[str, Any]:
+    event = store.events.get(event_id)
+    if not event:
+        if event_id in ("DEMO-001", AMPHAN_EVENT_ID):
+            seed_amphan(event_id)
+            event = store.events.get(event_id)
+        if not event:
+            raise ValueError(f"Event {event_id} not found")
+
+    t = tick if tick is not None else event.current_tick
+
+    # 1. Intelligence snapshot from Member 3's service
+    svc = IntelligenceService()
+    snapshot = svc.get_snapshot(event_id, t)
+    store.snapshots.setdefault(event_id, {})[t] = snapshot
+
+    state = store.states.get(event_id, {}).get(t)
+    forecast = store.forecasts.get(event_id, {}).get(t)
+    scenarios = store.scenarios.get(event_id, {}).get(t, [])
+    hazard = store.hazards.get(event_id, {}).get(t)
+    impact = store.impacts.get(event_id, {}).get(t)
+    alert = store.alerts.get(event_id, {}).get(t)
+    tasks = store.tasks.get(event_id, {}).get(t, [])
+    rras = store.rras.get(event_id, {}).get(t)
+    timeline_entries = tl.get_timeline(event_id, 0)
+
+    # Build RRAS on-demand if not pre-computed (e.g. goto() jump)
+    if rras is None and impact and hazard:
+        rras = rras_engine.build_rras_output(event_id, t, impact, hazard, alert)
+        store.rras.setdefault(event_id, {})[t] = rras
+
+    return {
+        "event": event.model_dump(mode="json") if hasattr(event, "model_dump") else event,
+        "tick": t,
+        "state": state.model_dump(mode="json") if state and hasattr(state, "model_dump") else (state or {}),
+        "intelligence": snapshot.model_dump(mode="json") if snapshot and hasattr(snapshot, "model_dump") else (snapshot or {}),
+        "forecasts": forecast.model_dump(mode="json") if forecast and hasattr(forecast, "model_dump") else (forecast or {}),
+        "scenarios": [s.model_dump(mode="json") if hasattr(s, "model_dump") else s for s in scenarios],
+        "hazards": hazard.model_dump(mode="json") if hazard and hasattr(hazard, "model_dump") else (hazard or {}),
+        "hazard": hazard.model_dump(mode="json") if hazard and hasattr(hazard, "model_dump") else (hazard or {}),
+        "impact": impact.model_dump(mode="json") if impact and hasattr(impact, "model_dump") else (impact or {}),
+        "alert": alert.model_dump(mode="json") if alert and hasattr(alert, "model_dump") else (alert or {}),
+        "operations": [t_.model_dump(mode="json") if hasattr(t_, "model_dump") else t_ for t_ in tasks],
+        "rras": rras or {},
+        "timeline": [e.model_dump(mode="json") if hasattr(e, "model_dump") else e for e in timeline_entries],
+    }
 
 
 # ---------------------------------------------------------------------------
 # advance()  — THE ONLY function that mutates current_tick
 # ---------------------------------------------------------------------------
 
-def advance(event_id: str, steps: int = 1) -> CycloneEvent:
+def advance(event_id: str, steps: int = 1) -> Dict[str, Any]:
     event = store.events.get(event_id)
     if not event:
-        raise ValueError(f"Event {event_id} not found")
-
-    new_tick = min(event.current_tick + steps, event.max_tick)
-    if new_tick == event.current_tick:
-        return event  # already at end, safe no-op
+        if event_id in ("DEMO-001", AMPHAN_EVENT_ID):
+            seed_amphan(event_id)
+            event = store.events.get(event_id)
+        if not event:
+            raise ValueError(f"Event {event_id} not found")
 
     old_tick = event.current_tick
+    new_tick = min(event.current_tick + steps, event.max_tick)
+
+    # 1. Advance the single clock
     event.current_tick = new_tick
 
-    td = AMPHAN_TICKS[new_tick]
-    event.current_time = _utc(td["ts"])
-    state = store.states[event_id][new_tick]
-    event.current_state_id = state.id
+    # 2. Obtain IntelligenceSnapshot for that tick using Member 3's service
+    try:
+        svc = IntelligenceService()
+        snapshot = svc.get_snapshot(event_id, new_tick)
+        store.snapshots.setdefault(event_id, {})[new_tick] = snapshot
+    except Exception as e:
+        raise RuntimeError(f"[Pipeline Failure: Intelligence Layer] Failed to obtain intelligence snapshot at tick {new_tick}: {e}") from e
 
-    alert = store.alerts[event_id][new_tick]
-    prev_alert = store.alerts[event_id].get(old_tick)
-    event.current_alert = alert.level
+    # 3. Synchronize canonical state
+    try:
+        td = AMPHAN_TICKS[new_tick]
+        state = _build_state(event_id, td, snapshot)
+        store.states.setdefault(event_id, {})[new_tick] = state
+        event.current_time = snapshot.timestamp
+        event.current_state_id = state.id
+    except Exception as e:
+        raise RuntimeError(f"[Pipeline Failure: State Layer] Failed to build cyclone state at tick {new_tick}: {e}") from e
 
-    # --- Timeline entries (delegated entirely to timeline module) ---
-    tl.log_replay_advance(event_id, old_tick, new_tick, state.timestamp)
-    tl.log_state_update(event_id, new_tick, state.timestamp,
-                        state.intensity_kt, state.pressure_hpa,
-                        state.lat, state.lon)
+    # 4. Obtain forecast/scenario data for that tick
+    try:
+        forecast = generate_forecast(event_id, new_tick, state, snapshot)
+        store.forecasts.setdefault(event_id, {})[new_tick] = forecast
+    except Exception as e:
+        raise RuntimeError(f"[Pipeline Failure: Forecast Layer] Failed to generate forecast at tick {new_tick}: {e}") from e
 
-    if state.change_point and state.change_point.detected:
-        tl.log_change_point(
-            event_id, new_tick, state.timestamp,
-            state.change_point.description,
-            state.change_point.from_regime.value if state.change_point.from_regime else None,
-            state.change_point.to_regime.value if state.change_point.to_regime else None,
-        )
+    try:
+        scenarios = generate_scenarios(event_id, new_tick, state, forecast, snapshot)
+        store.scenarios.setdefault(event_id, {})[new_tick] = scenarios
+    except Exception as e:
+        raise RuntimeError(f"[Pipeline Failure: Scenario Layer] Failed to generate scenarios at tick {new_tick}: {e}") from e
 
-    if new_tick > 0:
-        prev_state = store.states[event_id].get(new_tick - 1)
-        if prev_state and prev_state.regime != state.regime:
-            tl.log_regime_change(event_id, new_tick, state.timestamp,
-                                 prev_state.regime.value, state.regime.value)
+    # 5. Generate/update hazard and impact
+    try:
+        hazard = generate_hazard(event_id, new_tick, state)
+        store.hazards.setdefault(event_id, {})[new_tick] = hazard
+    except Exception as e:
+        raise RuntimeError(f"[Pipeline Failure: Hazard Layer] Failed to generate hazard footprint at tick {new_tick}: {e}") from e
 
-    if prev_alert and alert_engine.has_escalated(alert):
-        tl.log_alert_change(event_id, new_tick, state.timestamp,
-                            prev_alert.level.value, alert.level.value)
+    try:
+        impact = generate_impact(event_id, new_tick, state)
+        store.impacts.setdefault(event_id, {})[new_tick] = impact
+    except Exception as e:
+        raise RuntimeError(f"[Pipeline Failure: Impact Layer] Failed to assess impact at tick {new_tick}: {e}") from e
 
-    impact = store.impacts[event_id][new_tick]
-    tl.log_impact_update(event_id, new_tick, state.timestamp,
-                         impact.total_exposed_population, impact.time_to_impact_hours)
+    # 6. Evaluate alert state
+    try:
+        prev_alert = store.alerts.get(event_id, {}).get(old_tick)
+        alert = alert_engine.build_alert(event_id, new_tick, impact, prev_alert.level if prev_alert else None)
+        store.alerts.setdefault(event_id, {})[new_tick] = alert
+        event.current_alert = alert.level
+    except Exception as e:
+        raise RuntimeError(f"[Pipeline Failure: Alert Layer] Failed to evaluate alert state at tick {new_tick}: {e}") from e
 
-    for task in store.tasks[event_id][new_tick]:
-        tl.log_task(event_id, new_tick, state.timestamp,
-                    task.id, task.title, task.priority.value)
+    # 7. Invoke operational response provider
+    try:
+        if providers.operations_provider:
+            tasks = providers.operations_provider.generate_tasks(event_id, new_tick, state, alert, impact)
+        else:
+            tasks = generate_tasks(event_id, new_tick, state, alert, impact)
+        store.tasks.setdefault(event_id, {})[new_tick] = tasks
+    except Exception as e:
+        raise RuntimeError(f"[Pipeline Failure: Operations Layer] Failed to generate operational tasks at tick {new_tick}: {e}") from e
 
-    tl.log_forecast_update(event_id, new_tick, state.timestamp,
-                           store.forecasts[event_id][new_tick].model_disagreement_score)
+    # 7b. RRAS — road status + resource allocation
+    try:
+        rras_out = rras_engine.build_rras_output(event_id, new_tick, impact, hazard, alert)
+        store.rras.setdefault(event_id, {})[new_tick] = rras_out
+    except Exception as e:
+        raise RuntimeError(f"[Pipeline Failure: RRAS Layer] Failed to generate RRAS allocation at tick {new_tick}: {e}") from e
 
-    return event
+    # 8. Append timeline events (if tick actually advanced)
+    try:
+        if new_tick > old_tick:
+            tl.log_replay_advance(event_id, old_tick, new_tick, state.timestamp)
+            tl.log_state_update(event_id, new_tick, state.timestamp,
+                                state.intensity_kt, state.pressure_hpa,
+                                state.lat, state.lon)
+
+            if state.change_point and state.change_point.detected:
+                tl.log_change_point(
+                    event_id, new_tick, state.timestamp,
+                    state.change_point.description,
+                    state.change_point.from_regime.value if state.change_point.from_regime else None,
+                    state.change_point.to_regime.value if state.change_point.to_regime else None,
+                )
+
+            prev_state = store.states.get(event_id, {}).get(old_tick)
+            if prev_state and prev_state.regime != state.regime:
+                tl.log_regime_change(event_id, new_tick, state.timestamp,
+                                     prev_state.regime.value, state.regime.value)
+
+            if prev_alert and alert_engine.has_escalated(alert):
+                tl.log_alert_change(event_id, new_tick, state.timestamp,
+                                    prev_alert.level.value, alert.level.value)
+
+            tl.log_impact_update(event_id, new_tick, state.timestamp,
+                                 impact.total_exposed_population, impact.time_to_impact_hours)
+
+            for task in tasks:
+                tl.log_task(event_id, new_tick, state.timestamp,
+                            task.id, task.title, task.priority.value)
+
+            tl.log_forecast_update(event_id, new_tick, state.timestamp,
+                                   forecast.model_disagreement_score)
+    except Exception as e:
+        raise RuntimeError(f"[Pipeline Failure: Timeline Layer] Failed to append timeline entry at tick {new_tick}: {e}") from e
+
+    # 9. Return the COMPLETE canonical event state
+    return get_canonical_state(event_id, new_tick)
 
 
 # ---------------------------------------------------------------------------
 # reset()
 # ---------------------------------------------------------------------------
 
-def reset(event_id: str) -> CycloneEvent:
+def reset(event_id: str) -> Dict[str, Any]:
     event = store.events.get(event_id)
     if not event:
-        raise ValueError(f"Event {event_id} not found")
+        if event_id in ("DEMO-001", AMPHAN_EVENT_ID):
+            seed_amphan(event_id)
+            event = store.events.get(event_id)
+        if not event:
+            raise ValueError(f"Event {event_id} not found")
 
     event.current_tick = 0
-    td = AMPHAN_TICKS[0]
-    event.current_time = _utc(td["ts"])
     state = store.states[event_id][0]
+    event.current_time = state.timestamp
     event.current_state_id = state.id
     event.current_alert = AlertLevel.GREEN
 
     tl.clear_event(event_id)
-    tl.log_replay_reset(event_id, _utc(td["ts"]))
-    return event
+    tl.log_replay_reset(event_id, state.timestamp)
+    return get_canonical_state(event_id, 0)
 
 
 # ---------------------------------------------------------------------------
 # goto(tick)  — jump to any tick directly
 # ---------------------------------------------------------------------------
 
-def goto(event_id: str, tick: int) -> CycloneEvent:
+def goto(event_id: str, tick: int) -> Dict[str, Any]:
     event = store.events.get(event_id)
     if not event:
-        raise ValueError(f"Event {event_id} not found")
+        if event_id in ("DEMO-001", AMPHAN_EVENT_ID):
+            seed_amphan(event_id)
+            event = store.events.get(event_id)
+        if not event:
+            raise ValueError(f"Event {event_id} not found")
     reset(event_id)
     if tick > 0:
-        advance(event_id, tick)
-    return store.events[event_id]
+        return advance(event_id, tick)
+    return get_canonical_state(event_id, 0)
 
 
 # ---------------------------------------------------------------------------
 # Full reset + re-seed (demo safety net)
 # ---------------------------------------------------------------------------
 
-def full_reset(event_id: str) -> CycloneEvent:
-    for d in [store.events, store.states, store.forecasts, store.scenarios,
-              store.hazards, store.impacts, store.alerts, store.tasks, store.outcomes]:
+def full_reset(event_id: str) -> Dict[str, Any]:
+    for d in [store.events, store.states, store.snapshots, store.forecasts, store.scenarios,
+              store.hazards, store.impacts, store.alerts, store.tasks, store.rras, store.outcomes]:
         d.pop(event_id, None)
     tl._timelines.pop(event_id, None)
     tl._audit.pop(event_id, None)
-    return seed_amphan()
+    seed_amphan(event_id)
+    return get_canonical_state(event_id, 0)
 

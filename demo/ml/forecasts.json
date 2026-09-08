@@ -1,0 +1,1537 @@
+[
+  {
+    "event_id": "DEMO-001",
+    "tick": 0,
+    "timestamp": "2020-05-16T00:00:00Z",
+    "members": [
+      {
+        "model_name": "ECMWF_HRES",
+        "init_time": "2020-05-16T00:00:00Z",
+        "track": [
+          {
+            "lat": 8.5,
+            "lon": 85.2,
+            "lead_time_h": 12,
+            "wind_kt": 35.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 9.3,
+            "lon": 85.55,
+            "lead_time_h": 24,
+            "wind_kt": 45.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 10.2,
+            "lon": 85.9,
+            "lead_time_h": 36,
+            "wind_kt": 55.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 11.5,
+            "lon": 86.15,
+            "lead_time_h": 48,
+            "wind_kt": 75.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 35.0,
+        "confidence": 0.85
+      },
+      {
+        "model_name": "GFS",
+        "init_time": "2020-05-16T00:00:00Z",
+        "track": [
+          {
+            "lat": 8.5,
+            "lon": 85.2,
+            "lead_time_h": 12,
+            "wind_kt": 30.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 9.35,
+            "lon": 85.7,
+            "lead_time_h": 24,
+            "wind_kt": 40.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 10.3,
+            "lon": 86.3,
+            "lead_time_h": 36,
+            "wind_kt": 50.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 11.7,
+            "lon": 86.8,
+            "lead_time_h": 48,
+            "wind_kt": 70.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 30.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "UKMET",
+        "init_time": "2020-05-16T00:00:00Z",
+        "track": [
+          {
+            "lat": 8.5,
+            "lon": 85.2,
+            "lead_time_h": 12,
+            "wind_kt": 27.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 9.1,
+            "lon": 85.35,
+            "lead_time_h": 24,
+            "wind_kt": 37.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 9.8,
+            "lon": 85.5,
+            "lead_time_h": 36,
+            "wind_kt": 47.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 10.8,
+            "lon": 85.5,
+            "lead_time_h": 48,
+            "wind_kt": 67.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 27.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "HWRF",
+        "init_time": "2020-05-16T00:00:00Z",
+        "track": [
+          {
+            "lat": 8.5,
+            "lon": 85.2,
+            "lead_time_h": 12,
+            "wind_kt": 45.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 9.25,
+            "lon": 85.6,
+            "lead_time_h": 24,
+            "wind_kt": 55.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 10.1,
+            "lon": 85.95,
+            "lead_time_h": 36,
+            "wind_kt": 65.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 11.35,
+            "lon": 86.2,
+            "lead_time_h": 48,
+            "wind_kt": 85.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 45.0,
+        "confidence": 0.75
+      }
+    ],
+    "disagreement_score": 0.215,
+    "source": "MOCK_FORECAST_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 1,
+    "timestamp": "2020-05-16T12:00:00Z",
+    "members": [
+      {
+        "model_name": "ECMWF_HRES",
+        "init_time": "2020-05-16T12:00:00Z",
+        "track": [
+          {
+            "lat": 9.2,
+            "lon": 85.5,
+            "lead_time_h": 12,
+            "wind_kt": 45.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 10.1,
+            "lon": 85.85,
+            "lead_time_h": 24,
+            "wind_kt": 55.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 11.4,
+            "lon": 86.1,
+            "lead_time_h": 36,
+            "wind_kt": 75.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 13.3,
+            "lon": 86.45,
+            "lead_time_h": 48,
+            "wind_kt": 100.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 45.0,
+        "confidence": 0.85
+      },
+      {
+        "model_name": "GFS",
+        "init_time": "2020-05-16T12:00:00Z",
+        "track": [
+          {
+            "lat": 9.2,
+            "lon": 85.5,
+            "lead_time_h": 12,
+            "wind_kt": 40.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 10.15,
+            "lon": 86.0,
+            "lead_time_h": 24,
+            "wind_kt": 50.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 11.5,
+            "lon": 86.5,
+            "lead_time_h": 36,
+            "wind_kt": 70.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 13.5,
+            "lon": 87.1,
+            "lead_time_h": 48,
+            "wind_kt": 95.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 40.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "UKMET",
+        "init_time": "2020-05-16T12:00:00Z",
+        "track": [
+          {
+            "lat": 9.2,
+            "lon": 85.5,
+            "lead_time_h": 12,
+            "wind_kt": 37.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 9.9,
+            "lon": 85.65,
+            "lead_time_h": 24,
+            "wind_kt": 47.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 11.0,
+            "lon": 85.7,
+            "lead_time_h": 36,
+            "wind_kt": 67.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 12.6,
+            "lon": 85.8,
+            "lead_time_h": 48,
+            "wind_kt": 92.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 37.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "HWRF",
+        "init_time": "2020-05-16T12:00:00Z",
+        "track": [
+          {
+            "lat": 9.2,
+            "lon": 85.5,
+            "lead_time_h": 12,
+            "wind_kt": 55.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 10.05,
+            "lon": 85.9,
+            "lead_time_h": 24,
+            "wind_kt": 65.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 11.3,
+            "lon": 86.15,
+            "lead_time_h": 36,
+            "wind_kt": 85.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 13.15,
+            "lon": 86.5,
+            "lead_time_h": 48,
+            "wind_kt": 110.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 55.0,
+        "confidence": 0.75
+      }
+    ],
+    "disagreement_score": 0.215,
+    "source": "MOCK_FORECAST_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 2,
+    "timestamp": "2020-05-17T00:00:00Z",
+    "members": [
+      {
+        "model_name": "ECMWF_HRES",
+        "init_time": "2020-05-17T00:00:00Z",
+        "track": [
+          {
+            "lat": 10.0,
+            "lon": 85.8,
+            "lead_time_h": 12,
+            "wind_kt": 55.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 11.3,
+            "lon": 86.05,
+            "lead_time_h": 24,
+            "wind_kt": 75.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 13.2,
+            "lon": 86.4,
+            "lead_time_h": 36,
+            "wind_kt": 100.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 15.3,
+            "lon": 86.95,
+            "lead_time_h": 48,
+            "wind_kt": 125.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 55.0,
+        "confidence": 0.85
+      },
+      {
+        "model_name": "GFS",
+        "init_time": "2020-05-17T00:00:00Z",
+        "track": [
+          {
+            "lat": 10.0,
+            "lon": 85.8,
+            "lead_time_h": 12,
+            "wind_kt": 50.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 11.35,
+            "lon": 86.2,
+            "lead_time_h": 24,
+            "wind_kt": 70.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 13.3,
+            "lon": 86.8,
+            "lead_time_h": 36,
+            "wind_kt": 95.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 15.5,
+            "lon": 87.6,
+            "lead_time_h": 48,
+            "wind_kt": 120.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 50.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "UKMET",
+        "init_time": "2020-05-17T00:00:00Z",
+        "track": [
+          {
+            "lat": 10.0,
+            "lon": 85.8,
+            "lead_time_h": 12,
+            "wind_kt": 47.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 11.1,
+            "lon": 85.85,
+            "lead_time_h": 24,
+            "wind_kt": 67.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 12.8,
+            "lon": 86.0,
+            "lead_time_h": 36,
+            "wind_kt": 92.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 14.6,
+            "lon": 86.3,
+            "lead_time_h": 48,
+            "wind_kt": 117.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 47.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "HWRF",
+        "init_time": "2020-05-17T00:00:00Z",
+        "track": [
+          {
+            "lat": 10.0,
+            "lon": 85.8,
+            "lead_time_h": 12,
+            "wind_kt": 65.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 11.25,
+            "lon": 86.1,
+            "lead_time_h": 24,
+            "wind_kt": 85.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 13.1,
+            "lon": 86.45,
+            "lead_time_h": 36,
+            "wind_kt": 110.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 15.15,
+            "lon": 87.0,
+            "lead_time_h": 48,
+            "wind_kt": 135.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 65.0,
+        "confidence": 0.75
+      }
+    ],
+    "disagreement_score": 0.215,
+    "source": "MOCK_FORECAST_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 3,
+    "timestamp": "2020-05-17T12:00:00Z",
+    "members": [
+      {
+        "model_name": "ECMWF_HRES",
+        "init_time": "2020-05-17T12:00:00Z",
+        "track": [
+          {
+            "lat": 11.2,
+            "lon": 86.0,
+            "lead_time_h": 12,
+            "wind_kt": 75.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 13.1,
+            "lon": 86.35,
+            "lead_time_h": 24,
+            "wind_kt": 100.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 15.2,
+            "lon": 86.9,
+            "lead_time_h": 36,
+            "wind_kt": 125.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 17.8,
+            "lon": 87.35,
+            "lead_time_h": 48,
+            "wind_kt": 140.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 75.0,
+        "confidence": 0.85
+      },
+      {
+        "model_name": "GFS",
+        "init_time": "2020-05-17T12:00:00Z",
+        "track": [
+          {
+            "lat": 11.2,
+            "lon": 86.0,
+            "lead_time_h": 12,
+            "wind_kt": 70.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 13.15,
+            "lon": 86.5,
+            "lead_time_h": 24,
+            "wind_kt": 95.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 15.3,
+            "lon": 87.3,
+            "lead_time_h": 36,
+            "wind_kt": 120.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 18.0,
+            "lon": 88.0,
+            "lead_time_h": 48,
+            "wind_kt": 135.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 70.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "UKMET",
+        "init_time": "2020-05-17T12:00:00Z",
+        "track": [
+          {
+            "lat": 11.2,
+            "lon": 86.0,
+            "lead_time_h": 12,
+            "wind_kt": 67.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 12.9,
+            "lon": 86.15,
+            "lead_time_h": 24,
+            "wind_kt": 92.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 14.8,
+            "lon": 86.5,
+            "lead_time_h": 36,
+            "wind_kt": 117.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 17.1,
+            "lon": 86.7,
+            "lead_time_h": 48,
+            "wind_kt": 132.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 67.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "HWRF",
+        "init_time": "2020-05-17T12:00:00Z",
+        "track": [
+          {
+            "lat": 11.2,
+            "lon": 86.0,
+            "lead_time_h": 12,
+            "wind_kt": 85.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 13.05,
+            "lon": 86.4,
+            "lead_time_h": 24,
+            "wind_kt": 110.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 15.1,
+            "lon": 86.95,
+            "lead_time_h": 36,
+            "wind_kt": 135.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 17.65,
+            "lon": 87.4,
+            "lead_time_h": 48,
+            "wind_kt": 150.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 85.0,
+        "confidence": 0.75
+      }
+    ],
+    "disagreement_score": 0.215,
+    "source": "MOCK_FORECAST_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 4,
+    "timestamp": "2020-05-18T00:00:00Z",
+    "members": [
+      {
+        "model_name": "ECMWF_HRES",
+        "init_time": "2020-05-18T00:00:00Z",
+        "track": [
+          {
+            "lat": 13.0,
+            "lon": 86.3,
+            "lead_time_h": 12,
+            "wind_kt": 100.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 15.1,
+            "lon": 86.85,
+            "lead_time_h": 24,
+            "wind_kt": 125.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 17.7,
+            "lon": 87.3,
+            "lead_time_h": 36,
+            "wind_kt": 140.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 19.8,
+            "lon": 87.95,
+            "lead_time_h": 48,
+            "wind_kt": 135.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 100.0,
+        "confidence": 0.85
+      },
+      {
+        "model_name": "GFS",
+        "init_time": "2020-05-18T00:00:00Z",
+        "track": [
+          {
+            "lat": 13.0,
+            "lon": 86.3,
+            "lead_time_h": 12,
+            "wind_kt": 95.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 15.15,
+            "lon": 87.0,
+            "lead_time_h": 24,
+            "wind_kt": 120.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 17.8,
+            "lon": 87.7,
+            "lead_time_h": 36,
+            "wind_kt": 135.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 20.0,
+            "lon": 88.6,
+            "lead_time_h": 48,
+            "wind_kt": 130.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 95.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "UKMET",
+        "init_time": "2020-05-18T00:00:00Z",
+        "track": [
+          {
+            "lat": 13.0,
+            "lon": 86.3,
+            "lead_time_h": 12,
+            "wind_kt": 92.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 14.9,
+            "lon": 86.65,
+            "lead_time_h": 24,
+            "wind_kt": 117.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 17.3,
+            "lon": 86.9,
+            "lead_time_h": 36,
+            "wind_kt": 132.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 19.1,
+            "lon": 87.3,
+            "lead_time_h": 48,
+            "wind_kt": 127.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 92.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "HWRF",
+        "init_time": "2020-05-18T00:00:00Z",
+        "track": [
+          {
+            "lat": 13.0,
+            "lon": 86.3,
+            "lead_time_h": 12,
+            "wind_kt": 110.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 15.05,
+            "lon": 86.9,
+            "lead_time_h": 24,
+            "wind_kt": 135.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 17.6,
+            "lon": 87.35,
+            "lead_time_h": 36,
+            "wind_kt": 150.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 19.65,
+            "lon": 88.0,
+            "lead_time_h": 48,
+            "wind_kt": 145.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 110.0,
+        "confidence": 0.75
+      }
+    ],
+    "disagreement_score": 0.215,
+    "source": "MOCK_FORECAST_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 5,
+    "timestamp": "2020-05-18T12:00:00Z",
+    "members": [
+      {
+        "model_name": "ECMWF_HRES",
+        "init_time": "2020-05-18T12:00:00Z",
+        "track": [
+          {
+            "lat": 15.0,
+            "lon": 86.8,
+            "lead_time_h": 12,
+            "wind_kt": 125.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 17.6,
+            "lon": 87.25,
+            "lead_time_h": 24,
+            "wind_kt": 140.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 19.7,
+            "lon": 87.9,
+            "lead_time_h": 36,
+            "wind_kt": 135.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 20.8,
+            "lon": 88.15,
+            "lead_time_h": 48,
+            "wind_kt": 130.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 125.0,
+        "confidence": 0.85
+      },
+      {
+        "model_name": "GFS",
+        "init_time": "2020-05-18T12:00:00Z",
+        "track": [
+          {
+            "lat": 15.0,
+            "lon": 86.8,
+            "lead_time_h": 12,
+            "wind_kt": 120.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 17.65,
+            "lon": 87.4,
+            "lead_time_h": 24,
+            "wind_kt": 135.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 19.8,
+            "lon": 88.3,
+            "lead_time_h": 36,
+            "wind_kt": 130.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 21.0,
+            "lon": 88.8,
+            "lead_time_h": 48,
+            "wind_kt": 125.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 120.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "UKMET",
+        "init_time": "2020-05-18T12:00:00Z",
+        "track": [
+          {
+            "lat": 15.0,
+            "lon": 86.8,
+            "lead_time_h": 12,
+            "wind_kt": 117.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 17.4,
+            "lon": 87.05,
+            "lead_time_h": 24,
+            "wind_kt": 132.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 19.3,
+            "lon": 87.5,
+            "lead_time_h": 36,
+            "wind_kt": 127.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 20.1,
+            "lon": 87.5,
+            "lead_time_h": 48,
+            "wind_kt": 122.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 117.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "HWRF",
+        "init_time": "2020-05-18T12:00:00Z",
+        "track": [
+          {
+            "lat": 15.0,
+            "lon": 86.8,
+            "lead_time_h": 12,
+            "wind_kt": 135.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 17.55,
+            "lon": 87.3,
+            "lead_time_h": 24,
+            "wind_kt": 150.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 19.6,
+            "lon": 87.95,
+            "lead_time_h": 36,
+            "wind_kt": 145.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 20.65,
+            "lon": 88.2,
+            "lead_time_h": 48,
+            "wind_kt": 140.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 135.0,
+        "confidence": 0.75
+      }
+    ],
+    "disagreement_score": 0.215,
+    "source": "MOCK_FORECAST_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 6,
+    "timestamp": "2020-05-19T00:00:00Z",
+    "members": [
+      {
+        "model_name": "ECMWF_HRES",
+        "init_time": "2020-05-19T00:00:00Z",
+        "track": [
+          {
+            "lat": 17.5,
+            "lon": 87.2,
+            "lead_time_h": 12,
+            "wind_kt": 140.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 19.6,
+            "lon": 87.85,
+            "lead_time_h": 24,
+            "wind_kt": 135.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 20.7,
+            "lon": 88.1,
+            "lead_time_h": 36,
+            "wind_kt": 130.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 21.9,
+            "lon": 88.45,
+            "lead_time_h": 48,
+            "wind_kt": 110.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 140.0,
+        "confidence": 0.85
+      },
+      {
+        "model_name": "GFS",
+        "init_time": "2020-05-19T00:00:00Z",
+        "track": [
+          {
+            "lat": 17.5,
+            "lon": 87.2,
+            "lead_time_h": 12,
+            "wind_kt": 135.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 19.65,
+            "lon": 88.0,
+            "lead_time_h": 24,
+            "wind_kt": 130.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 20.8,
+            "lon": 88.5,
+            "lead_time_h": 36,
+            "wind_kt": 125.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 22.1,
+            "lon": 89.1,
+            "lead_time_h": 48,
+            "wind_kt": 105.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 135.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "UKMET",
+        "init_time": "2020-05-19T00:00:00Z",
+        "track": [
+          {
+            "lat": 17.5,
+            "lon": 87.2,
+            "lead_time_h": 12,
+            "wind_kt": 132.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 19.4,
+            "lon": 87.65,
+            "lead_time_h": 24,
+            "wind_kt": 127.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 20.3,
+            "lon": 87.7,
+            "lead_time_h": 36,
+            "wind_kt": 122.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 21.2,
+            "lon": 87.8,
+            "lead_time_h": 48,
+            "wind_kt": 102.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 132.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "HWRF",
+        "init_time": "2020-05-19T00:00:00Z",
+        "track": [
+          {
+            "lat": 17.5,
+            "lon": 87.2,
+            "lead_time_h": 12,
+            "wind_kt": 150.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 19.55,
+            "lon": 87.9,
+            "lead_time_h": 24,
+            "wind_kt": 145.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 20.6,
+            "lon": 88.15,
+            "lead_time_h": 36,
+            "wind_kt": 140.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 21.75,
+            "lon": 88.5,
+            "lead_time_h": 48,
+            "wind_kt": 120.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 150.0,
+        "confidence": 0.75
+      }
+    ],
+    "disagreement_score": 0.215,
+    "source": "MOCK_FORECAST_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 7,
+    "timestamp": "2020-05-19T12:00:00Z",
+    "members": [
+      {
+        "model_name": "ECMWF_HRES",
+        "init_time": "2020-05-19T12:00:00Z",
+        "track": [
+          {
+            "lat": 19.5,
+            "lon": 87.8,
+            "lead_time_h": 12,
+            "wind_kt": 135.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 20.6,
+            "lon": 88.05,
+            "lead_time_h": 24,
+            "wind_kt": 130.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 21.8,
+            "lon": 88.4,
+            "lead_time_h": 36,
+            "wind_kt": 110.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 22.8,
+            "lon": 88.95,
+            "lead_time_h": 48,
+            "wind_kt": 60.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 135.0,
+        "confidence": 0.85
+      },
+      {
+        "model_name": "GFS",
+        "init_time": "2020-05-19T12:00:00Z",
+        "track": [
+          {
+            "lat": 19.5,
+            "lon": 87.8,
+            "lead_time_h": 12,
+            "wind_kt": 130.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 20.65,
+            "lon": 88.2,
+            "lead_time_h": 24,
+            "wind_kt": 125.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 21.9,
+            "lon": 88.8,
+            "lead_time_h": 36,
+            "wind_kt": 105.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 23.0,
+            "lon": 89.6,
+            "lead_time_h": 48,
+            "wind_kt": 55.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 130.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "UKMET",
+        "init_time": "2020-05-19T12:00:00Z",
+        "track": [
+          {
+            "lat": 19.5,
+            "lon": 87.8,
+            "lead_time_h": 12,
+            "wind_kt": 127.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 20.4,
+            "lon": 87.85,
+            "lead_time_h": 24,
+            "wind_kt": 122.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 21.4,
+            "lon": 88.0,
+            "lead_time_h": 36,
+            "wind_kt": 102.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 22.1,
+            "lon": 88.3,
+            "lead_time_h": 48,
+            "wind_kt": 52.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 127.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "HWRF",
+        "init_time": "2020-05-19T12:00:00Z",
+        "track": [
+          {
+            "lat": 19.5,
+            "lon": 87.8,
+            "lead_time_h": 12,
+            "wind_kt": 145.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 20.55,
+            "lon": 88.1,
+            "lead_time_h": 24,
+            "wind_kt": 140.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 21.7,
+            "lon": 88.45,
+            "lead_time_h": 36,
+            "wind_kt": 120.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 22.65,
+            "lon": 89.0,
+            "lead_time_h": 48,
+            "wind_kt": 70.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 145.0,
+        "confidence": 0.75
+      }
+    ],
+    "disagreement_score": 0.215,
+    "source": "MOCK_FORECAST_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 8,
+    "timestamp": "2020-05-20T00:00:00Z",
+    "members": [
+      {
+        "model_name": "ECMWF_HRES",
+        "init_time": "2020-05-20T00:00:00Z",
+        "track": [
+          {
+            "lat": 20.5,
+            "lon": 88.0,
+            "lead_time_h": 12,
+            "wind_kt": 130.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 21.7,
+            "lon": 88.35,
+            "lead_time_h": 24,
+            "wind_kt": 110.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 22.7,
+            "lon": 88.9,
+            "lead_time_h": 36,
+            "wind_kt": 60.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 130.0,
+        "confidence": 0.85
+      },
+      {
+        "model_name": "GFS",
+        "init_time": "2020-05-20T00:00:00Z",
+        "track": [
+          {
+            "lat": 20.5,
+            "lon": 88.0,
+            "lead_time_h": 12,
+            "wind_kt": 125.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 21.75,
+            "lon": 88.5,
+            "lead_time_h": 24,
+            "wind_kt": 105.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 22.8,
+            "lon": 89.3,
+            "lead_time_h": 36,
+            "wind_kt": 55.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 125.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "UKMET",
+        "init_time": "2020-05-20T00:00:00Z",
+        "track": [
+          {
+            "lat": 20.5,
+            "lon": 88.0,
+            "lead_time_h": 12,
+            "wind_kt": 122.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 21.5,
+            "lon": 88.15,
+            "lead_time_h": 24,
+            "wind_kt": 102.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 22.3,
+            "lon": 88.5,
+            "lead_time_h": 36,
+            "wind_kt": 52.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 122.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "HWRF",
+        "init_time": "2020-05-20T00:00:00Z",
+        "track": [
+          {
+            "lat": 20.5,
+            "lon": 88.0,
+            "lead_time_h": 12,
+            "wind_kt": 140.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 21.65,
+            "lon": 88.4,
+            "lead_time_h": 24,
+            "wind_kt": 120.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 22.6,
+            "lon": 88.95,
+            "lead_time_h": 36,
+            "wind_kt": 70.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 140.0,
+        "confidence": 0.75
+      }
+    ],
+    "disagreement_score": 0.215,
+    "source": "MOCK_FORECAST_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 9,
+    "timestamp": "2020-05-20T06:00:00Z",
+    "members": [
+      {
+        "model_name": "ECMWF_HRES",
+        "init_time": "2020-05-20T06:00:00Z",
+        "track": [
+          {
+            "lat": 21.6,
+            "lon": 88.3,
+            "lead_time_h": 12,
+            "wind_kt": 110.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 22.6,
+            "lon": 88.85,
+            "lead_time_h": 24,
+            "wind_kt": 60.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 110.0,
+        "confidence": 0.85
+      },
+      {
+        "model_name": "GFS",
+        "init_time": "2020-05-20T06:00:00Z",
+        "track": [
+          {
+            "lat": 21.6,
+            "lon": 88.3,
+            "lead_time_h": 12,
+            "wind_kt": 105.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 22.65,
+            "lon": 89.0,
+            "lead_time_h": 24,
+            "wind_kt": 55.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 105.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "UKMET",
+        "init_time": "2020-05-20T06:00:00Z",
+        "track": [
+          {
+            "lat": 21.6,
+            "lon": 88.3,
+            "lead_time_h": 12,
+            "wind_kt": 102.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 22.4,
+            "lon": 88.65,
+            "lead_time_h": 24,
+            "wind_kt": 52.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 102.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "HWRF",
+        "init_time": "2020-05-20T06:00:00Z",
+        "track": [
+          {
+            "lat": 21.6,
+            "lon": 88.3,
+            "lead_time_h": 12,
+            "wind_kt": 120.0,
+            "pressure_hpa": null
+          },
+          {
+            "lat": 22.55,
+            "lon": 88.9,
+            "lead_time_h": 24,
+            "wind_kt": 70.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 120.0,
+        "confidence": 0.75
+      }
+    ],
+    "disagreement_score": 0.215,
+    "source": "MOCK_FORECAST_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 10,
+    "timestamp": "2020-05-20T10:00:00Z",
+    "members": [
+      {
+        "model_name": "ECMWF_HRES",
+        "init_time": "2020-05-20T10:00:00Z",
+        "track": [
+          {
+            "lat": 22.5,
+            "lon": 88.8,
+            "lead_time_h": 12,
+            "wind_kt": 60.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 60.0,
+        "confidence": 0.85
+      },
+      {
+        "model_name": "GFS",
+        "init_time": "2020-05-20T10:00:00Z",
+        "track": [
+          {
+            "lat": 22.5,
+            "lon": 88.8,
+            "lead_time_h": 12,
+            "wind_kt": 55.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 55.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "UKMET",
+        "init_time": "2020-05-20T10:00:00Z",
+        "track": [
+          {
+            "lat": 22.5,
+            "lon": 88.8,
+            "lead_time_h": 12,
+            "wind_kt": 52.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 52.0,
+        "confidence": 0.75
+      },
+      {
+        "model_name": "HWRF",
+        "init_time": "2020-05-20T10:00:00Z",
+        "track": [
+          {
+            "lat": 22.5,
+            "lon": 88.8,
+            "lead_time_h": 12,
+            "wind_kt": 70.0,
+            "pressure_hpa": null
+          }
+        ],
+        "intensity_forecast_kt": 70.0,
+        "confidence": 0.75
+      }
+    ],
+    "disagreement_score": 0.0,
+    "source": "MOCK_FORECAST_PROVIDER",
+    "demo_mode": true
+  },
+  {
+    "event_id": "DEMO-001",
+    "tick": 11,
+    "timestamp": "2020-05-20T18:00:00Z",
+    "members": [],
+    "disagreement_score": 0.0,
+    "source": "MOCK_FORECAST_PROVIDER",
+    "demo_mode": true
+  }
+]
