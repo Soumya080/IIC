@@ -63,46 +63,68 @@ export default function HazardImpactPage() {
           </div>
         </div>
 
-        {/* District Risk Board Table */}
-        <div style={{ background: 'var(--panel)', border: '1px solid var(--border-2)', display: 'flex', flexDirection: 'column' }}>
+        {/* District Composite Risk Flashcards Grid */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <div className="panel-hd">
             <MapPin size={14} style={{ color: 'var(--cyan)' }} />
-            <span className="panel-title">DISTRICT COMPOSITE RISK BOARD</span>
+            <span className="panel-title">DISTRICT COMPOSITE RISK & READINESS FLASHCARDS</span>
           </div>
 
-          <div style={{ overflowX: 'auto' }}>
-            <table className="data-table">
-              <thead>
-                <tr>
-                  <th>District</th>
-                  <th>Risk Level</th>
-                  <th>Vulnerability</th>
-                  <th>Evacuation</th>
-                  <th>Shelter Cap</th>
-                  <th>Medical</th>
-                  <th>Transport</th>
-                </tr>
-              </thead>
-              <tbody>
-                {districts.map((d, i) => (
-                  <tr key={i}>
-                    <td className="td-name">{d.district}</td>
-                    <td>
-                      <span className={`chip ${
-                        d.label === 'EXTREME' || d.label === 'HIGH' ? 'chip-red' : d.label === 'MODERATE' ? 'chip-yellow' : 'chip-green'
-                      }`}>
-                        {d.label || 'EXTREME'}
-                      </span>
-                    </td>
-                    <td className="td-cyan">{d.overall}%</td>
-                    <td>{d.evacuation}%</td>
-                    <td>{d.shelter}%</td>
-                    <td>{d.medical}%</td>
-                    <td>{d.transport}%</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px' }}>
+            {districts.map((d, i) => (
+              <div
+                key={i}
+                style={{
+                  background: 'var(--panel)',
+                  border: '1px solid var(--border-2)',
+                  borderTop: `4px solid ${d.label === 'CRITICAL' || d.label === 'HIGH' || d.label === 'EXTREME' ? 'var(--red)' : d.label === 'MODERATE' ? 'var(--yellow)' : 'var(--green)'}`,
+                  borderRadius: '6px',
+                  padding: '14px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '10px',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.03)',
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontSize: '15px', fontWeight: '700', color: 'var(--text)' }}>{d.district}</span>
+                  <span className={`chip ${d.label === 'CRITICAL' || d.label === 'HIGH' || d.label === 'EXTREME' ? 'chip-red' : d.label === 'MODERATE' ? 'chip-yellow' : 'chip-green'}`}>
+                    {d.label || 'EXTREME'}
+                  </span>
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--bg-1)', border: '1px solid var(--border)', padding: '6px 10px', borderRadius: '4px', fontSize: '11px' }}>
+                  <span>Vulnerability Score:</span>
+                  <strong style={{ color: 'var(--cyan)', fontSize: '13px' }}>{d.overall}%</strong>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '10px' }}>
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
+                      <span>Evacuation Readiness</span>
+                      <span>{d.evacuation}%</span>
+                    </div>
+                    <div className="prog"><div className="prog-fill" style={{ width: `${d.evacuation}%`, background: 'var(--cyan)' }} /></div>
+                  </div>
+
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
+                      <span>Shelter Capacity</span>
+                      <span>{d.shelter}%</span>
+                    </div>
+                    <div className="prog"><div className="prog-fill" style={{ width: `${d.shelter}%`, background: 'var(--green)' }} /></div>
+                  </div>
+
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
+                      <span>Medical & Transport Support</span>
+                      <span>{d.medical}%</span>
+                    </div>
+                    <div className="prog"><div className="prog-fill" style={{ width: `${d.medical}%`, background: 'var(--orange)' }} /></div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

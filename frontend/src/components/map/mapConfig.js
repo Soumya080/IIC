@@ -6,18 +6,18 @@
  */
 
 export const VORTEX_COLORS = {
-  background: '#06101C',
-  surface: '#0D1B2A',
-  elevated: '#12263A',
-  border: '#22384B',
-  primary: '#42C7FF',
-  success: '#35C98A',
-  watch: '#F2C94C',
-  warning: '#F2994A',
-  critical: '#EF5A5A',
-  flood: '#4E8BF0',
-  sos: '#FF4D6D',
-  muted: '#8EA6B8',
+  background: '#F7F4EC',
+  surface: '#FAF8F3',
+  elevated: '#F2EFE7',
+  border: '#D8D3C5',
+  primary: '#007799',
+  success: '#1F8A5A',
+  watch: '#B58105',
+  warning: '#D96B00',
+  critical: '#C93B3B',
+  flood: '#2962CC',
+  sos: '#D6284B',
+  muted: '#8C8270',
 };
 
 // Default viewport: India + Bay of Bengal + Arabian Sea + North Indian Ocean.

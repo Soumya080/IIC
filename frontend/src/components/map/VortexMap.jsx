@@ -114,11 +114,11 @@ const [status, setStatus] = useState(MAP_STATUS.LOADING);
       const body = document.createElement('div');
       const s = useAppStore.getState().intelligence?.state;
       body.textContent = s
-        ? `${s.lat?.toFixed(2)}A�N ${s.lon?.toFixed(2)}A�E A� ${s.intensity_kt} kt A� ${s.pressure_hpa} hPa A� ${s.regime}`
+        ? `${s.lat?.toFixed(2)}°N ${s.lon?.toFixed(2)}°E · ${s.intensity_kt} kt · ${s.pressure_hpa} hPa · ${s.regime}`
         : 'Position acquired';
       const tag = document.createElement('div');
       tag.style.cssText = 'opacity:0.6;font-size:9px;margin-top:2px;';
-      tag.textContent = 'DEMO A� SIMULATED A� DERIVED';
+      tag.textContent = 'DEMO · SIMULATED · DERIVED';
       el.append(title, body, tag);
       popup.setDOMContent(el).addTo(map);
       popupRef.current = popup;
@@ -260,7 +260,7 @@ const [status, setStatus] = useState(MAP_STATUS.LOADING);
   }
 
   return (
-    <div className="map-container" style={{ position: 'relative', width: '100%', height: '100%', background: '#000000' }}>
+    <div className="map-container" style={{ position: 'relative', width: '100%', height: '100%', background: 'var(--bg, #F7F4EC)' }}>
       <div ref={containerRef} style={{ position: 'absolute', inset: 0 }} />
 
       {status === MAP_STATUS.STYLE_ERROR && (
@@ -332,15 +332,15 @@ const [status, setStatus] = useState(MAP_STATUS.LOADING);
       )}
 
       {/* Legend */}
-      <div className="layer-panel" style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 20, width: '170px', padding: '8px' }}>
+      <div className="layer-panel" style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 20, width: '180px', padding: '10px', background: 'var(--panel)', border: '1px solid var(--border-2)', borderRadius: '4px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
         <div className="label-sm" style={{ marginBottom: '6px', color: 'var(--text-3)', display: 'flex', justifyContent: 'space-between' }}>
           <span>LEGEND</span>
-          <span style={{ color: 'var(--cyan)' }}>LIVE</span>
+          <span style={{ color: 'var(--cyan)', fontWeight: 600 }}>LIVE</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }} className="telemetry-xs">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }} className="telemetry-xs">
           <LegendSwatch sw={<div style={{ width: 8, height: 8, borderRadius: '50%', border: `2px solid ${VORTEX_COLORS.primary}` }} />} label="Storm Core / Eye" />
           <LegendSwatch sw={<div style={{ width: 12, height: 2, background: VORTEX_COLORS.primary }} />} label="Forecast Line (BASE)" />
-          <LegendSwatch sw={<div style={{ width: 10, height: 10, background: 'rgba(239,90,90,0.3)', border: `1px solid ${VORTEX_COLORS.critical}` }} />} label="64 KT Wind Threshold" />
+          <LegendSwatch sw={<div style={{ width: 10, height: 10, background: 'rgba(201,59,59,0.2)', border: `1px solid ${VORTEX_COLORS.critical}` }} />} label="64 KT Wind Threshold" />
           <LegendSwatch sw={<div style={{ width: 8, height: 8, borderRadius: '50%', background: VORTEX_COLORS.sos }} />} label="SOS Distress Signals" />
         </div>
       </div>
@@ -348,23 +348,23 @@ const [status, setStatus] = useState(MAP_STATUS.LOADING);
       {/* Demo banner — data provenance */}
       <div style={{ position: 'absolute', top: 8, left: 8, zIndex: 20 }}
         className="telemetry-xs">
-        <span style={{ background: 'rgba(13,27,42,0.85)', border: '1px solid var(--border)', padding: '3px 8px', borderRadius: 3 }}>
+        <span style={{ background: 'var(--panel)', border: '1px solid var(--border-2)', color: 'var(--text-2)', padding: '4px 8px', borderRadius: 4, fontWeight: 500, boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
           {MAP_CONFIG.USING_FALLBACK_STYLE ? 'DEV BASEMAP · ' : ''}DATA: DEMO · SIMULATED · DERIVED
         </span>
       </div>
 
       {/* Loading state */}
       {status === MAP_STATUS.LOADING && (
-        <div className="state-loading" style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.7)', zIndex: 30 }}>
+        <div className="state-loading" style={{ position: 'absolute', inset: 0, background: 'rgba(247,244,236,0.85)', backdropFilter: 'blur(4px)', zIndex: 30 }}>
           <div className="loading-bar"><div className="loading-bar-fill" /></div>
-          <span className="label-sm">INITIALIZING MAPLIBRE ENGINE...</span>
+          <span className="label-sm" style={{ color: 'var(--text-2)' }}>INITIALIZING MAPLIBRE ENGINE...</span>
         </div>
       )}
     </div>
   );
 });
 
-const btnStyle = { background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)' };
+const btnStyle = { background: 'var(--panel)', border: '1px solid var(--border-2)', color: 'var(--text)', backdropFilter: 'blur(8px)' };
 
 const MAP_STYLE_OK = !!MAP_CONFIG.STYLE_URL;
 

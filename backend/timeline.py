@@ -96,7 +96,7 @@ def log_regime_change(event_id: str, tick: int, ts: datetime,
                       from_regime: str, to_regime: str) -> TimelineEvent:
     return log(
         event_id, tick, ts, TimelineEventType.REGIME_CHANGED,
-        f"Regime changed: {from_regime} → {to_regime}",
+        f"Regime changed: {from_regime} -> {to_regime}",
         {"from": from_regime, "to": to_regime},
         severity="WARNING",
     )
@@ -117,7 +117,7 @@ def log_alert_change(event_id: str, tick: int, ts: datetime,
                      from_level: str, to_level: str) -> TimelineEvent:
     return log(
         event_id, tick, ts, TimelineEventType.ALERT_CHANGED,
-        f"Alert escalated: {from_level} → {to_level}",
+        f"Alert escalated: {from_level} -> {to_level}",
         {"from": from_level, "to": to_level},
         severity="CRITICAL",
     )

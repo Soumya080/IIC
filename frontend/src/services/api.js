@@ -155,6 +155,23 @@ export const listDistricts = () => request('/api/v1/districts');
 export const getDistrictReadiness = (district) =>
   request(`/api/v1/districts/${encodeURIComponent(district)}/readiness`);
 
+// ─── MapLibre Backend Services ───────────────────────────────────────────
+
+export const getMapConfig = () => request('/api/v1/map/config');
+export const getMapLayers = () => request('/api/v1/map/layers');
+export const getTrackGeoJSON = (eventId) => request(`/api/v1/map/geojson/${eventId}/track`);
+export const getScenariosGeoJSON = (eventId, tick = null) => {
+  const params = tick !== null ? `?tick=${tick}` : '';
+  return request(`/api/v1/map/geojson/${eventId}/scenarios${params}`);
+};
+export const getWindGeoJSON = (eventId, tick = null, scenario = 'BASE') => {
+  const params = new URLSearchParams({ scenario });
+  if (tick !== null) params.set('tick', tick);
+  return request(`/api/v1/map/geojson/${eventId}/wind?${params}`);
+};
+export const getResourcesGeoJSON = () => request('/api/v1/map/geojson/resources');
+export const getSOSGeoJSON = (eventId) => request(`/api/v1/map/geojson/${eventId}/sos`);
+
 // ─── Demo seed ───────────────────────────────────────────────────────────
 
 export const demoSeed = () => request('/api/v1/demo/seed', { method: 'POST' });

@@ -1,16 +1,27 @@
-# React + Vite
+# VORTEX Frontend — MapLibre GL JS Integration & Architecture
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+VORTEX command center frontend built with React, MapLibre GL JS, Three.js, and Framer Motion.
 
-Currently, two official plugins are available:
+## 🗺️ Map Architecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The 2D geographic rendering engine is located at [`src/components/map/`](file:///c:/Soham/Coding/GitHub/IIC/frontend/src/components/map/):
 
-## React Compiler
+- **[`VortexMap.jsx`](file:///c:/Soham/Coding/GitHub/IIC/frontend/src/components/map/VortexMap.jsx)**: Reusable MapLibre component. Initializes native `maplibregl.Map` instance once with correct lifecycle cleanup. Updates map sources reactively via `setData()`.
+- **[`mapConfig.js`](file:///c:/Soham/Coding/GitHub/IIC/frontend/src/components/map/mapConfig.js)**: Map constants (`DEFAULT_CENTER` `[82.5, 18.5]`, `DEFAULT_ZOOM` `4.5`), VORTEX visual system tokens, scenario styles, and map status enum. Reads `VITE_MAP_STYLE_URL` from environment.
+- **[`mapLayers.js`](file:///c:/Soham/Coding/GitHub/IIC/frontend/src/components/map/mapLayers.js)**: Modular native MapLibre source & layer registry for tracks, scenarios, uncertainty cones, wind hazard, flood impact index, composite risk, district risk, resources, RRAS routes, and SOS clusters.
+- **[`mapUtils.js`](file:///c:/Soham/Coding/GitHub/IIC/frontend/src/components/map/mapUtils.js)**: Pure GeoJSON builders and MapLibre camera transition helpers (`flyToCyclone`, `fitCycloneTrack`, `resetView`, `flyToDistrict`, `flyToResource`, `flyToSOS`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ⚙️ Environment Setup
 
-## Expanding the Oxlint configuration
+Copy `.env.example` to `.env.local` and configure your MapLibre vector style URL:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```env
+VITE_MAP_STYLE_URL=https://demotiles.maplibre.org/style.json
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+## 🔄 Backend Data Flow & RRAS Integration
+
+FastAPI backend → `appStore.js` / API services → MapLibre `setSourceData()` native source updates.
+RRAS route geometries returned by the backend optimizer are passed directly into the `routes` (`rras-routes`) GeoJSON source.
+

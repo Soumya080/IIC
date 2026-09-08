@@ -7,42 +7,42 @@
 
 /* ─── Design Tokens ───────────────────────────────────────────────────── */
 :root {
-  /* BACKGROUNDS — pure black command center */
-  --bg:          #000000;
-  --bg-1:        #050505;
-  --bg-2:        #080808;
-  --bg-3:        #0C0C0C;
+  /* BACKGROUNDS — creamish light mode command center */
+  --bg:          #F7F4EC;
+  --bg-1:        #EFECE3;
+  --bg-2:        #E7E3D8;
+  --bg-3:        #DFDACD;
 
   /* PANELS */
-  --panel:       #0A0A0A;
-  --panel-2:     #0F0F0F;
-  --panel-3:     #141414;
-  --panel-hover: #181818;
+  --panel:       #FAF8F3;
+  --panel-2:     #F2EFE7;
+  --panel-3:     #EBE7DD;
+  --panel-hover: #E3DDD0;
 
-  /* BORDERS — thin, structural */
-  --border:      #1E1E1E;
-  --border-2:    #252525;
-  --border-3:    #303030;
-  --border-hi:   #3A3A3A;
+  /* BORDERS — thin structural warm gray */
+  --border:      #D8D3C5;
+  --border-2:    #CCC6B6;
+  --border-3:    #C0B8A5;
+  --border-hi:   #A89F8B;
 
-  /* TEXT HIERARCHY */
-  --text:        #E8E8E8;
-  --text-2:      #AAAAAA;
-  --text-3:      #666666;
-  --text-4:      #3A3A3A;
+  /* TEXT HIERARCHY — rich slate / dark mocha */
+  --text:        #24211D;
+  --text-2:      #5C5549;
+  --text-3:      #8C8270;
+  --text-4:      #B3A996;
 
-  /* ACCENT — USE SPARINGLY */
-  --cyan:        #42C7FF;
-  --cyan-dim:    rgba(66,199,255,0.08);
-  --cyan-glow:   rgba(66,199,255,0.20);
+  /* ACCENT */
+  --cyan:        #007799;
+  --cyan-dim:    rgba(0,119,153,0.08);
+  --cyan-glow:   rgba(0,119,153,0.18);
 
   /* STATUS COLORS */
-  --green:       #35C98A;
-  --yellow:      #F2C94C;
-  --orange:      #F2994A;
-  --red:         #EF5A5A;
-  --sos:         #FF4D6D;
-  --flood:       #4E8BF0;
+  --green:       #1F8A5A;
+  --yellow:      #B58105;
+  --orange:      #D96B00;
+  --red:         #C93B3B;
+  --sos:         #D6284B;
+  --flood:       #2962CC;
 
   /* LAYOUT */
   --sidebar-w:   48px;
@@ -1358,7 +1358,7 @@ body {
 
 /* ─── SATELLITE VIEWER ────────────────────────────────────────────────── */
 .sat-viewer {
-  background: #000;
+  background: var(--bg-1);
   border: 1px solid var(--border-2);
   position: relative;
   overflow: hidden;
@@ -1367,7 +1367,7 @@ body {
 .sat-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(66,199,255,0.03) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(0,119,153,0.04) 0%, transparent 70%);
   pointer-events: none;
 }
 

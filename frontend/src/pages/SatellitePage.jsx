@@ -1,6 +1,94 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import useAppStore from '../store/appStore.js';
 import { Satellite, Eye, RefreshCw, Layers, ShieldCheck, Thermometer, Radio, Wind, Sparkles } from 'lucide-react';
+
+function SatelliteCanvas({ channel, enhancement, state }) {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let animFrame;
+    let t = 0;
+
+    const render = () => {
+      t += 0.03;
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      // Radial background simulation
+      const grad = ctx.createRadialGradient(w / 2, h / 2, 10, w / 2, h / 2, w / 2);
+      if (channel === 'IR_THERMAL') {
+        grad.addColorStop(0, '#C93B3B');
+        grad.addColorStop(0.3, '#D96B00');
+        grad.addColorStop(0.6, '#007799');
+        grad.addColorStop(1, 'rgba(247,244,236,0.1)');
+      } else if (channel === 'VISIBLE') {
+        grad.addColorStop(0, '#FFFFFF');
+        grad.addColorStop(0.4, '#DFDACD');
+        grad.addColorStop(0.8, '#8C8270');
+        grad.addColorStop(1, 'rgba(247,244,236,0.1)');
+      } else if (channel === 'WATER_VAPOR') {
+        grad.addColorStop(0, '#2962CC');
+        grad.addColorStop(0.5, '#007799');
+        grad.addColorStop(1, 'rgba(247,244,236,0.1)');
+      } else {
+        grad.addColorStop(0, '#C93B3B');
+        grad.addColorStop(0.2, '#D96B00');
+        grad.addColorStop(0.5, '#1F8A5A');
+        grad.addColorStop(1, 'rgba(247,244,236,0.1)');
+      }
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(w / 2, h / 2, w * 0.42, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Rotating eyewall spiral rings
+      ctx.save();
+      ctx.translate(w / 2, h / 2);
+      ctx.rotate(t * 0.5);
+      ctx.strokeStyle = channel === 'DOPPLER_RADAR' ? '#1F8A5A' : '#007799';
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([8, 6]);
+      ctx.beginPath();
+      ctx.arc(0, 0, 90 + Math.sin(t) * 5, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.strokeStyle = '#C93B3B';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([12, 8]);
+      ctx.beginPath();
+      ctx.arc(0, 0, 45 + Math.cos(t) * 3, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+
+      // Eye center point
+      ctx.fillStyle = '#24211D';
+      ctx.beginPath();
+      ctx.arc(w / 2, h / 2, 14, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#007799';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      animFrame = requestAnimationFrame(render);
+    };
+
+    render();
+    return () => cancelAnimationFrame(animFrame);
+  }, [channel, enhancement, state]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      width={700}
+      height={420}
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', borderRadius: '4px' }}
+    />
+  );
+}
 
 export default function SatellitePage() {
   const intelligence = useAppStore(s => s.intelligence);
@@ -42,62 +130,62 @@ export default function SatellitePage() {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
-                padding: '10px',
+                padding: '12px',
                 textAlign: 'left',
-                height: 'auto'
+                height: 'auto',
+                minHeight: '80px',
+                justifyContent: 'center',
+                gap: '4px'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginBottom: '4px' }}>
-                <span style={{ fontSize: '11px', fontWeight: '700' }}>{ch.name}</span>
-              </div>
-              <div style={{ fontSize: '9px', color: 'var(--cyan)', fontFamily: 'monospace', marginBottom: '4px' }}>{ch.spec}</div>
-              <div style={{ fontSize: '10px', color: 'var(--text-3)', lineHeight: '1.3' }}>{ch.desc}</div>
+              <div style={{ fontSize: '12px', fontWeight: '700', lineHeight: '1.2' }}>{ch.name}</div>
+              <div style={{ fontSize: '10px', color: selectedChannel === ch.id ? 'var(--text)' : 'var(--cyan)', fontFamily: 'monospace', fontWeight: '600' }}>{ch.spec}</div>
+              <div style={{ fontSize: '10px', opacity: 0.85, lineHeight: '1.3' }}>{ch.desc}</div>
             </button>
           ))}
         </div>
 
         {/* Viewer Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '14px', flex: 1 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '14px', flex: 1 }}>
           {/* Main Visualizer Radar Box */}
-          <div className="sat-viewer" style={{ padding: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '400px' }}>
+          <div className="sat-viewer" style={{ padding: '14px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '460px', position: 'relative' }}>
             <div className="sat-overlay" />
             
+            {/* Interactive Canvas Renderer */}
+            <SatelliteCanvas channel={selectedChannel} enhancement={enhancement} state={state} />
+
             {/* Top HUD */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', zIndex: 10 }}>
-              <div style={{ background: 'rgba(10,10,10,0.85)', border: '1px solid var(--border-2)', padding: '10px', backdropFilter: 'blur(6px)', width: '220px' }}>
-                <div className="label" style={{ color: 'var(--cyan)', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Layers size={12} /> SENSOR: {selectedChannel}
+              <div style={{ background: 'var(--panel)', border: '1px solid var(--border-2)', padding: '12px', backdropFilter: 'blur(6px)', width: '230px', borderRadius: '6px', boxShadow: '0 4px 12px rgba(0,0,0,0.06)' }}>
+                <div className="label" style={{ color: 'var(--cyan)', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '700' }}>
+                  <Layers size={13} /> SENSOR: {selectedChannel}
                 </div>
-                <div className="telemetry-xs" style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>PLATFORM:</span> <span>INSAT-3DR</span></div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>EYE COORDS:</span> <span style={{ color: 'var(--cyan)' }}>{state?.lat || '20.5'}°N, {state?.lon || '88.3'}°E</span></div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>CLOUD TEMP:</span> <span style={{ color: 'var(--red)' }}>-76.4°C</span></div>
+                <div className="telemetry-xs" style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>PLATFORM:</span> <strong style={{ color: 'var(--text)' }}>INSAT-3DR</strong></div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>EYE COORDS:</span> <strong style={{ color: 'var(--cyan)' }}>{state?.lat || '20.5'}°N, {state?.lon || '88.3'}°E</strong></div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>CLOUD TEMP:</span> <strong style={{ color: 'var(--red)' }}>-76.4°C</strong></div>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>RESOLUTION:</span> <span>1.0 km / px</span></div>
                 </div>
               </div>
 
               {/* Selector */}
-              <div style={{ background: 'rgba(10,10,10,0.85)', border: '1px solid var(--border-2)', padding: '6px 10px', backdropFilter: 'blur(6px)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Sparkles size={12} style={{ color: 'var(--yellow)' }} />
-                <span className="label">ENHANCEMENT:</span>
+              <div style={{ background: 'var(--panel)', border: '1px solid var(--border-2)', padding: '8px 12px', backdropFilter: 'blur(6px)', display: 'flex', alignItems: 'center', gap: '8px', borderRadius: '6px', boxShadow: '0 4px 12px rgba(0,0,0,0.06)' }}>
+                <Sparkles size={13} style={{ color: 'var(--yellow)' }} />
+                <span className="label" style={{ fontWeight: '700' }}>ENHANCEMENT:</span>
                 <select 
                   value={enhancement} 
                   onChange={(e) => setEnhancement(e.target.value)}
-                  style={{ background: 'var(--bg)', border: '1px solid var(--border-3)', color: 'var(--text)', fontSize: '10px', padding: '2px 4px', fontFamily: 'monospace' }}
+                  className="btn btn-ghost btn-sm"
+                  style={{ background: 'var(--bg-1)', border: '1px solid var(--border)', fontSize: '11px', fontWeight: '600', padding: '4px 8px', borderRadius: '4px' }}
                 >
                   <option value="DVB_COLOR">BD-Curve (Thermal Color)</option>
-                  <option value="ENHANCED_IR">Enhanced Convection IR</option>
-                  <option value="GREYSCALE">RAW Grey</option>
+                  <option value="RAW_GREY">RAW Infrared Grey</option>
+                  <option value="RAIN_RATE">DWR Reflectivity (dBZ)</option>
+                  <option value="WIND_VECTOR">Atmospheric Motion Vectors</option>
                 </select>
               </div>
             </div>
 
-            {/* Concentric radar rings animation */}
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyCenter: 'center', pointerEvents: 'none', opacity: 0.5 }}>
-              <div style={{ width: '280px', height: '280px', borderRadius: '50%', border: '1px solid rgba(66,199,255,0.3)', margin: 'auto' }} />
-              <div style={{ width: '180px', height: '180px', borderRadius: '50%', border: '1px solid rgba(239,90,90,0.4)', margin: 'auto', position: 'absolute' }} />
-              <div style={{ width: '80px', height: '80px', borderRadius: '50%', border: '2px solid var(--cyan)', margin: 'auto', position: 'absolute' }} />
-            </div>
 
             {/* Bottom HUD */}
             <div style={{ zIndex: 10, background: 'rgba(10,10,10,0.85)', border: '1px solid var(--border-2)', padding: '8px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className="telemetry-xs">

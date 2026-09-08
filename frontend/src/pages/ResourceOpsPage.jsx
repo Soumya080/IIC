@@ -74,42 +74,47 @@ export default function ResourceOpsPage() {
           </div>
         )}
 
-        {/* Table */}
-        <div style={{ background: 'var(--panel)', border: '1px solid var(--border-2)', display: 'flex', flexDirection: 'column' }}>
+        {/* Resource Inventory Flashcards */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <div className="panel-hd">
             <Truck size={14} style={{ color: 'var(--cyan)' }} />
-            <span className="panel-title">BATTALION & EQUIPMENT INVENTORY</span>
+            <span className="panel-title">BATTALION & EQUIPMENT INVENTORY FLASHCARDS</span>
           </div>
 
-          <div style={{ overflowX: 'auto' }}>
-            <table className="data-table">
-              <thead>
-                <tr>
-                  <th>Resource ID</th>
-                  <th>Unit Name</th>
-                  <th>Asset Type</th>
-                  <th>District</th>
-                  <th>Capacity</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {resources.map(r => (
-                  <tr key={r.id}>
-                    <td className="td-cyan">{r.id}</td>
-                    <td className="td-name">{r.name}</td>
-                    <td>{r.resource_type}</td>
-                    <td>{r.district}</td>
-                    <td>{r.capacity}</td>
-                    <td>
-                      <span className={`chip ${r.status === 'READY' || r.status === 'STANDBY' ? 'chip-green' : 'chip-yellow'}`}>
-                        {r.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px' }}>
+            {resources.map(r => (
+              <div
+                key={r.id}
+                style={{
+                  background: 'var(--panel)',
+                  border: '1px solid var(--border-2)',
+                  borderRadius: '6px',
+                  padding: '14px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: '10px',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.03)',
+                }}
+              >
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                    <span style={{ fontSize: '11px', fontWeight: '700', color: 'var(--cyan)', fontFamily: 'monospace' }}>{r.id}</span>
+                    <span className={`chip ${r.status === 'READY' || r.status === 'STANDBY' ? 'chip-green' : 'chip-yellow'}`}>
+                      {r.status}
+                    </span>
+                  </div>
+
+                  <div style={{ fontSize: '14px', fontWeight: '700', color: 'var(--text)', marginBottom: '4px' }}>{r.name}</div>
+                  <div style={{ fontSize: '11px', color: 'var(--text-3)' }}>Asset Type: <strong style={{ color: 'var(--text-2)' }}>{r.resource_type}</strong></div>
+                </div>
+
+                <div style={{ background: 'var(--bg-1)', border: '1px solid var(--border)', borderRadius: '4px', padding: '8px 10px', display: 'flex', justifyContent: 'space-between', fontSize: '11px' }}>
+                  <span>District: <strong style={{ color: 'var(--text)' }}>{r.district}</strong></span>
+                  <span>Capacity: <strong style={{ color: 'var(--green)' }}>{r.capacity} personnel</strong></span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

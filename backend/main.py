@@ -25,6 +25,7 @@ import persistence
 import replay_engine as re
 import timeline as tl
 from events import router as events_router
+from map_service import router as map_router
 from schemas import (
     NDRFAlert, SOSReport, SOSSubmitRequest, SOSCategory,
     SOSSeverity, SOSStatus, TaskPriority, TimelineEventType,
@@ -62,6 +63,8 @@ app.add_middleware(
 
 # All event / state / replay / intelligence endpoints
 app.include_router(events_router, prefix="/api/v1/events", tags=["Events & Replay"])
+# MapLibre GL JS backend service endpoints
+app.include_router(map_router, prefix="/api/v1/map", tags=["MapLibre Services"])
 
 
 # ---------------------------------------------------------------------------
@@ -89,7 +92,7 @@ def health():
             "main":          "bootstrap only",
             "events":        "event/state/replay/intelligence router",
             "replay_engine": "single event clock",
-            "alert_engine":  "deterministic GREEN→RED transitions",
+            "alert_engine":  "deterministic GREEN->RED transitions",
             "timeline":      "append-only audit log",
             "persistence":   "SQLite",
             "providers":     "Intelligence/Hazard/Impact/Ops interfaces",
