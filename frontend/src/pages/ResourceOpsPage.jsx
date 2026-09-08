@@ -65,7 +65,7 @@ export default function ResourceOpsPage() {
         {optimized && (
           <div className="opt-result" style={{ margin: 0 }}>
             <div className="opt-result-hd">
-              <CheckCircle2 size={14} /> AI ROUTING PLAN GENERATED
+              <CheckCircle2 size={14} /> RECOMMENDED DEPLOYMENT ACTION
             </div>
             <div className="opt-reason">
               Move <strong>NDRF 2nd Battalion</strong> from Kolkata → South 24 Parganas.<br />

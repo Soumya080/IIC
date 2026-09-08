@@ -1,5 +1,4 @@
 import useAppStore from '../../store/appStore.js';
-import { ChevronRight } from 'lucide-react';
 
 const RISK_COLOR = { EXTREME: 'var(--red)', HIGH: 'var(--orange)', MODERATE: 'var(--yellow)', LOW: 'var(--green)' };
 
@@ -46,7 +45,7 @@ export default function IntelligencePanel() {
   return (
     <div className="flex-col" style={{ height: '100%', overflow: 'hidden' }}>
       <div className="panel-hd">
-        <span className="panel-title">AI INTELLIGENCE</span>
+        <span className="panel-title">DECISION INTELLIGENCE</span>
         <span className={`src src-${dataStatus.toLowerCase()}`}>{dataStatus}</span>
       </div>
 

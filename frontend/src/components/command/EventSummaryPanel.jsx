@@ -150,7 +150,7 @@ export default function EventSummaryPanel() {
         {/* Confidence */}
         <div className="panel-section">
           <div className="trow">
-            <span className="trow-key">AI Confidence</span>
+            <span className="trow-key">Detection Confidence</span>
             <span className="trow-val mono-sm" style={{ color: 'var(--cyan)' }}>{conf}%</span>
           </div>
           <div className="prog">

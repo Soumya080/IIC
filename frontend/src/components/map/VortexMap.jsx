@@ -310,7 +310,7 @@ const [status, setStatus] = useState(MAP_STATUS.LOADING);
         </button>
         <button onClick={() => setLayerOpen(o => !o)}
           className={`btn ${layerOpen ? 'btn-primary' : 'btn-ghost'} btn-sm`}
-          style={{ background: layerOpen ? 'var(--cyan)' : btnStyle.background, backdropFilter: 'blur(8px)' }}>
+          style={{ background: layerOpen ? 'var(--cyan)' : btnStyle.background }}>
           <Layers size={11} /> LAYERS
         </button>
       </div>
@@ -364,7 +364,7 @@ const [status, setStatus] = useState(MAP_STATUS.LOADING);
   );
 });
 
-const btnStyle = { background: 'var(--panel)', border: '1px solid var(--border-2)', color: 'var(--text)', backdropFilter: 'blur(8px)' };
+const btnStyle = { background: '#FAF8F3', border: '1px solid var(--border-2)', color: 'var(--text)' };
 
 const MAP_STYLE_OK = !!MAP_CONFIG.STYLE_URL;
 

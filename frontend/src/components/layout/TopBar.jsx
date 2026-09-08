@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import useAppStore from '../../store/appStore.js';
-import { Activity, Radio, AlertTriangle } from 'lucide-react';
+import { Radio, AlertTriangle } from 'lucide-react';
 
 function UTCClock() {
   const [time, setTime] = useState(new Date());
@@ -39,7 +39,8 @@ export default function TopBar() {
     <header className="app-topbar">
       {/* Brand */}
       <div className="topbar-brand">
-        <div className="brand-mark"><span>CYCLONE</span>OPS</div>
+        <div className="brand-symbol"><Radio size={16} /></div>
+        <div><div className="brand-mark"><span>VOR</span>TEX</div><div className="brand-subtitle">Cyclone Intelligence &amp; Response</div></div>
       </div>
 
       {/* Event */}
@@ -85,7 +86,7 @@ export default function TopBar() {
       {/* Connection mode */}
       <div className="topbar-indicator">
         <span className={MODE_DOT[connectionState] || 'dot-demo'} />
-        <span className="mono-sm">{MODE_LABEL[connectionState] || 'DEMO'}</span>
+        <span className="mono-sm">DATA: {MODE_LABEL[connectionState] || 'DEMO'}</span>
       </div>
     </header>
   );
