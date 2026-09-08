@@ -1,0 +1,418 @@
+{
+  "meta": {
+    "source_file": "IIC_3.0_PROBLEM_STATEMENTS.md",
+    "count": 35,
+    "normalization_note": "Corpus states only title + a one-line restatement. Fields marked INFERENCE/HYPOTHESIS are supplied by the analyst, not the corpus. Only title, original_statement and domain are FACT.",
+    "field_evidence_default": "INFERENCE"
+  },
+  "problems": [
+    {
+      "problem_id": "PS-001",
+      "title": "AI-based early detection & decision-support for pearl millet diseases",
+      "domain": "AgriTech",
+      "subdomain": "crop pathology",
+      "stated_objective": "identify major pearl millet diseases early (FACT)",
+      "target_users": "smallholder pearl millet growers, extension officers (INFERENCE)",
+      "inputs": "leaf/panicle imagery, weather (HYPOTHESIS)",
+      "outputs": "disease identification + action advice (INFERENCE)",
+      "implicit_assumptions": [
+        "a farmer will photograph a diseased plant",
+        "visual symptoms appear early enough for action to change the outcome",
+        "the recommended input is available and affordable"
+      ],
+      "unknowns": ["is downy mildew visually detectable before yield loss is already locked in?"],
+      "ambiguities": ["'decision-support' undefined: diagnosis vs spray scheduling vs seed choice"]
+    },
+    {
+      "problem_id": "PS-002",
+      "title": "AI virtual plant pathology laboratory for diagnosis & training",
+      "domain": "AgriTech",
+      "subdomain": "education / diagnostics",
+      "stated_objective": "virtual lab for plant disease diagnosis and management training (FACT)",
+      "target_users": "agriculture students, extension trainees (INFERENCE)",
+      "implicit_assumptions": ["training is the bottleneck, not access to diagnosis"],
+      "unknowns": ["who mandates or consumes such training"],
+      "ambiguities": ["'virtual lab' spans simulator, courseware, and live diagnostic tool"]
+    },
+    {
+      "problem_id": "PS-003",
+      "title": "Honey Chain: blockchain honey traceability & smart beekeeping",
+      "domain": "AgriTech",
+      "subdomain": "supply chain",
+      "stated_objective": "make honey traceable hive-to-consumer via blockchain + sensors (FACT)",
+      "implicit_assumptions": ["ledger integrity is the binding constraint on honey fraud"],
+      "unknowns": ["does a ledger address the actual adulteration mechanism (syrup blending) at all?"],
+      "ambiguities": ["the solution mechanism is pre-specified by the statement, foreclosing exploration"]
+    },
+    {
+      "problem_id": "PS-004",
+      "title": "Standardised onion quality assessment & grading at procurement centres",
+      "domain": "AgriTech",
+      "subdomain": "post-harvest / procurement",
+      "stated_objective": "standardise onion grading with computer vision and measurable criteria (FACT)",
+      "target_users": "procurement-centre graders, farmers delivering produce, traders (INFERENCE)",
+      "stakeholders": "mandi/APMC operators, commission agents, downstream buyers (INFERENCE)",
+      "outputs": "a grade plus a defensible justification (INFERENCE)",
+      "implicit_assumptions": ["disputes stem from measurement error rather than incentive conflict"],
+      "unknowns": ["is grader subjectivity accidental, or economically motivated?"],
+      "ambiguities": ["the dispute-resolution mechanism is unspecified"],
+      "note": "One of only two statements that names a symptom (disputes, inconsistency) rather than a technology."
+    },
+    {
+      "problem_id": "PS-005",
+      "title": "Early detection, prevention & management of livestock disease",
+      "domain": "AgriTech",
+      "subdomain": "animal health",
+      "stated_objective": "help farmers detect, prevent and manage livestock disease early (FACT)",
+      "target_users": "dairy and mixed smallholders, para-vets (INFERENCE)",
+      "implicit_assumptions": ["detection is the bottleneck rather than veterinary reach"],
+      "unknowns": ["ratio of detection failure to response failure"],
+      "ambiguities": ["species unspecified; scope enormous"]
+    },
+    {
+      "problem_id": "PS-006",
+      "title": "Low-cost IoT blockchain nodes for farm-to-fork traceability",
+      "domain": "AgriTech",
+      "subdomain": "supply-chain hardware",
+      "stated_objective": "affordable connected nodes capturing trusted supply-chain data (FACT)",
+      "implicit_assumptions": ["the oracle problem is solvable with cheap hardware"],
+      "unknowns": ["who pays for node deployment, and why they would"],
+      "ambiguities": ["mechanism pre-specified"]
+    },
+    {
+      "problem_id": "PS-007",
+      "title": "AI food packaging material recommendation",
+      "domain": "AgriTech",
+      "subdomain": "food science",
+      "stated_objective": "recommend packaging materials per commodity using AI (FACT)",
+      "implicit_assumptions": ["material selection is a knowledge problem, not a cost or supply problem"],
+      "unknowns": ["is this a lookup table dressed as AI?"],
+      "ambiguities": ["recommendation aimed at packer, brand, or regulator?"]
+    },
+    {
+      "problem_id": "PS-008",
+      "title": "Academia-industry portal for skill mapping, internships, placement",
+      "domain": "EdTech",
+      "subdomain": "workforce",
+      "stated_objective": "connect academic talent and industry needs (FACT)",
+      "implicit_assumptions": ["matching is the bottleneck"],
+      "unknowns": ["why the many prior portals failed"],
+      "ambiguities": ["extremely saturated category"]
+    },
+    {
+      "problem_id": "PS-009",
+      "title": "Vernacular pedagogy & real-time translation for mother-tongue primary education",
+      "domain": "EdTech",
+      "subdomain": "language / pedagogy",
+      "stated_objective": "mother-tongue learning and live translation for primary education (FACT)",
+      "target_users": "primary teachers in multilingual classrooms, and children (INFERENCE)",
+      "implicit_assumptions": ["translating existing material is equivalent to mother-tongue pedagogy"],
+      "unknowns": ["classroom device availability; the teacher's own proficiency in the child's language"],
+      "ambiguities": ["'real-time translation' of teacher speech, of textbooks, or of child speech?"],
+      "note": "The statement conflates translation (a text operation) with pedagogy (a practice). Rich ambiguity."
+    },
+    {
+      "problem_id": "PS-010",
+      "title": "Automated ASPECTS scoring for acute ischemic stroke",
+      "domain": "HealthTech",
+      "subdomain": "neuroradiology",
+      "stated_objective": "compute ASPECTS from brain imaging and present an explainable result (FACT)",
+      "target_users": "emergency physicians, radiologists, stroke neurologists (INFERENCE)",
+      "inputs": "non-contrast CT head (INFERENCE)",
+      "implicit_assumptions": ["ASPECTS is the decision bottleneck in the stroke pathway"],
+      "unknowns": ["where the real delay sits in the door-to-needle timeline"],
+      "ambiguities": ["deployment site: comprehensive stroke centre vs district hospital"],
+      "note": "Heavily commercialised space with multiple regulator-cleared products."
+    },
+    {
+      "problem_id": "PS-011",
+      "title": "AI early detection of osteoarthritis risk markers",
+      "domain": "HealthTech",
+      "subdomain": "musculoskeletal",
+      "stated_objective": "identify early OA risk markers and support preventive intervention (FACT)",
+      "implicit_assumptions": [
+        "early identification changes outcomes",
+        "a preventive intervention exists and is actually delivered"
+      ],
+      "unknowns": ["what clinical action follows a positive result"],
+      "ambiguities": ["'risk marker' vs 'diagnosis'"]
+    },
+    {
+      "problem_id": "PS-012",
+      "title": "Explainable AI for diabetic retinopathy screening in rural India",
+      "domain": "HealthTech",
+      "subdomain": "ophthalmology",
+      "stated_objective": "explainable retinal image analysis for rural screening programmes (FACT)",
+      "implicit_assumptions": ["grading accuracy is the binding constraint on screening programmes"],
+      "unknowns": ["referral completion rate after a positive screen"],
+      "ambiguities": ["explainability for whom: clinician, patient, or regulator?"],
+      "note": "Among the most saturated medical-AI categories in existence."
+    },
+    {
+      "problem_id": "PS-013",
+      "title": "Breath-based detection device for drug consumption",
+      "domain": "HealthTech",
+      "subdomain": "analytical chemistry / hardware",
+      "stated_objective": "non-invasive breath analysis to detect drug consumption (FACT)",
+      "implicit_assumptions": ["target analytes partition into breath at detectable concentration"],
+      "unknowns": ["sensor chemistry feasibility at low cost"],
+      "ambiguities": ["which drugs; enforcement use vs clinical use"],
+      "note": "Hardware-dominant; not prototypeable on a software timeline. Also carries civil-liberties considerations that must be designed for, not ignored."
+    },
+    {
+      "problem_id": "PS-014",
+      "title": "Patient case-taking software",
+      "domain": "HealthTech",
+      "subdomain": "clinical workflow",
+      "stated_objective": "streamline structured patient history collection (FACT)",
+      "target_users": "clinicians and care teams (FACT)",
+      "implicit_assumptions": ["structure is desirable to the clinician, not only to the system consuming it"],
+      "unknowns": ["who actually reads the structured record"],
+      "ambiguities": ["extremely broad; overlaps the entire EMR industry"]
+    },
+    {
+      "problem_id": "PS-015",
+      "title": "AI solution for farmer procurement wait times, schedule information, and status uncertainty",
+      "domain": "FinTech",
+      "subdomain": "agricultural procurement logistics",
+      "stated_objective": "reduce farmer uncertainty about procurement schedules, queues and payment status (FACT)",
+      "target_users": "farmers delivering to procurement centres (FACT)",
+      "stakeholders": "procurement-centre staff, transporters, state agencies, commission agents (INFERENCE)",
+      "implicit_assumptions": ["the information exists somewhere and is merely not distributed"],
+      "unknowns": ["whether queue position is genuinely determined by arrival order"],
+      "ambiguities": ["three distinct problems bundled: waiting, information, and payment status"],
+      "note": "One of only two statements written as an observed symptom. Names concrete, checkable pain."
+    },
+    {
+      "problem_id": "PS-016",
+      "title": "AI-based fraud detection in digital transactions",
+      "domain": "FinTech",
+      "subdomain": "payments risk",
+      "stated_objective": "detect suspicious transactions quickly while reducing customer friction (FACT)",
+      "implicit_assumptions": ["a team can obtain representative transaction data"],
+      "unknowns": ["data access"],
+      "ambiguities": ["issuer-side vs merchant-side vs consumer-side"],
+      "note": "Mature industrial field; data access is close to disqualifying for an external team."
+    },
+    {
+      "problem_id": "PS-017",
+      "title": "Digital payment system for farmers & rural economy",
+      "domain": "FinTech",
+      "subdomain": "payments",
+      "stated_objective": "trustworthy, accessible payments for rural communities (FACT)",
+      "implicit_assumptions": ["a new payment rail is what is missing"],
+      "unknowns": ["what existing rails already cover"],
+      "ambiguities": ["rail vs interface vs trust layer"]
+    },
+    {
+      "problem_id": "PS-018",
+      "title": "Interoperability among government digital platforms",
+      "domain": "Cybersecurity & Digital Sovereignty",
+      "subdomain": "govtech integration",
+      "stated_objective": "reduce fragmented public service delivery via secure integration (FACT)",
+      "implicit_assumptions": ["fragmentation is technical rather than jurisdictional"],
+      "unknowns": ["access to any real government system"],
+      "ambiguities": ["unbounded scope"],
+      "note": "Cannot be validated or demonstrated without institutional access."
+    },
+    {
+      "problem_id": "PS-019",
+      "title": "AI-based cyber threat detection",
+      "domain": "Cybersecurity & Digital Sovereignty",
+      "subdomain": "security operations",
+      "stated_objective": "identify emerging threats from network, endpoint and application signals (FACT)",
+      "implicit_assumptions": ["public datasets reflect real environments"],
+      "unknowns": ["realistic evaluation data"],
+      "ambiguities": ["overlaps the entire SIEM/XDR industry"],
+      "note": "Saturated; the standard benchmark datasets are known to be unrepresentative."
+    },
+    {
+      "problem_id": "PS-020",
+      "title": "Secure digital identity & authentication system",
+      "domain": "Cybersecurity & Digital Sovereignty",
+      "subdomain": "identity",
+      "stated_objective": "a resilient identity system that keeps access simple (FACT)",
+      "implicit_assumptions": ["a newly built identity system is adoptable"],
+      "unknowns": ["the trust anchor"],
+      "ambiguities": ["unbounded"],
+      "note": "Building new identity infrastructure is not credible at prototype scale."
+    },
+    {
+      "problem_id": "PS-021",
+      "title": "AI real-time women safety alert system",
+      "domain": "Women & Child Safety",
+      "subdomain": "personal safety",
+      "stated_objective": "a rapid, consent-driven alert system for unsafe situations (FACT)",
+      "target_users": "women in transit and public space (INFERENCE)",
+      "implicit_assumptions": ["alerting is the bottleneck", "somebody responds to the alert"],
+      "unknowns": ["what happens after an alert fires"],
+      "ambiguities": ["'consent-driven' is a meaningful and unusually careful qualifier"],
+      "note": "Panic-button apps are extremely saturated and have documented low sustained usage."
+    },
+    {
+      "problem_id": "PS-022",
+      "title": "Safe route recommendation system",
+      "domain": "Women & Child Safety",
+      "subdomain": "navigation",
+      "stated_objective": "routes using context-aware safety signals, accessibility and real-time conditions (FACT)",
+      "implicit_assumptions": [
+        "route safety is predictable from available signals",
+        "reported crime data reflects actual danger"
+      ],
+      "unknowns": ["signal source; reporting bias"],
+      "ambiguities": ["safety for whom, at what hour"],
+      "note": "Crime-data-driven routing carries documented bias and feedback-loop risks."
+    },
+    {
+      "problem_id": "PS-023",
+      "title": "Women safety system in public transport",
+      "domain": "Women & Child Safety",
+      "subdomain": "transit safety",
+      "stated_objective": "improve safety on buses, trains and stations through connected reporting and response workflows (FACT)",
+      "target_users": "women commuters, transit staff, control-room operators (INFERENCE)",
+      "implicit_assumptions": ["reports are made, and are then acted on"],
+      "unknowns": ["the existing transit complaint pathway and its completion rate"],
+      "ambiguities": ["'response workflow' is the interesting half and is left unspecified"],
+      "note": "This statement uniquely names the response side, not only detection."
+    },
+    {
+      "problem_id": "PS-024",
+      "title": "Simulation-based high-altitude optimisation & robust design of anti-drone system",
+      "domain": "Aerotech & Aerospace Innovation",
+      "subdomain": "defence simulation",
+      "stated_objective": "use simulation to optimise high-altitude performance and robust anti-drone design (FACT)",
+      "unknowns": ["access to validated aerodynamic / RF models"],
+      "ambiguities": ["defence context; dual-use considerations"],
+      "note": "Requires domain physics validation that a general team cannot obtain or check."
+    },
+    {
+      "problem_id": "PS-025",
+      "title": "AI identification, classification & prediction of tropical cyclone patterns from multi-source satellite data",
+      "domain": "Aerotech & Aerospace Innovation",
+      "subdomain": "meteorology",
+      "stated_objective": "identify, classify and predict tropical cyclone patterns from multi-source satellite data (FACT)",
+      "inputs": "multi-source satellite imagery (FACT)",
+      "implicit_assumptions": ["ML will beat operational numerical and Dvorak-style baselines"],
+      "unknowns": ["which baseline is actually being beaten"],
+      "ambiguities": ["'prediction' of intensity, track, or genesis?"],
+      "note": "Data is genuinely public and abundant, and baselines are strong and well published. That makes honest evaluation possible, which is unusual in this corpus."
+    },
+    {
+      "problem_id": "PS-026",
+      "title": "Adaptive path planning & collision avoidance on unstructured Indian roads",
+      "domain": "Transportation & Mobility",
+      "subdomain": "autonomy",
+      "stated_objective": "safe navigation where road structure, traffic and obstacles are unpredictable (FACT)",
+      "implicit_assumptions": ["a vehicle platform exists to test on"],
+      "unknowns": ["how to evaluate without a vehicle"],
+      "ambiguities": ["full autonomy is out of reach; sub-problems are not"],
+      "note": "Simulation-only demonstrations are weakly persuasive in this domain."
+    },
+    {
+      "problem_id": "PS-027",
+      "title": "Pollution-aware navigation",
+      "domain": "Transportation & Mobility",
+      "subdomain": "navigation / environment",
+      "stated_objective": "routes balancing time, distance, congestion and pollution exposure (FACT)",
+      "implicit_assumptions": ["street-level pollution is knowable at routing resolution"],
+      "unknowns": ["spatial resolution of available air-quality data versus road-network resolution"],
+      "ambiguities": ["exposure (inhaled dose) versus ambient concentration - materially different objectives"],
+      "note": "The dose-versus-concentration distinction is a real and under-addressed technical gap."
+    },
+    {
+      "problem_id": "PS-028",
+      "title": "AI windshield installation guidance system",
+      "domain": "Transportation & Mobility",
+      "subdomain": "industrial process guidance",
+      "stated_objective": "computer vision identifies the windshield area, displays predefined pressure-application points, guides the operator to apply adequate pressure sequentially at each point, tracks completion of all points, and confirms immediately that the standard process was followed (FACT - fully specified)",
+      "target_users": "assembly-line operators (FACT)",
+      "inputs": "camera feed (FACT)",
+      "outputs": "point overlay, sequence tracking, completion confirmation (FACT)",
+      "constraints": "pressure applied must be adequate (FACT)",
+      "implicit_assumptions": ["pressure adequacy is observable from vision alone"],
+      "unknowns": ["how 'adequate pressure' is measured without a force sensor"],
+      "ambiguities": ["display target left deliberately open: projection on glass, monitor, or AR headset"],
+      "note": "THE ONLY FULLY SPECIFIED STATEMENT IN THE CORPUS. It also contains an explicit unsolved sub-problem: vision-based force verification."
+    },
+    {
+      "problem_id": "PS-029",
+      "title": "AI early warning & landslide risk monitoring",
+      "domain": "Smart Cities & Urban Development",
+      "subdomain": "geohazard",
+      "stated_objective": "combine environmental signals and terrain data to warn communities about landslide risk early (FACT)",
+      "implicit_assumptions": ["a warning leads to evacuation"],
+      "unknowns": ["last-mile warning delivery and community response"],
+      "ambiguities": ["regional susceptibility mapping versus site-specific imminent warning - very different problems"],
+      "note": "The 'warn communities' half is far less explored than the prediction half."
+    },
+    {
+      "problem_id": "PS-030",
+      "title": "Automated urban parcel mapping & cadastral feature extraction",
+      "domain": "Smart Cities & Urban Development",
+      "subdomain": "geospatial",
+      "stated_objective": "extract urban parcels and cadastral features from geospatial data with AI-assisted review (FACT)",
+      "implicit_assumptions": ["parcel boundaries are visually inferable"],
+      "unknowns": ["divergence between legal boundary and physical boundary"],
+      "ambiguities": ["'AI-assisted review' implies a human in the loop but does not specify the loop"]
+    },
+    {
+      "problem_id": "PS-031",
+      "title": "Intelligent land record digitisation & validation",
+      "domain": "Smart Cities & Urban Development",
+      "subdomain": "govtech / records",
+      "stated_objective": "turn legacy land records into searchable, validated, trustworthy digital records (FACT)",
+      "implicit_assumptions": ["OCR quality is the bottleneck"],
+      "unknowns": ["what 'validated' means in legal terms"],
+      "ambiguities": ["digitisation versus adjudication of conflicting claims"],
+      "note": "Validating a land record is a legal act, not a software act. That tension is the interesting part."
+    },
+    {
+      "problem_id": "PS-032",
+      "title": "Kabadiwala Connect - bringing the informal collector into the formal recycling chain",
+      "domain": "Smart Cities & Urban Development",
+      "subdomain": "waste / informal economy",
+      "stated_objective": "bring informal waste collectors into a more visible, efficient and fair recycling chain (FACT)",
+      "target_users": "informal waste collectors, aggregators, households (FACT)",
+      "stakeholders": "scrap dealers, recyclers, municipal bodies, brands with EPR obligations (INFERENCE)",
+      "implicit_assumptions": [
+        "formalisation benefits the collector",
+        "collectors want to be visible"
+      ],
+      "unknowns": ["whether visibility helps or harms an informal operator"],
+      "ambiguities": ["'fair' undefined; 'formal' may threaten the very actor it claims to help"],
+      "note": "The statement contains a genuine internal contradiction worth attacking: formalisation can destroy informal margin. Under-templated, and the stakeholder is genuinely neglected."
+    },
+    {
+      "problem_id": "PS-033",
+      "title": "AI-powered assembly inspection system",
+      "domain": "Smart Cities & Urban Development (mislabelled; actually manufacturing)",
+      "subdomain": "industrial QA",
+      "stated_objective": "verify manufacturing assembly quality with computer vision, AI and optional wearable AR (FACT)",
+      "implicit_assumptions": [
+        "defects are visually distinguishable",
+        "normal examples are abundant while defect examples are not"
+      ],
+      "unknowns": ["defect data availability"],
+      "ambiguities": ["presence/absence checking versus true defect detection"]
+    },
+    {
+      "problem_id": "PS-034",
+      "title": "AI-powered manufacturing operations assistant",
+      "domain": "Smart Cities & Urban Development (mislabelled; actually manufacturing)",
+      "subdomain": "production planning",
+      "stated_objective": "help factory teams understand constraints, validate plans, detect risks and keep production moving (FACT)",
+      "implicit_assumptions": ["plan validity is checkable from available data"],
+      "unknowns": ["access to a real factory's constraint model"],
+      "ambiguities": ["assistant versus scheduler versus alerting system"],
+      "note": "'Validate plans' implies a formal constraint model - the most technically interesting phrase in the manufacturing trio."
+    },
+    {
+      "problem_id": "PS-035",
+      "title": "Open innovation challenge",
+      "domain": "Open Innovation",
+      "subdomain": "any",
+      "stated_objective": "propose an original solution to a meaningful problem within one of the themes (FACT)",
+      "note": "Not a problem. It is a wildcard slot that inherits the themes above. Its analytical value is that it removes the constraint of matching a pre-written statement, permitting a problem reframed during ground-reality research."
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+[
+  {
+    "id": "agri-pearl-millet-disease",
+    "category": "AgriTech",
+    "title": "AI-Based early detection and decision-support system for major diseases of pearl millet.",
+    "summary": "Build an AI decision-support system that identifies major pearl millet diseases at an early stage."
+  },
+  {
+    "id": "agri-virtual-pathology-lab",
+    "category": "AgriTech",
+    "title": "AI-Powered virtual plant pathology laboratory for disease diagnosis and management training.",
+    "summary": "Create an AI-powered virtual lab for plant disease diagnosis and management training."
+  },
+  {
+    "id": "agri-honey-chain",
+    "category": "AgriTech",
+    "title": "Honey Chain: A block chain-based system for honey traceability and smart beekeeping management.",
+    "summary": "Use blockchain and connected sensors to make honey traceable from hive to consumer."
+  },
+  {
+    "id": "agri-onion-grading",
+    "category": "AgriTech",
+    "title": "Quality assessment and grading of onions are often subjective and vary across procurement centres, resulting in disputes and inconsistencies.",
+    "summary": "Standardise onion grading across procurement centres with computer vision and measurable quality criteria."
+  },
+  {
+    "id": "agri-livestock-health",
+    "category": "AgriTech",
+    "title": "Efficient systems for early detection, prevention, and management of livestock diseases and animal health issues.",
+    "summary": "Help farmers detect, prevent, and manage livestock diseases and animal health issues early."
+  },
+  {
+    "id": "agri-farm-traceability",
+    "category": "AgriTech",
+    "title": "Low-cost IOT block chain nodes for farm-to-fork traceability.",
+    "summary": "Create affordable connected nodes that capture trusted data throughout the agricultural supply chain."
+  },
+  {
+    "id": "agri-food-packaging",
+    "category": "AgriTech",
+    "title": "AI-Based intelligent food packaging material recommendation system for food commodities.",
+    "summary": "Recommend suitable food packaging materials for different commodities using AI."
+  },
+  {
+    "id": "edtech-academia-industry",
+    "category": "EdTech",
+    "title": "Portal for Academia-industry collaboration for skill mapping, internships and placement.",
+    "summary": "Connect academic talent and industry needs through skill mapping, internships, and placements."
+  },
+  {
+    "id": "edtech-vernacular-pedagogy",
+    "category": "EdTech",
+    "title": "AI-Powered vernacular pedagogy and real-time translation tool for mother tongue-based primary education.",
+    "summary": "Make primary education more accessible through mother-tongue learning and live translation."
+  },
+  {
+    "id": "health-aspects-scoring",
+    "category": "HealthTech",
+    "title": "Automated ASPECTS scoring for acute ischemic stroke",
+    "summary": "Assist clinicians by calculating ASPECTS from brain imaging and presenting an explainable result.",
+    "description": "Clinical Motivation\n\nIn acute stroke, time is brain. Clinicians must decide within a narrow window whether a patient qualifies for thrombolysis or thrombectomy, and that decision hinges partly on ASPECTS (Alberta Stroke Program Early CT Score), a 10-point score radiologists compute manually under time pressure from a non-contrast CT (NCCT). Each of 10 predefined regions in the middle-cerebral-artery territory - caudate, lentiform nucleus, insula, internal capsule, and M1-M6 - is inspected for early ischemic change; one point is deducted per affected region. The process is subjective, reader-dependent, and slow at exactly the moment speed matters most.\n\nThe Challenge\n\nBuild an end-to-end system that estimates ASPECTS from an NCCT head scan: detect early ischemic change such as loss of grey-white differentiation or subtle hypodensity, localize it to the correct ASPECTS regions, and output a 0-10 score. A system that does one objective well but ignores the other is incomplete.\n\nObjective 1 - Ischemic Change Detection (the ML core)\n\nOn NCCT, detect and segment areas of early ischemic change. The signal may be only a few Hounsfield units rather than a bright bleed. Hemispheric symmetry is the strongest cue because the healthy contralateral side is a built-in reference. Left-right symmetry analysis and contralateral density comparison are encouraged, and a rule-based plus ML hybrid is legitimate.\n\nObjective 2 - ASPECTS Region Localization and Scoring\n\nMap the 10 ASPECTS regions onto the patient scan and derive the score. Pre-built ASPECTS region atlases in standard space may be used. The atlas must be registered robustly onto each native NCCT despite varying head tilt, slice thickness, and skull stripping, because a naive rigid fit can misassign regions. Keep final scoring rule-based and explainable by comparing per-region HU values with the contralateral side. Registration toolkits may include ANTs, elastix, SimpleITK, or a learned method such as VoxelMorph.\n\nThe Interface Between Them (where systems break)\n\nThe two objectives must connect: detected change has to land in the correct region after registration. Consider the shared coordinate frame, how registration error propagates into wrong region assignments, and how a small detection near a region boundary is handled.\n\nDatasets\n\nAPIS (primary): a public paired NCCT and ADC-MRI dataset for acute ischemic stroke, with NCCT lesion labels derived from MRI. It contains approximately 60 training pairs and 36 test pairs and is available by registration. AISD (secondary) contains 397 NCCT scans with DWI-confirmed lesion masks, including 345 training and 52 test scans. ISLES 2018 is CT-perfusion and ISLES 2022 is MRI-only; use them only as reference material because neither provides NCCT ASPECTS labels.\n\nASPECTS Atlas and Registration Resources (for Objective 2)\n\nAn NCCT ASPECTS atlas with 10 labeled regions, atlas files on Figshare, the MIPLAB elderly NCCT/FLAIR atlas, a whole-brain stroke-population CT-MRI atlas, and published atlas-based scoring methods may be used as registration and validation resources.\n\nDeliverables\n\nA pipeline that takes an NCCT volume and returns: (a) a segmentation or heatmap of detected ischemic change, (b) a per-region ischemic-change flag across the 10 ASPECTS regions, and (c) an overall ASPECTS score. Include a visualization overlaying both the detected change and the 10 region boundaries on the CT."
+  },
+  {
+    "id": "health-osteoarthritis-risk",
+    "category": "HealthTech",
+    "title": "AI-Assisted early detection system for osteoarthritis (OA) risk markers.",
+    "summary": "Use AI to identify early osteoarthritis risk markers and support preventive intervention."
+  },
+  {
+    "id": "health-diabetic-retinopathy",
+    "category": "HealthTech",
+    "title": "Explainable AI for diabetic retinopathy screening in rural India.",
+    "summary": "Support rural screening programmes with an explainable retinal image analysis tool."
+  },
+  {
+    "id": "health-breath-drug-detection",
+    "category": "HealthTech",
+    "title": "Breath-based detection device for drug consumption.",
+    "summary": "Explore a non-invasive breath analysis device for detecting drug consumption."
+  },
+  {
+    "id": "health-patient-case-taking",
+    "category": "HealthTech",
+    "title": "Patient case-taking software.",
+    "summary": "Streamline structured patient history collection for clinicians and care teams."
+  },
+  {
+    "id": "fintech-procurement-status",
+    "category": "FinTech",
+    "title": "Farmers often face long waiting times, lack of information regarding procurement schedules, and uncertainty about procurement status. Provide AI-based solution to resolve the mentioned issues.",
+    "summary": "Reduce farmer uncertainty around procurement schedules, queues, and payment status."
+  },
+  {
+    "id": "fintech-fraud-detection",
+    "category": "FinTech",
+    "title": "AI-Based fraud detection in digital transactions.",
+    "summary": "Detect suspicious digital transactions quickly while reducing unnecessary customer friction."
+  },
+  {
+    "id": "fintech-rural-payments",
+    "category": "FinTech",
+    "title": "Digital payment system for farmers & rural economy.",
+    "summary": "Design a trustworthy, accessible payment experience for rural communities and agricultural businesses."
+  },
+  {
+    "id": "cyber-platform-interoperability",
+    "category": "Cybersecurity & Digital Sovereignty",
+    "title": "System integration and interoperability among government digital platforms, resulting in fragmented service delivery.",
+    "summary": "Reduce fragmented public service delivery through secure integration between government platforms."
+  },
+  {
+    "id": "cyber-threat-detection",
+    "category": "Cybersecurity & Digital Sovereignty",
+    "title": "AI-based cyber threat detection system.",
+    "summary": "Identify emerging cyber threats from network, endpoint, and application signals."
+  },
+  {
+    "id": "cyber-digital-identity",
+    "category": "Cybersecurity & Digital Sovereignty",
+    "title": "Secure digital identity & authentication system.",
+    "summary": "Create a resilient identity system that protects users while keeping access simple."
+  },
+  {
+    "id": "safety-real-time-alerts",
+    "category": "Women & Child Safety",
+    "title": "AI-Based real-time women safety alert system.",
+    "summary": "Build a rapid, consent-driven alert system that helps people seek assistance during unsafe situations."
+  },
+  {
+    "id": "safety-safe-routes",
+    "category": "Women & Child Safety",
+    "title": "Safe route recommendation system.",
+    "summary": "Recommend routes using context-aware safety signals, accessibility, and real-time conditions."
+  },
+  {
+    "id": "safety-public-transport",
+    "category": "Women & Child Safety",
+    "title": "Women safety system in public transport.",
+    "summary": "Improve safety on buses, trains, and stations through connected reporting and response workflows."
+  },
+  {
+    "id": "aero-antidrone-design",
+    "category": "Aerotech & Aerospace Innovation",
+    "title": "Simulation based high altitude performance optimization and robust design of anti-drone system.",
+    "summary": "Use simulation to optimise high-altitude performance and robust anti-drone system design."
+  },
+  {
+    "id": "aero-cyclone-prediction",
+    "category": "Aerotech & Aerospace Innovation",
+    "title": "To develop an Artificial Intelligence (AI)-based system for identification, classification, and prediction of different tropical cyclone patterns using multi-source satellite data.",
+    "summary": "Identify, classify, and predict tropical cyclone patterns using multi-source satellite data."
+  },
+  {
+    "id": "transport-autonomous-paths",
+    "category": "Transportation & Mobility",
+    "title": "Adaptive path planning and collision avoidance for autonomous vehicles on unstructured Indian road.",
+    "summary": "Help autonomous vehicles navigate safely when road structure, traffic, and obstacles are unpredictable."
+  },
+  {
+    "id": "transport-pollution-navigation",
+    "category": "Transportation & Mobility",
+    "title": "Pollution-aware navigation system",
+    "summary": "Recommend travel routes that balance time, distance, congestion, and exposure to air pollution."
+  },
+  {
+    "id": "transport-windshield-installation",
+    "category": "Transportation & Mobility",
+    "title": "Build an AI powered windshield installation guidance system ",
+    "summary": "Using cameras and computer vision algorithms, the system will identify the windshield area and display predefined pressure application points on the windshield or on the monitor or augmented display. Operators will be guided to sequentially apply pressure (with adequate pressure) at each designated location. The system will track completion of all required points and provide immediate confirmation once the standard process has been followed correctly",
+    "description": "Problem Context\n\nThe windshield installation process is performed manually on the vehicle assembly line. Operators must apply pressure across the windshield according to defined standard operating procedures for proper sealing and adhesion. Missed or incorrectly applied pressure can result in inconsistent fitment, loose installation, water leakage, noise or vibration issues, and increased rework.\n\nProblem Statement \n\nBuild an AI powered Windshield Installation Guidance System that provides operators with real-time visual feedback during the fitment process.Using cameras and computer vision algorithms, the system will identify the windshield area and display predefined pressure application points on the windshield or on the monitor or augmented display. Operators will be guided to sequentially apply pressure(with adequate pressure) at each designated location. The system will track completion of all required points and provide immediate confirmation once the standard process has been followed correctly.\n\nWhat You May Build\n\na) A Computer Vision-powered solution that identifies the windshield area in real time and guides operators through predefined pressure application points during installation. The system verifies that all required zones are pressed according to standard operating procedures, ensuring consistent fitment quality and reducing operator-dependent variations.\n\nb)An intelligent vision system that monitors the windshield installation process and validates whether pressure has been applied at every critical bonding location. The engine detects missed points, incomplete sequences, or incorrect installation patterns and provides immediate corrective feedback before the vehicle moves to the next station.\n\nc)An AI agent that continuously analyses installation data, operator actions, and fitment compliance records to identify recurring quality issues, process deviations, and training needs. The agent provides actionable insights to improve first-pass yield and reduce warranty claims.\n\nSuggested Technical Stack\n\nComputer vision\nReal-time tracking system\nAgentic AI or multi-agent systems\nWeb application"
+  },
+  {
+    "id": "smart-landslide-warning",
+    "category": "Smart Cities & Urban Development",
+    "title": "AI-based early warning and landslide risk monitoring system",
+    "summary": "Combine environmental signals and terrain data to warn communities about landslide risk early."
+  },
+  {
+    "id": "smart-parcel-mapping",
+    "category": "Smart Cities & Urban Development",
+    "title": "AI-based automated urban parcel mapping and cadastral feature extraction system.",
+    "summary": "Extract urban parcels and cadastral features from geospatial data with AI-assisted review."
+  },
+  {
+    "id": "smart-land-records",
+    "category": "Smart Cities & Urban Development",
+    "title": "Intelligent land record digitization and validation system.",
+    "summary": "Turn legacy land records into searchable, validated, and trustworthy digital records."
+  },
+  {
+    "id": "smart-kabadiwala-connect",
+    "category": "Smart Cities & Urban Development",
+    "title": "Kabadiwala Connect - Bringing the informal collector into the formal recycling chain.",
+    "summary": "Bring informal waste collectors into a more visible, efficient, and fair recycling chain."
+  },
+  {
+    "id": "smart-assembly-inspection",
+    "category": "Smart Cities & Urban Development",
+    "title": "Build an AI-Powered assembly inspection system ",
+    "summary": "Verify manufacturing assembly quality with computer vision, AI, and optional wearable AR.",
+    "description": "Problem Context\n\nIn manufacturing environments, assembly quality verification is often dependent on manual visual inspections to ensure that wiring assemblies, connectors, fasteners, clips, and other components are installed according to prescribed standards. These inspections require operators to verify routing paths, fastening locations, component positioning. While manual inspection remains widely used, it is susceptible to human error, inspection variability, fatigue, and inconsistency across shifts. Missed defects such as incorrect routing, unsecured components, missing fasteners, or unintended contact between assemblies can lead to quality concerns, increased rework, production delays, warranty costs, and reduced product reliability.\n\nProblem Statement\n\nBuild an AI-Powered Assembly Inspection System that combines Computer Vision, Artificial Intelligence, and Wearable AR devices(optional) to automate assembly verification and quality inspection processes. Using real-time image analysis, AI models compare live assembly conditions against approved digital standards to identify deviations such as incorrect routing, missing fastening elements, improper component positioning, or potential interference risks. Inspection results are visualized through augmented reality overlays, enabling operators and inspectors to instantly identify and resolve issues within their field of view.The system provides real-time guidance, automated defect detection, digital traceability, and standardized inspection processes, helping manufacturers improve quality assurance and operational efficiency.\n\nWhat You May Build\n\na)A Computer Vision-based inspection solution capable of analysing assembly conditions in real time and detecting deviations from approved assembly standards, including routing errors, missing components, and incorrect positioning.\n\nb)An AI-powered quality verification engine that compares live production images with digital reference models and automatically identifies defects, potential interference conditions before products move to subsequent manufacturing stages.\n\nc)An Augmented Reality guidance system that overlays inspection results, assembly instructions, and defect locations directly onto physical components through wearable smart glasses, enabling hands-free quality verification.\n\nd)An AI Agent that continuously analyses inspection records, defect trends, production data, and operator performance to identify recurring quality issues, predict defect-prone areas, and recommend process improvements.\n\ne)A digital traceability platform that records inspection outcomes, defect classifications, images, compliance metrics, and corrective actions to create a comprehensive quality history for every manufactured unit.\n\nSuggested Technical Stack\n\nComputer vision\nReal-time tracking system\nAgentic AI or multi-agent systems\nWeb or mobile application\n3D modelling\nAR/VR"
+  },
+  {
+    "id": "smart-manufacturing-assistant",
+    "category": "Smart Cities & Urban Development",
+    "title": "Build an AI-Powered manufacturing operations assistant ",
+    "summary": "Help factory teams understand constraints, validate plans, detect risks, and keep production moving.",
+    "description": "Problem Context\n\nModern manufacturing plants generate large amounts of real-time information related to material shortages, inventory availability, production flow, and operational constraints. Much of this information is spread across emails, messages, sensors, and different software systems.Today, production planners must manually monitor these inputs, validate production schedules, identify potential bottlenecks, manage exceptions, and take corrective actions when disruptions occur. This process is time-consuming, reactive, and heavily dependent on human expertise.As industries move towards smart factories, there is a need for intelligent systems that can continuously monitor operations, predict problems before they happen, and help maintain smooth production flow with minimal human intervention.\n\nProblem Statement\n\nBuild an AI-Powered Manufacturing Operations Assistant that can monitor real-time factory data, understand operational constraints, validate production plans, detect risks, and recommend corrective actions to keep production running smoothly.The solution should use AI agents to collect information from multiple sources, analyse current factory conditions, identify potential issues such as material shortages or production bottlenecks, and provide actionable recommendations to planners and operators.The system should help manufacturers make faster decisions, reduce manual effort, improve production efficiency, and increase overall operational reliability.\n\nWhat You May Build\n\na)An AI agent that automatically gathers and understands information from emails, chats, reports, or factory systems and converts it into structured operational insights.\nb)An intelligent planning assistant that validates production schedules and identifies potential risks before execution.\nc)A predictive monitoring system that detects bottlenecks, congestion, shortages, or flow disruptions before they affect production.\ndA recommendation engine that suggests corrective actions and recovery plans when operational issues are detected.\ne)An autonomous decision-support platform that combines multiple AI agents to monitor, analyse, and optimize factory operations in real time.\n\nSuggested Technical Stack\n\nGenerative AI and LLMs\nAgentic AI or multi-agent systems\nMachine learning and predictive analysis\nNatural language processing (NLP)"
+  },
+  {
+    "id": "open-innovation",
+    "category": "Open Innovation",
+    "title": "Open innovation challenge",
+    "summary": "Propose an original solution to a meaningful problem within one of the IIC 3.0 themes."
+  }
+]
